@@ -40,7 +40,7 @@ Each section in `src/components/sections/` is self-contained: it imports `useI18
 
 ## Deployment
 
-Linked to Vercel project `fridaruhs-projects/agent_studio`. Production URL: **https://solar-agent-studio.vercel.app**
+Linked to Vercel project `fridaruhs-projects/close_energy`. Production URL: **https://close.energy**
 
 ```bash
 vercel --prod --scope fridaruhs-projects   # deploy to production

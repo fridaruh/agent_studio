@@ -130,13 +130,7 @@ export default function PlatformPreview() {
             <h3 className="text-ink font-medium text-headline mb-4">{panels[activePanel].label}</h3>
             <p className="text-ink-muted text-body-lg leading-relaxed mb-8">{panels[activePanel].desc}</p>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button className="inline-flex items-center gap-2 px-4 py-2 bg-surface-1 border border-hairline rounded-md text-ink-subtle text-button hover:text-ink hover:border-hairline-strong transition-all">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
-                </svg>
-                {platformPreview.audioCta}
-              </button>
+            <div>
               <button className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-md text-primary text-button hover:bg-primary/20 transition-all">
                 {platformPreview.quotingCta}
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

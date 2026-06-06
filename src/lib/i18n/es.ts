@@ -12,9 +12,8 @@ export const es = {
     text: 'Respaldado por [Inversor] · publicado en [Prensa]',
   },
   hero: {
-    headline: 'Tu empresa solar, cerrando más — sin contratar más.',
-    subheadline:
-      'La plataforma de agentes IA diseñada para instaladores y distribuidores solares. Automatiza cotizaciones, seguimiento de clientes y coordinación de servicio — de extremo a extremo, en cada canal.',
+    headline: 'Cotiza más rápido de lo que tu competencia puede contestar el teléfono.',
+    subheadline: 'El agente IA diseñado para instaladores solares. Responde en segundos, cotiza en minutos.',
     cta1: 'Contáctanos',
     cta2: 'Activar mi cuenta',
     dashboardLabel: 'Pipeline de Leads',
@@ -33,7 +32,7 @@ export const es = {
   problem: {
     headline: 'Las ventas y el servicio solar todavía funcionan con hilos de WhatsApp, hojas dispersas y seguimiento manual.',
     narrative:
-      'Una empresa solar de tamaño mediano recibe 80 leads este mes. Cada uno necesita una evaluación del sitio, una cotización personalizada —paneles, inversor, opciones de financiamiento, proyección de ROI— y 3–5 contactos de seguimiento antes de que el cliente decida. El equipo de ventas está saturado. La mitad de los leads reciben respuesta después de 48 horas. Un tercio nunca recibe un segundo seguimiento. Los deals que cierran lo hacen a pesar del proceso, no gracias a él.',
+      'Una empresa solar de tamaño mediano recibe 80 leads este mes. Cada uno necesita una evaluación del sitio, una cotización personalizada paneles, inversor, opciones de financiamiento, proyección de ROI y 3–5 contactos de seguimiento antes de que el cliente decida. El equipo de ventas está saturado. La mitad de los leads reciben respuesta después de 48 horas. Un tercio nunca recibe un segundo seguimiento. Los deals que cierran lo hacen a pesar del proceso, no gracias a él.',
     cards: [
       {
         title: 'Las cotizaciones lentas pierden instalaciones',
@@ -68,7 +67,7 @@ export const es = {
     headline: 'Bienvenido al futuro de las operaciones solares',
     panel1: {
       label: 'Centraliza cada lead y cliente',
-      desc: 'Todos tus canales de entrada —WhatsApp, formulario web, email— fluyen hacia un dashboard en tiempo real. Cada lead es capturado, clasificado y asignado automáticamente.',
+      desc: 'Todos tus canales de entrada WhatsApp, formulario web, email fluyen hacia un dashboard en tiempo real. Cada lead es capturado, clasificado y asignado automáticamente.',
     },
     panel2: {
       label: 'Interactúa con tu pipeline',
@@ -90,14 +89,14 @@ export const es = {
       label: 'Torre de control para liderazgo',
       number: '01',
       title: 'Sistema de Registro (SOR)',
-      desc: 'La base de datos central de tu operación. Se conecta a cada canal y sistema que tu empresa ya usa — sin integraciones manuales, sin depender de un CRM que alguien olvidó actualizar.',
+      desc: 'La base de datos central de tu operación. Se conecta a cada canal y sistema que tu empresa ya usa, sin integraciones manuales, sin depender de un CRM que alguien olvidó actualizar.',
       integrations: ['WhatsApp', 'Email', 'Llamadas', 'Web Form', 'CRM', 'Excel/Sheets', 'Salesforce', 'HubSpot', 'Google Sheets', 'SAP', 'NetSuite', 'Odoo'],
     },
     layer2: {
       label: 'Capa de ejecución autónoma',
       number: '02',
       title: 'Agentes Verticales',
-      desc: 'Agentes IA que ejecutan flujos de trabajo completos de extremo a extremo. Operan como miembros del equipo de tiempo completo — calificando leads, generando cotizaciones, haciendo seguimiento, coordinando servicio — con 99% de precisión.',
+      desc: 'Agentes IA que ejecutan flujos de trabajo completos de extremo a extremo. Operan como miembros del equipo de tiempo completo, calificando leads, generando cotizaciones, haciendo seguimiento, coordinando servicio, con 99% de precisión.',
       agents: ['Agente de Cotización', 'Agente de Seguimiento', 'Agente de Servicio', 'Agente de Éxito al Cliente', 'Agentes Personalizados'],
     },
   },
@@ -105,7 +104,7 @@ export const es = {
     eyebrow: 'Diferenciador clave',
     headline: 'IA que trabaja como trabaja tu equipo',
     subheadline:
-      'Nuestros agentes no solo envían notificaciones — ejecutan flujos de trabajo completos, en cada canal, sin intervención humana.',
+      'Nuestros agentes no solo envían notificaciones, ejecutan flujos de trabajo completos, en cada canal, sin intervención humana.',
     context:
       'Las ventas solares son relacionales, de múltiples contactos y técnicamente complejas. Nuestros agentes lo entienden. Leen mensajes entrantes, extraen los datos correctos, generan cotizaciones personalizadas, hacen seguimiento en el momento adecuado y escalan a tu equipo solo cuando se necesita una decisión humana.',
     features: [
@@ -115,7 +114,7 @@ export const es = {
       },
       {
         title: 'Ejecuta flujos de extremo a extremo',
-        desc: 'Desde recibir un lead hasta entregar una cotización completa con proyecciones de ROI — cero pasos manuales en el medio.',
+        desc: 'Desde recibir un lead hasta entregar una cotización completa con proyecciones de ROI, cero pasos manuales en el medio.',
       },
       {
         title: 'Escala cuando necesita tu juicio',
@@ -131,7 +130,7 @@ export const es = {
     eyebrow: 'Agente 01',
     name: 'Agente de Cotización',
     subtitle:
-      'Maneja solicitudes de cotización de instalación solar — residencial, comercial, industrial. Gestiona la recopilación de datos, dimensionamiento técnico, consulta de precios con proveedores y cálculo de ROI automáticamente.',
+      'Maneja solicitudes de cotización de instalación solar, residencial, comercial, industrial. Gestiona la recopilación de datos, dimensionamiento técnico, consulta de precios con proveedores y cálculo de ROI automáticamente.',
     channels: 'Canales: WhatsApp, Email, Formulario web',
     timeReduction: '3–7 días hábiles → menos de 4 horas',
     beforeTitle: 'Hoy manual',
@@ -174,7 +173,7 @@ export const es = {
       {
         name: 'Agente de Servicio',
         status: 'Beta',
-        desc: 'Maneja solicitudes post-instalación: programación de mantenimiento, alertas de monitoreo, reclamos de garantía y tickets de soporte técnico — triados y enrutados automáticamente.',
+        desc: 'Maneja solicitudes post-instalación: programación de mantenimiento, alertas de monitoreo, reclamos de garantía y tickets de soporte técnico, triados y enrutados automáticamente.',
       },
       {
         name: 'Agente de Éxito al Cliente',
@@ -194,7 +193,7 @@ export const es = {
     eyebrow: 'Demo',
     headline: 'Ve los agentes en acción',
     subheadline:
-      'Mira cómo la plataforma maneja cotización, seguimiento y coordinación de servicio — de extremo a extremo, en tiempo real.',
+      'Mira cómo la plataforma maneja cotización, seguimiento y coordinación de servicio, de extremo a extremo, en tiempo real.',
     playLabel: 'Reproducir demo',
   },
   caseStudy: {
@@ -207,7 +206,7 @@ export const es = {
     eyebrow: 'Seguridad',
     headline: 'Tus datos, protegidos por diseño',
     context:
-      'Las empresas solares manejan información sensible de clientes — direcciones, facturas de energía, datos de financiamiento. Cada capa de nuestra infraestructura está diseñada para mantenerlos seguros.',
+      'Las empresas solares manejan información sensible de clientes, direcciones, facturas de energía, datos de financiamiento. Cada capa de nuestra infraestructura está diseñada para mantenerlos seguros.',
     pillars: [
       {
         number: '01',
@@ -217,7 +216,7 @@ export const es = {
       {
         number: '02',
         title: 'RAG bajo demanda',
-        desc: 'Los datos y documentos de tus clientes se recuperan solo cuando se necesitan — nunca almacenados en memoria compartida del modelo ni expuestos a otros inquilinos.',
+        desc: 'Los datos y documentos de tus clientes se recuperan solo cuando se necesitan, nunca almacenados en memoria compartida del modelo ni expuestos a otros inquilinos.',
       },
       {
         number: '03',
@@ -234,7 +233,7 @@ export const es = {
   useCases: {
     eyebrow: 'Casos de uso',
     headline: 'Agentes IA que trabajan en todo tipo de proyecto solar',
-    intro: 'Desde una instalación residencial en el techo hasta un parque comercial — el agente se adapta al perfil y ejecuta el proceso correcto.',
+    intro: 'Desde una instalación residencial en el techo hasta un parque comercial, el agente se adapta al perfil y ejecuta el proceso correcto.',
     cases: [
       { type: 'Techo residencial', detail: 'Lead a cotización en menos de 4 horas, vía WhatsApp' },
       { type: 'Comercial PyME', detail: 'Propuesta multi-opción en un día hábil, vía email' },
@@ -254,7 +253,7 @@ export const es = {
     eyebrow: 'Integraciones',
     headline: 'Funciona con lo que ya usas',
     tagline: 'Sin migraciones. Sin cambios de stack. Solo conecta.',
-    bottomCta: '¿Usas otra herramienta? Hablemos — nos integramos con ella.',
+    bottomCta: '¿Usas otra herramienta? Hablemos, nos integramos con ella.',
     categories: [
       { name: 'CRM', tools: ['Salesforce', 'HubSpot', 'Dynamics', 'Pipedrive'] },
       { name: 'Email', tools: ['Gmail', 'Outlook'] },
@@ -312,6 +311,57 @@ export const es = {
       },
     ],
   },
+  contact: {
+    meta: 'Contacto: Close Energy',
+    subtitle: 'Solo toma 30 segundos. Con esta información te preparamos una propuesta de activación.',
+    sectionCompany: 'TU EMPRESA',
+    firstName: 'Nombre',
+    lastName: 'Apellido',
+    email: 'Correo de negocios',
+    phone: 'Teléfono',
+    company: 'Nombre de tu empresa',
+    sectionOperation: 'TU OPERACIÓN',
+    installTitle: '¿Qué tipo de instalaciones haces?',
+    installOptions: ['Residencial', 'Comercial', 'Industrial'],
+    volumeTitle: '¿Cuántos proyectos cierran al mes?',
+    volumeOptions: ['1 – 5 proyectos', '6 – 15 proyectos', '16 – 50 proyectos', 'Más de 50'],
+    bottleneckTitle: '¿Cuál es tu mayor cuello de botella hoy?',
+    bottleneckPlaceholder: 'Selecciona una opción',
+    bottleneckOptions: ['Cotizaciones lentas', 'Seguimiento de leads', 'Coordinación de servicio', 'Sin vista única del cliente'],
+    sectionLast: 'UNA ÚLTIMA COSA',
+    referralTitle: '¿Cómo llegaste a Close Energy?',
+    referralOptions: ['Anuncio en redes', 'Contenido orgánico', 'Recomendación', 'IA (ChatGPT, Claude...)', 'Google', 'Otro'],
+    submit: 'Activar mi cuenta',
+    successTitle: 'Ya estás en la lista.',
+    successBody: 'Nos pondremos en contacto contigo por correo o WhatsApp en menos de 24 horas con tu propuesta de activación.',
+  },
+  team: {
+    eyebrow: 'Nuestro equipo',
+    headline: 'Las personas y agentes detrás de Close Energy',
+    subheadline: 'Un equipo humano con visión de producto y un equipo autónomo de agentes IA que opera 24/7.',
+    founders: [
+      {
+        name: 'Iker Viramontes',
+        initials: 'IV',
+        role: 'Founder & CEO',
+        desc: 'Lidera la visión y estrategia de Close Energy. Construye la plataforma que convierte la adopción de IA en una ventaja comercial real para empresas solares.',
+      },
+      {
+        name: 'Frida Ruh',
+        initials: 'FR',
+        role: 'Founder & CTO',
+        desc: 'Arquitecta de la infraestructura de agentes IA. Diseña y construye los sistemas que dan autonomía de extremo a extremo a las operaciones solares.',
+      },
+    ],
+    autonomousEyebrow: 'Equipo Autónomo',
+    autonomousDesc: 'Agentes IA que operan sin pausa, sin instrucciones manuales, sin días libres.',
+    agents: [
+      { name: 'Stanley', role: 'AI Head of Content', desc: 'Crea y distribuye contenido de producto, actualizaciones y mensajes de marca en cada canal.' },
+      { name: 'Elliot', role: 'Scope & Task Agent', desc: 'Gestiona y prioriza tareas de proyecto, coordina dependencias y mantiene al equipo alineado.' },
+      { name: 'Nova', role: 'AI Quoting Agent', desc: 'Procesa solicitudes de cotización entrantes y genera propuestas personalizadas en minutos.' },
+      { name: 'Rex', role: 'AI Follow-up Agent', desc: 'Ejecuta secuencias de seguimiento personalizadas para cada prospecto en el pipeline.' },
+    ],
+  },
   cta: {
     headline: '¿Listo para dejar de perder leads por seguimiento lento?',
     subheadline: 'Empieza hoy.',
@@ -321,10 +371,10 @@ export const es = {
   footer: {
     tagline: 'Agentes IA para ventas y operaciones solares.',
     product: { title: 'Producto', links: ['Plataforma', 'Agentes', 'Seguridad', 'Integraciones'] },
-    company: { title: 'Empresa', links: ['Por qué nosotros', 'ROI', 'FAQ', 'Carreras'] },
+    company: { title: 'Empresa', links: ['Equipo', 'ROI', 'FAQ', 'Carreras'] },
     resources: { title: 'Recursos', links: ['Blog', 'Casos de éxito'] },
     contact: { title: 'Contacto', links: ['Contáctanos'] },
-    legal: '© 2026 [Nombre]. Todos los derechos reservados.',
+    legal: '© 2026 Close Energy. Todos los derechos reservados.',
   },
 }
 

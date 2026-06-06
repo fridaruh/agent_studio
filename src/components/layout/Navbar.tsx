@@ -31,12 +31,8 @@ export default function Navbar() {
       <div className="max-w-content mx-auto h-full flex items-center justify-between px-6">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-6 h-6 rounded-md bg-primary flex items-center justify-center">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7L5.5 10.5L12 3.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <span className="text-ink font-semibold text-body-sm tracking-tight">[Nombre]</span>
+          <img src="/logo.png" alt="Close Energy" className="w-6 h-6 object-contain" />
+          <span className="text-ink font-semibold text-body-sm tracking-tight">Close Energy</span>
         </a>
 
         {/* Desktop nav */}
@@ -56,7 +52,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           {/* Language toggle */}
           <div className="hidden md:flex items-center gap-0.5 bg-surface-1 border border-hairline rounded-pill p-0.5">
-            {(['es', 'en'] as const).map((l) => (
+            {(['en', 'es'] as const).map((l) => (
               <button
                 key={l}
                 onClick={() => setLocale(l)}
@@ -72,16 +68,10 @@ export default function Navbar() {
           </div>
 
           <a
-            href="#contact"
-            className="hidden md:inline-flex px-3 py-1.5 text-button text-ink bg-surface-1 border border-hairline rounded-md hover:bg-surface-2 transition-colors duration-150"
-          >
-            {t.nav.contactUs}
-          </a>
-          <a
-            href="#activate"
+            href="/contact"
             className="hidden md:inline-flex px-3 py-1.5 text-button text-white bg-primary rounded-md hover:bg-primary-hover transition-colors duration-150 btn-primary-glow"
           >
-            {t.nav.activateAccount}
+            {t.nav.contactUs}
           </a>
 
           {/* Mobile hamburger */}
@@ -122,7 +112,7 @@ export default function Navbar() {
             </a>
           ))}
           <div className="flex items-center gap-2 pt-2 border-t border-hairline mt-2">
-            {(['es', 'en'] as const).map((l) => (
+            {(['en', 'es'] as const).map((l) => (
               <button
                 key={l}
                 onClick={() => { setLocale(l); setMenuOpen(false) }}
@@ -135,18 +125,11 @@ export default function Navbar() {
             ))}
           </div>
           <a
-            href="#contact"
+            href="/contact"
             onClick={() => setMenuOpen(false)}
-            className="mt-1 text-center py-2.5 text-button text-ink bg-surface-2 border border-hairline rounded-md"
+            className="mt-1 text-center py-2.5 text-button text-white bg-primary rounded-md"
           >
             {t.nav.contactUs}
-          </a>
-          <a
-            href="#activate"
-            onClick={() => setMenuOpen(false)}
-            className="text-center py-2.5 text-button text-white bg-primary rounded-md"
-          >
-            {t.nav.activateAccount}
           </a>
         </div>
       )}

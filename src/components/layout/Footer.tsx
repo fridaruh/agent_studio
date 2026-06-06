@@ -2,6 +2,11 @@
 
 import { useI18n } from '@/lib/i18n/context'
 
+const pageLinkHrefs: Record<string, string> = {
+  'Team': '/team',
+  'Equipo': '/team',
+}
+
 export default function Footer() {
   const { t } = useI18n()
   const { footer } = t
@@ -15,12 +20,8 @@ export default function Footer() {
           {/* Brand column */}
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-6 h-6 rounded-md bg-primary flex items-center justify-center shrink-0">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7L5.5 10.5L12 3.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <span className="text-ink font-semibold text-body-sm">[Nombre]</span>
+              <img src="/logo.png" alt="Close Energy" className="w-6 h-6 object-contain shrink-0" />
+              <span className="text-ink font-semibold text-body-sm">Close Energy</span>
             </div>
             <p className="text-ink-subtle text-caption leading-relaxed max-w-[200px]">
               {footer.tagline}
@@ -66,7 +67,10 @@ export default function Footer() {
               <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-ink-subtle hover:text-ink-muted text-caption transition-colors">
+                    <a
+                      href={pageLinkHrefs[link] ?? '#'}
+                      className="text-ink-subtle hover:text-ink-muted text-caption transition-colors"
+                    >
                       {link}
                     </a>
                   </li>

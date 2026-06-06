@@ -14,9 +14,8 @@ export const en: Translations = {
     text: 'Backed by [Investor] · as seen in [Press]',
   },
   hero: {
-    headline: 'Your solar company, closing more — without adding more people.',
-    subheadline:
-      'The AI agent platform purpose-built for solar installers and distributors. Automates quoting, client follow-up, and service coordination — end to end, across every channel.',
+    headline: 'Quote faster than your competition can answer the phone.',
+    subheadline: 'The AI agent built for solar installers. Responds in seconds, quotes in minutes.',
     cta1: 'Contact us',
     cta2: 'Activate my account',
     dashboardLabel: 'Leads Pipeline',
@@ -35,7 +34,7 @@ export const en: Translations = {
   problem: {
     headline: 'Solar sales and service still run on WhatsApp threads, scattered spreadsheets, and manual follow-up.',
     narrative:
-      'A mid-size solar company receives 80 leads this month. Each needs a site evaluation, a custom quote —panels, inverter, financing options, ROI projection— and 3–5 follow-up touches before the client decides. The sales team is overwhelmed. Half the leads get a response after 48 hours. A third never get a second follow-up. The deals that close do so despite the process, not because of it.',
+      'A mid-size solar company receives 80 leads this month. Each needs a site evaluation, a custom quote panels, inverter, financing options, ROI projection and 3–5 follow-up touches before the client decides. The sales team is overwhelmed. Half the leads get a response after 48 hours. A third never get a second follow-up. The deals that close do so despite the process, not because of it.',
     cards: [
       {
         title: 'Slow quotes lose installs',
@@ -70,7 +69,7 @@ export const en: Translations = {
     headline: 'Welcome to the future of solar operations',
     panel1: {
       label: 'Centralize every lead and client',
-      desc: 'All your inbound channels — WhatsApp, web form, email — flow into a single real-time dashboard. Every lead is captured, classified, and assigned automatically.',
+      desc: 'All your inbound channels, WhatsApp, web form, email, flow into a single real-time dashboard. Every lead is captured, classified, and assigned automatically.',
     },
     panel2: {
       label: 'Interact with your pipeline',
@@ -92,14 +91,14 @@ export const en: Translations = {
       label: 'Control tower for leadership',
       number: '01',
       title: 'System of Record (SOR)',
-      desc: 'The central database for your operation. Connects to every channel and system your company already uses — no manual integrations, no depending on a CRM someone forgot to update.',
+      desc: 'The central database for your operation. Connects to every channel and system your company already uses, no manual integrations, no depending on a CRM someone forgot to update.',
       integrations: ['WhatsApp', 'Email', 'Calls', 'Web Form', 'CRM', 'Excel/Sheets', 'Salesforce', 'HubSpot', 'Google Sheets', 'SAP', 'NetSuite', 'Odoo'],
     },
     layer2: {
       label: 'Autonomous execution layer',
       number: '02',
       title: 'Vertical Agents',
-      desc: 'AI agents that execute complete workflows end to end. They operate like full-time team members — qualifying leads, generating quotes, following up, coordinating service — with 99% accuracy.',
+      desc: 'AI agents that execute complete workflows end to end. They operate like full-time team members, qualifying leads, generating quotes, following up, coordinating service, with 99% accuracy.',
       agents: ['Quoting Agent', 'Follow-up Agent', 'Service Agent', 'Customer Success Agent', 'Custom Agents'],
     },
   },
@@ -107,7 +106,7 @@ export const en: Translations = {
     eyebrow: 'Key differentiator',
     headline: 'AI that works the way your team works',
     subheadline:
-      'Our agents don\'t just send notifications — they execute complete workflows, across every channel, without human intervention.',
+      'Our agents don\'t just send notifications, they execute complete workflows, across every channel, without human intervention.',
     context:
       'Solar sales is relationship-driven, multi-touch, and technically complex. Our agents understand that. They read inbound messages, extract the right data, generate personalized quotes, follow up at the right moment, and escalate to your team only when a human decision is needed.',
     features: [
@@ -117,7 +116,7 @@ export const en: Translations = {
       },
       {
         title: 'Executes workflows end to end',
-        desc: 'From receiving a lead to delivering a complete quote with ROI projections — zero manual steps in between.',
+        desc: 'From receiving a lead to delivering a complete quote with ROI projections, zero manual steps in between.',
       },
       {
         title: 'Escalates when it needs your judgment',
@@ -133,7 +132,7 @@ export const en: Translations = {
     eyebrow: 'Agent 01',
     name: 'Quoting Agent',
     subtitle:
-      'Handles inbound requests for solar installation quotes — residential, commercial, industrial. Manages data collection, technical sizing, supplier pricing lookup, and ROI calculation automatically.',
+      'Handles inbound requests for solar installation quotes, residential, commercial, industrial. Manages data collection, technical sizing, supplier pricing lookup, and ROI calculation automatically.',
     channels: 'Channels: WhatsApp, Email, Web Form',
     timeReduction: '3–7 business days → under 4 hours',
     beforeTitle: 'Manual Today',
@@ -176,7 +175,7 @@ export const en: Translations = {
       {
         name: 'Service Agent',
         status: 'Beta',
-        desc: 'Handles post-installation requests: maintenance scheduling, monitoring alerts, warranty claims, and technical support tickets — automatically triaged and routed.',
+        desc: 'Handles post-installation requests: maintenance scheduling, monitoring alerts, warranty claims, and technical support tickets, automatically triaged and routed.',
       },
       {
         name: 'Customer Success Agent',
@@ -196,7 +195,7 @@ export const en: Translations = {
     eyebrow: 'Demo',
     headline: 'See the agents in action',
     subheadline:
-      'Watch how the platform handles quoting, follow-up, and service coordination — end to end, in real time.',
+      'Watch how the platform handles quoting, follow-up, and service coordination, end to end, in real time.',
     playLabel: 'Play demo',
   },
   caseStudy: {
@@ -209,7 +208,7 @@ export const en: Translations = {
     eyebrow: 'Security',
     headline: 'Your data, protected by design',
     context:
-      'Solar companies manage sensitive client information — addresses, energy bills, financing data. Every layer of our infrastructure is designed to keep it safe.',
+      'Solar companies manage sensitive client information, addresses, energy bills, financing data. Every layer of our infrastructure is designed to keep it safe.',
     pillars: [
       {
         number: '01',
@@ -219,7 +218,7 @@ export const en: Translations = {
       {
         number: '02',
         title: 'RAG on Demand',
-        desc: 'Your client data and documents are retrieved only when needed — never stored in shared model memory or exposed to other tenants.',
+        desc: 'Your client data and documents are retrieved only when needed, never stored in shared model memory or exposed to other tenants.',
       },
       {
         number: '03',
@@ -236,7 +235,7 @@ export const en: Translations = {
   useCases: {
     eyebrow: 'Use cases',
     headline: 'AI agents that work across every type of solar project',
-    intro: 'From a rooftop residential install to a commercial park — the agent adapts to the profile and runs the right process.',
+    intro: 'From a rooftop residential install to a commercial park, the agent adapts to the profile and runs the right process.',
     cases: [
       { type: 'Residential rooftop', detail: 'Lead to quote in under 4 hours, via WhatsApp' },
       { type: 'Commercial SME', detail: 'Multi-option proposal in one business day, via email' },
@@ -256,7 +255,7 @@ export const en: Translations = {
     eyebrow: 'Integrations',
     headline: 'Works with what you already use',
     tagline: 'No migrations. No stack changes. Just plug in.',
-    bottomCta: 'Using a different tool? Let\'s talk — we integrate with it.',
+    bottomCta: 'Using a different tool? Let\'s talk, we integrate with it.',
     categories: [
       { name: 'CRM', tools: ['Salesforce', 'HubSpot', 'Dynamics', 'Pipedrive'] },
       { name: 'Email', tools: ['Gmail', 'Outlook'] },
@@ -314,6 +313,57 @@ export const en: Translations = {
       },
     ],
   },
+  contact: {
+    meta: 'Contact: Close Energy',
+    subtitle: 'Takes 30 seconds. With this info we prepare your activation proposal.',
+    sectionCompany: 'YOUR COMPANY',
+    firstName: 'First name',
+    lastName: 'Last name',
+    email: 'Business email',
+    phone: 'Phone',
+    company: 'Company name',
+    sectionOperation: 'YOUR OPERATION',
+    installTitle: 'What type of installations do you do?',
+    installOptions: ['Residential', 'Commercial', 'Industrial'],
+    volumeTitle: 'How many projects do you close per month?',
+    volumeOptions: ['1 – 5 projects', '6 – 15 projects', '16 – 50 projects', 'More than 50'],
+    bottleneckTitle: 'What is your biggest bottleneck today?',
+    bottleneckPlaceholder: 'Select an option',
+    bottleneckOptions: ['Slow quotes', 'Lead follow-up', 'Service coordination', 'No single customer view'],
+    sectionLast: 'ONE LAST THING',
+    referralTitle: 'How did you find Close Energy?',
+    referralOptions: ['Social media ad', 'Organic content', 'Recommendation', 'AI (ChatGPT, Claude...)', 'Google', 'Other'],
+    submit: 'Activate my account',
+    successTitle: "You're on the list.",
+    successBody: 'We\'ll reach out via email or WhatsApp within 24 hours with your activation proposal.',
+  },
+  team: {
+    eyebrow: 'Our team',
+    headline: 'The people and agents behind Close Energy',
+    subheadline: 'A human team with product vision and an autonomous AI agent team that operates 24/7.',
+    founders: [
+      {
+        name: 'Iker Viramontes',
+        initials: 'IV',
+        role: 'Founder & CEO',
+        desc: 'Leads the vision and strategy of Close Energy. Building the platform that turns AI adoption into a real commercial advantage for solar companies.',
+      },
+      {
+        name: 'Frida Ruh',
+        initials: 'FR',
+        role: 'Founder & CTO',
+        desc: 'Architect of the AI agent infrastructure. Designs and builds the systems that give solar operations end-to-end autonomy.',
+      },
+    ],
+    autonomousEyebrow: 'Autonomous Team',
+    autonomousDesc: 'AI agents operating without pause, no manual instructions, no days off.',
+    agents: [
+      { name: 'Stanley', role: 'AI Head of Content', desc: 'Creates and distributes product content, updates, and brand messaging across every channel.' },
+      { name: 'Elliot', role: 'Scope & Task Agent', desc: 'Manages and prioritizes project tasks, coordinates dependencies, and keeps the team aligned.' },
+      { name: 'Nova', role: 'AI Quoting Agent', desc: 'Processes inbound quote requests and generates personalized proposals in minutes.' },
+      { name: 'Rex', role: 'AI Follow-up Agent', desc: 'Executes personalized follow-up sequences for every prospect in the pipeline.' },
+    ],
+  },
   cta: {
     headline: 'Ready to stop losing leads to slow follow-up?',
     subheadline: 'Start today.',
@@ -323,9 +373,9 @@ export const en: Translations = {
   footer: {
     tagline: 'AI agents for solar sales and operations.',
     product: { title: 'Product', links: ['Platform', 'Agents', 'Security', 'Integrations'] },
-    company: { title: 'Company', links: ['Why us', 'ROI', 'FAQ', 'Careers'] },
+    company: { title: 'Company', links: ['Team', 'ROI', 'FAQ', 'Careers'] },
     resources: { title: 'Resources', links: ['Blog', 'Success Stories'] },
     contact: { title: 'Contact', links: ['Get in touch'] },
-    legal: '© 2026 [Name]. All rights reserved.',
+    legal: '© 2026 Close Energy. All rights reserved.',
   },
 }

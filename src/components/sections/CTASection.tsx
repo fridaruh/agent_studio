@@ -26,18 +26,12 @@ export default function CTASection() {
               {cta.subheadline}
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="flex items-center justify-center">
               <a
-                href="#contact"
-                className="px-6 py-3 text-button text-ink bg-surface-2 border border-hairline rounded-md hover:bg-surface-3 hover:border-hairline-strong transition-all"
-              >
-                {cta.cta1}
-              </a>
-              <a
-                href="#activate"
+                href="/contact"
                 className="px-6 py-3 text-button text-white bg-primary rounded-md hover:bg-primary-hover transition-colors btn-primary-glow"
               >
-                {cta.cta2}
+                {cta.cta1}
               </a>
             </div>
           </div>
