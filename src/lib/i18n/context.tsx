@@ -16,13 +16,13 @@ interface I18nContextType {
 const translations: Record<Locale, Translations> = { es, en }
 
 const I18nContext = createContext<I18nContextType>({
-  locale: 'en',
-  t: en,
+  locale: 'es',
+  t: es,
   setLocale: () => {},
 })
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('en')
+  const [locale, setLocaleState] = useState<Locale>('es')
 
   const setLocale = useCallback((l: Locale) => setLocaleState(l), [])
 

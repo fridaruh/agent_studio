@@ -28,7 +28,7 @@ export default function CTASection() {
 
             <div className="flex items-center justify-center">
               <a
-                href="/contact"
+                href="https://outlook.office.com/bookwithme/user/90e5e6e996334c7c8b34b1a749e7c039@aicsolutions.mx/meetingtype/UKTphYVegUuWbG5239CHdw2?bookingcode=68329955-fca3-4c70-bcce-d44697386d26&anonymous&ismsaljsauthenabled&ep=mlink"
                 className="px-6 py-3 text-button text-white bg-primary rounded-md hover:bg-primary-hover transition-colors btn-primary-glow"
               >
                 {cta.cta1}
