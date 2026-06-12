@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Migración Kapsos → OpenClaw — Close Energy Agent Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Design tokens from DESIGN.md ── */
+    :root {
+      --color-primary:        #374151;
+      --color-primary-hover:  #1f2937;
+      --color-primary-focus:  #111827;
+      --color-ink:            #0a0a0f;
+      --color-ink-muted:      #3a3c47;
+      --color-ink-subtle:     #6b7280;
+      --color-ink-tertiary:   #9ca3af;
+      --color-canvas:         #ffffff;
+      --color-surface-1:      #f9fafb;
+      --color-surface-2:      #f3f4f6;
+      --color-surface-3:      #e9eaed;
+      --color-hairline:       #e5e7eb;
+      --color-hairline-strong:#d1d5db;
+      --color-success:        #16a34a;
+      --color-warn:           #d97706;
+      --color-danger:         #dc2626;
+      --color-info:           #374151;
+      --rounded-sm:   6px;
+      --rounded-md:   8px;
+      --rounded-lg:   12px;
+      --rounded-xl:   16px;
+      --rounded-pill: 9999px;
+      --spacing-xs:   8px;
+      --spacing-sm:   12px;
+      --spacing-md:   16px;
+      --spacing-lg:   24px;
+      --spacing-xl:   32px;
+      --spacing-xxl:  48px;
+      --spacing-section: 80px;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-canvas);
+      color: var(--color-ink);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Hero grid background ── */
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 1024px; margin: 0 auto; padding: 0 var(--spacing-xl); }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--color-hairline);
+      padding: var(--spacing-xxl) 0 var(--spacing-xl);
+      background: var(--color-canvas);
+    }
+    .header-inner { max-width: 1024px; margin: 0 auto; padding: 0 var(--spacing-xl); }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-md);
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-success);
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--color-ink);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .header-meta {
+      display: flex;
+      gap: var(--spacing-xl);
+      margin-top: var(--spacing-lg);
+      padding-top: var(--spacing-lg);
+      border-top: 1px solid var(--color-hairline);
+      flex-wrap: wrap;
+    }
+    .meta-item { font-size: 13px; color: var(--color-ink-subtle); }
+    .meta-item strong { color: var(--color-ink-muted); font-weight: 500; }
+
+    /* ── Sidebar TOC ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: var(--spacing-xxl);
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: var(--spacing-xxl) var(--spacing-xl);
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: var(--spacing-xl);
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-hairline);
+      border-radius: var(--rounded-xl);
+      padding: var(--spacing-lg);
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--color-ink-tertiary);
+      margin-bottom: var(--spacing-md);
+    }
+    .toc ul { list-style: none; }
+    .toc li + li { margin-top: 2px; }
+    .toc a {
+      display: block;
+      font-size: 13px;
+      color: var(--color-ink-subtle);
+      text-decoration: none;
+      padding: 5px var(--spacing-sm);
+      border-radius: var(--rounded-md);
+      transition: background 0.15s, color 0.15s;
+    }
+    .toc a:hover { background: var(--color-surface-2); color: var(--color-ink); }
+    .toc-sub { padding-left: var(--spacing-md) !important; font-size: 12px !important; }
+
+    /* ── Content ── */
+    .content { min-width: 0; }
+
+    section { margin-bottom: var(--spacing-section); }
+
+    h2 {
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--color-ink);
+      margin-bottom: var(--spacing-md);
+      padding-top: var(--spacing-xxl);
+      border-top: 1px solid var(--color-hairline);
+    }
+    h2:first-child { padding-top: 0; border-top: none; }
+
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: var(--color-ink);
+      margin: var(--spacing-xl) 0 var(--spacing-sm);
+    }
+
+    h4 {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--color-ink-muted);
+      margin: var(--spacing-lg) 0 var(--spacing-xs);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    p { color: var(--color-ink-muted); line-height: 1.65; margin-bottom: var(--spacing-md); font-size: 15px; }
+
+    /* ── Callout boxes ── */
+    .callout {
+      border-radius: var(--rounded-lg);
+      padding: var(--spacing-lg);
+      margin: var(--spacing-lg) 0;
+      border: 1px solid;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .callout-title { font-weight: 600; font-size: 13px; margin-bottom: var(--spacing-xs); display: flex; align-items: center; gap: 6px; }
+    .callout.info { background: var(--color-surface-1); border-color: var(--color-hairline-strong); color: var(--color-ink-muted); }
+    .callout.warn { background: #fffbeb; border-color: #fcd34d; color: #92400e; }
+    .callout.danger { background: #fef2f2; border-color: #fca5a5; color: #991b1b; }
+    .callout.success { background: #f0fdf4; border-color: #86efac; color: #14532d; }
+
+    /* ── Code blocks ── */
+    pre {
+      background: var(--color-primary-focus);
+      color: #e2e8f0;
+      border-radius: var(--rounded-lg);
+      padding: var(--spacing-lg);
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.7;
+      margin: var(--spacing-md) 0;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    pre .comment { color: #6b7280; }
+    pre .keyword { color: #93c5fd; }
+    pre .string  { color: #86efac; }
+    pre .fn      { color: #fbbf24; }
+    pre .type    { color: #c4b5fd; }
+    pre .num     { color: #f9a8d4; }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: var(--color-surface-2);
+      color: var(--color-ink-muted);
+      padding: 2px 6px;
+      border-radius: var(--rounded-sm);
+      border: 1px solid var(--color-hairline);
+    }
+    pre code { background: transparent; border: none; padding: 0; font-size: inherit; color: inherit; }
+
+    /* ── File label over code block ── */
+    .code-wrap { margin: var(--spacing-lg) 0; }
+    .code-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-ink-tertiary);
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-hairline);
+      border-bottom: none;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: var(--rounded-sm) var(--rounded-sm) 0 0;
+    }
+    .code-wrap pre { margin-top: 0; border-radius: 0 var(--rounded-lg) var(--rounded-lg) var(--rounded-lg); }
+
+    /* ── Tables ── */
+    .table-wrap { overflow-x: auto; margin: var(--spacing-lg) 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th {
+      background: var(--color-surface-1);
+      color: var(--color-ink-subtle);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 10px 14px;
+      border: 1px solid var(--color-hairline);
+    }
+    td {
+      padding: 10px 14px;
+      border: 1px solid var(--color-hairline);
+      color: var(--color-ink-muted);
+      vertical-align: top;
+    }
+    td:first-child { color: var(--color-ink); font-weight: 500; }
+    tr:nth-child(even) td { background: var(--color-surface-1); }
+
+    /* ── Migration cards (before/after) ── */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+      margin: var(--spacing-lg) 0;
+    }
+    .compare-card {
+      border-radius: var(--rounded-lg);
+      border: 1px solid var(--color-hairline);
+      overflow: hidden;
+    }
+    .compare-header {
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .compare-header.before { background: #fef2f2; color: #991b1b; border-bottom: 1px solid #fca5a5; }
+    .compare-header.after  { background: #f0fdf4; color: #14532d; border-bottom: 1px solid #86efac; }
+    .compare-body { padding: var(--spacing-md); background: var(--color-surface-1); }
+    .compare-body ul { list-style: none; }
+    .compare-body li { font-size: 13px; color: var(--color-ink-muted); padding: 4px 0; display: flex; gap: 8px; align-items: flex-start; }
+    .compare-body li::before { content: '›'; color: var(--color-ink-tertiary); flex-shrink: 0; margin-top: 1px; }
+
+    /* ── Step list ── */
+    .step-list { list-style: none; counter-reset: steps; }
+    .step-list li {
+      counter-increment: steps;
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: var(--spacing-md);
+      padding: var(--spacing-md) 0;
+      border-bottom: 1px solid var(--color-hairline);
+      font-size: 14px;
+      color: var(--color-ink-muted);
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(steps);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-hairline-strong);
+      border-radius: var(--rounded-md);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── Badge ── */
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: var(--rounded-pill);
+      letter-spacing: 0.2px;
+    }
+    .badge-green  { background: #dcfce7; color: #15803d; }
+    .badge-yellow { background: #fef9c3; color: #a16207; }
+    .badge-red    { background: #fee2e2; color: #b91c1c; }
+    .badge-gray   { background: var(--color-surface-2); color: var(--color-ink-subtle); }
+
+    /* ── Prompt box ── */
+    .prompt-box {
+      background: var(--color-primary-focus);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--rounded-xl);
+      padding: var(--spacing-xxl);
+      margin: var(--spacing-xxl) 0;
+    }
+    .prompt-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: var(--spacing-md);
+    }
+    .prompt-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #f1f5f9;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--spacing-lg);
+    }
+    .prompt-text {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.75;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .prompt-text .ph { color: #fbbf24; } /* placeholder variables */
+    .prompt-text .section-label { color: #93c5fd; font-weight: 500; }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: var(--spacing-xl);
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--rounded-md);
+      color: #e2e8f0;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.14); }
+
+    /* ── Arch diagram (CSS) ── */
+    .arch {
+      background: var(--color-surface-1);
+      border: 1px solid var(--color-hairline);
+      border-radius: var(--rounded-xl);
+      padding: var(--spacing-xl);
+      margin: var(--spacing-xl) 0;
+    }
+    .arch-title { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--color-ink-tertiary); margin-bottom: var(--spacing-lg); }
+    .arch-row { display: flex; gap: var(--spacing-md); align-items: stretch; flex-wrap: wrap; margin-bottom: var(--spacing-md); }
+    .arch-node {
+      flex: 1;
+      min-width: 140px;
+      background: var(--color-canvas);
+      border: 1px solid var(--color-hairline-strong);
+      border-radius: var(--rounded-lg);
+      padding: var(--spacing-md);
+      text-align: center;
+    }
+    .arch-node-label { font-size: 12px; font-weight: 600; color: var(--color-ink); }
+    .arch-node-sub   { font-size: 11px; color: var(--color-ink-subtle); margin-top: 4px; font-family: var(--font-mono); }
+    .arch-arrow { display: flex; align-items: center; justify-content: center; color: var(--color-ink-tertiary); font-size: 18px; }
+    .arch-connector {
+      border-left: 2px dashed var(--color-hairline-strong);
+      margin: var(--spacing-xs) auto;
+      height: 24px;
+      width: 0;
+    }
+
+    /* ── Risk matrix ── */
+    .risk-row-high td:first-child { border-left: 3px solid var(--color-danger); }
+    .risk-row-med  td:first-child { border-left: 3px solid var(--color-warn); }
+    .risk-row-low  td:first-child { border-left: 3px solid var(--color-success); }
+
+    /* ── Footer ── */
+    .doc-footer {
+      border-top: 1px solid var(--color-hairline);
+      padding: var(--spacing-xxl) 0;
+      margin-top: var(--spacing-section);
+    }
+    .doc-footer-inner { max-width: 1024px; margin: 0 auto; padding: 0 var(--spacing-xl); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--spacing-md); }
+    .doc-footer-copy { font-size: 12px; color: var(--color-ink-tertiary); }
+
+    @media (max-width: 768px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .compare { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════════════ -->
+<header class="hero-grid">
+  <div class="header-inner">
+    <div class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      Close Energy · Infraestructura de Agentes
+    </div>
+    <h1>Migración de Kapsos<br>a OpenClaw</h1>
+    <p style="font-size:17px; color:var(--color-ink-muted); max-width:600px; margin-top:var(--spacing-md);">
+      Guía técnica de referencia para reemplazar Kapsos como orquestador de agentes por OpenClaw en la plataforma Close Energy. Incluye mapeo de componentes, patrones de código, estrategia de datos y prompt de instrucción para migración automática por agentes.
+    </p>
+    <div class="header-meta">
+      <div class="meta-item"><strong>Versión</strong> — 1.0-draft</div>
+      <div class="meta-item"><strong>Fecha</strong> — Junio 2026</div>
+      <div class="meta-item"><strong>Audiencia</strong> — Backend engineers, DevOps, AI team</div>
+      <div class="meta-item"><strong>Estado</strong> — <span class="badge badge-yellow">Borrador</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     MAIN LAYOUT
+══════════════════════════════════════════════════════════ -->
+<div class="layout">
+
+  <!-- ── Sidebar TOC ── -->
+  <aside class="toc">
+    <div class="toc-title">Contenido</div>
+    <ul>
+      <li><a href="#contexto">1. Contexto y motivación</a></li>
+      <li><a href="#arquitectura-actual">2. Arquitectura actual (Kapsos)</a></li>
+      <li><a href="#openclaw">3. OpenClaw — Conceptos clave</a></li>
+      <li><a href="#mapeo">4. Mapeo de componentes</a></li>
+      <li><a href="#agentes">5. Migración por agente</a>
+        <ul>
+          <li><a class="toc-sub" href="#quoting">Quoting Agent</a></li>
+          <li><a class="toc-sub" href="#followup">Follow-up Agent</a></li>
+          <li><a class="toc-sub" href="#service">Service Agent</a></li>
+        </ul>
+      </li>
+      <li><a href="#integraciones">6. Integraciones externas</a></li>
+      <li><a href="#datos">7. Migración de datos y estado</a></li>
+      <li><a href="#testing">8. Estrategia de pruebas</a></li>
+      <li><a href="#rollout">9. Plan de rollout</a></li>
+      <li><a href="#riesgos">10. Riesgos</a></li>
+      <li><a href="#prompt">11. Prompt para agentes</a></li>
+    </ul>
+  </aside>
+
+  <!-- ── Main content ── -->
+  <main class="content">
+
+    <!-- ══════ 1. Contexto ══════ -->
+    <section id="contexto">
+      <h2>1. Contexto y motivación</h2>
+
+      <p>Close Energy opera tres agentes de IA en producción (Quoting, Follow-up, Service) orquestados actualmente sobre <strong>Kapsos</strong>, una plataforma propietaria de agentes que provee: ejecución de pasos, gestión de herramientas, memoria de sesión y triggers de canal (WhatsApp Business API, email, webhooks CRM).</p>
+
+      <p><strong>OpenClaw</strong> es un framework de orquestación de agentes open-source que expone los mismos primitivos (tool-calling, memory, channel routing) pero bajo un modelo de despliegue autoalojado, con control total del estado, costos predecibles y sin vendor lock-in.</p>
+
+      <div class="callout warn">
+        <div class="callout-title">⚠ Consideración crítica</div>
+        Kapsos gestiona actualmente el estado de sesión de todos los leads en vuelo. La migración en caliente requiere exportar y reanudar ese estado en OpenClaw <em>sin cortar conversaciones activas</em>. Ver sección 7.
+      </div>
+
+      <h3>Por qué migrar</h3>
+      <div class="compare">
+        <div class="compare-card">
+          <div class="compare-header before">Kapsos — Limitaciones</div>
+          <div class="compare-body"><ul>
+            <li>Pricing por ejecución escala mal con volumen de leads</li>
+            <li>Vendor lock-in en modelo de memoria y tool-registry</li>
+            <li>Logs de conversación cerrados — difícil debuggear</li>
+            <li>Latencia de herramienta no optimizable</li>
+            <li>Sin acceso a traza de razonamiento del modelo</li>
+          </ul></div>
+        </div>
+        <div class="compare-card">
+          <div class="compare-header after">OpenClaw — Ventajas</div>
+          <div class="compare-body"><ul>
+            <li>Self-hosted: costo fijo en infra propia / Fly.io / Railway</li>
+            <li>API de herramientas compatible con OpenAI function-calling</li>
+            <li>Memoria persistente en Postgres o Redis — control total</li>
+            <li>Trazas de razonamiento exportables a cualquier observabilidad</li>
+            <li>Soporte nativo de streaming y multi-step tool-call loops</li>
+          </ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ 2. Arquitectura actual ══════ -->
+    <section id="arquitectura-actual">
+      <h2>2. Arquitectura actual (Kapsos)</h2>
+
+      <div class="arch">
+        <div class="arch-title">Stack Kapsos — Close Energy (estado actual)</div>
+        <div class="arch-row">
+          <div class="arch-node"><div class="arch-node-label">Canales de entrada</div><div class="arch-node-sub">WhatsApp · Email · Web Form</div></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node"><div class="arch-node-label">Kapsos Router</div><div class="arch-node-sub">kapsos.io/webhook</div></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node"><div class="arch-node-label">Agent Registry</div><div class="arch-node-sub">Quoting / Follow-up / Service</div></div>
+        </div>
+        <div class="arch-connector"></div>
+        <div class="arch-row">
+          <div class="arch-node"><div class="arch-node-label">Kapsos Memory</div><div class="arch-node-sub">Sesión · Contexto · Historia</div></div>
+          <div class="arch-arrow">↔</div>
+          <div class="arch-node"><div class="arch-node-label">LLM Core</div><div class="arch-node-sub">claude-sonnet-4-6</div></div>
+          <div class="arch-arrow">↔</div>
+          <div class="arch-node"><div class="arch-node-label">Tool Registry</div><div class="arch-node-sub">CRM · Pricing · RAG · Calendar</div></div>
+        </div>
+        <div class="arch-connector"></div>
+        <div class="arch-row">
+          <div class="arch-node"><div class="arch-node-label">Kapsos Scheduler</div><div class="arch-node-sub">Follow-up triggers</div></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node"><div class="arch-node-label">Kapsos Outbox</div><div class="arch-node-sub">Despacho de mensajes</div></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node"><div class="arch-node-label">Canales de salida</div><div class="arch-node-sub">WhatsApp · Email · CRM update</div></div>
+        </div>
+      </div>
+
+      <h3>Primitivos que Kapsos provee hoy</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Primitivo Kapsos</th><th>Descripción</th><th>Equivalente OpenClaw</th></tr></thead>
+          <tbody>
+            <tr><td><code>KapsosAgent</code></td><td>Clase base de agente con loop de razonamiento</td><td><code>OpenClawAgent</code></td></tr>
+            <tr><td><code>@kapsos.tool</code></td><td>Decorador para registrar una función como herramienta</td><td><code>@claw.tool</code></td></tr>
+            <tr><td><code>KapsosMemory</code></td><td>Almacén de sesión en memoria propietaria</td><td><code>ClawMemory(backend=Postgres)</code></td></tr>
+            <tr><td><code>KapsosRouter</code></td><td>Mapea canal de entrada → agente destino</td><td><code>ClawRouter</code> + <code>channel_adapters</code></td></tr>
+            <tr><td><code>KapsosScheduler</code></td><td>Cron + delay de follow-ups</td><td><code>ClawScheduler</code> (APScheduler/Celery)</td></tr>
+            <tr><td><code>KapsosOutbox</code></td><td>Cola de mensajes salientes</td><td><code>ClawOutbox</code> (Redis/Postgres queue)</td></tr>
+            <tr><td><code>kapsos.run(agent, payload)</code></td><td>Punto de entrada sincrónico</td><td><code>await claw.run(agent, payload)</code></td></tr>
+            <tr><td><code>KapsosRAG</code></td><td>Retrieval de documentos de cliente</td><td><code>ClawRAG</code> (pgvector / Pinecone)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════ 3. OpenClaw ══════ -->
+    <section id="openclaw">
+      <h2>3. OpenClaw — Conceptos clave</h2>
+
+      <p>OpenClaw es un framework Python async-first para agentes LLM multi-step. Se instala como paquete y se ejecuta en cualquier servidor Python (FastAPI, Starlette) o como worker independiente.</p>
+
+      <div class="callout info">
+        <div class="callout-title">📦 Instalación</div>
+        <code>pip install openclaw anthropic</code> — OpenClaw usa el Anthropic SDK directamente para tool-calling.
+      </div>
+
+      <h3>Arquitectura OpenClaw</h3>
+
+      <div class="arch">
+        <div class="arch-title">Stack OpenClaw — Close Energy (estado objetivo)</div>
+        <div class="arch-row">
+          <div class="arch-node"><div class="arch-node-label">Canales de entrada</div><div class="arch-node-sub">WhatsApp · Email · Web Form</div></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node"><div class="arch-node-label">ClawRouter</div><div class="arch-node-sub">FastAPI /webhook</div></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node"><div class="arch-node-label">Agent Registry</div><div class="arch-node-sub">Quoting / Follow-up / Service</div></div>
+        </div>
+        <div class="arch-connector"></div>
+        <div class="arch-row">
+          <div class="arch-node"><div class="arch-node-label">ClawMemory</div><div class="arch-node-sub">Postgres + Redis (sesión)</div></div>
+          <div class="arch-arrow">↔</div>
+          <div class="arch-node"><div class="arch-node-label">LLM Core</div><div class="arch-node-sub">claude-sonnet-4-6 (Anthropic SDK)</div></div>
+          <div class="arch-arrow">↔</div>
+          <div class="arch-node"><div class="arch-node-label">ClawTools</div><div class="arch-node-sub">CRM · Pricing · RAG · Calendar</div></div>
+        </div>
+        <div class="arch-connector"></div>
+        <div class="arch-row">
+          <div class="arch-node"><div class="arch-node-label">ClawScheduler</div><div class="arch-node-sub">Celery Beat / APScheduler</div></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node"><div class="arch-node-label">ClawOutbox</div><div class="arch-node-sub">Postgres queue + workers</div></div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node"><div class="arch-node-label">Canales de salida</div><div class="arch-node-sub">WhatsApp · Email · CRM</div></div>
+        </div>
+      </div>
+
+      <h3>Estructura de paquete OpenClaw</h3>
+
+      <div class="code-wrap">
+        <div class="code-label">agents/ (estructura de proyecto objetivo)</div>
+        <pre><code>agents/
+├── core/
+│   ├── router.py          <span class="comment"># ClawRouter — mapea canal → agente</span>
+│   ├── memory.py          <span class="comment"># ClawMemory — Postgres + Redis</span>
+│   ├── scheduler.py       <span class="comment"># ClawScheduler — Celery Beat</span>
+│   └── outbox.py          <span class="comment"># ClawOutbox — cola de salida</span>
+├── agents/
+│   ├── quoting.py         <span class="comment"># QuotingAgent (OpenClawAgent)</span>
+│   ├── followup.py        <span class="comment"># FollowUpAgent (OpenClawAgent)</span>
+│   └── service.py         <span class="comment"># ServiceAgent (OpenClawAgent)</span>
+├── tools/
+│   ├── crm.py             <span class="comment"># get_lead, update_lead, create_deal</span>
+│   ├── pricing.py         <span class="comment"># lookup_panel_price, get_inverter_quote</span>
+│   ├── solar_sizing.py    <span class="comment"># calculate_system_size, estimate_roi</span>
+│   ├── calendar.py        <span class="comment"># schedule_visit, list_availability</span>
+│   └── rag.py             <span class="comment"># retrieve_client_docs, embed_document</span>
+├── channels/
+│   ├── whatsapp.py        <span class="comment"># Twilio / Meta Cloud API adapter</span>
+│   ├── email.py           <span class="comment"># SMTP / SendGrid adapter</span>
+│   └── webform.py         <span class="comment"># REST webhook adapter</span>
+├── api.py                 <span class="comment"># FastAPI app — /webhook, /health</span>
+├── worker.py              <span class="comment"># Celery worker entrypoint</span>
+└── settings.py            <span class="comment"># Config (pydantic-settings)</span></code></pre>
+      </div>
+    </section>
+
+    <!-- ══════ 4. Mapeo de componentes ══════ -->
+    <section id="mapeo">
+      <h2>4. Mapeo de componentes</h2>
+
+      <h3>4.1 Definición de agente</h3>
+      <div class="compare">
+        <div class="compare-card">
+          <div class="compare-header before">Kapsos (actual)</div>
+          <div class="compare-body">
+            <pre style="margin:0; padding:var(--spacing-md); font-size:12px; background:var(--color-surface-2); color:var(--color-ink-muted); border-radius:var(--rounded-md);"><code>from kapsos import KapsosAgent, tool
+
+class QuotingAgent(KapsosAgent):
+    system_prompt = "..."
+    model = "claude-sonnet-4-6"
+
+    @tool
+    def lookup_price(self, sku: str) -> dict:
+        ...
+
+    @tool
+    def calculate_roi(
+        self,
+        kwh: float,
+        panels: int
+    ) -> dict:
+        ...</code></pre>
+          </div>
+        </div>
+        <div class="compare-card">
+          <div class="compare-header after">OpenClaw (objetivo)</div>
+          <div class="compare-body">
+            <pre style="margin:0; padding:var(--spacing-md); font-size:12px; background:var(--color-surface-2); color:var(--color-ink-muted); border-radius:var(--rounded-md);"><code>from openclaw import OpenClawAgent
+from openclaw.decorators import claw_tool
+
+class QuotingAgent(OpenClawAgent):
+    system_prompt = "..."
+    model = "claude-sonnet-4-6"
+
+    @claw_tool
+    def lookup_price(self, sku: str) -> dict:
+        ...
+
+    @claw_tool
+    def calculate_roi(
+        self,
+        kwh: float,
+        panels: int
+    ) -> dict:
+        ...</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout success">
+        <div class="callout-title">✓ Cambio mínimo</div>
+        La firma de herramientas y el system_prompt son idénticos. Solo cambia el import base (<code>KapsosAgent → OpenClawAgent</code>) y el decorador (<code>@tool → @claw_tool</code>). La lógica interna de cada herramienta no requiere modificación.
+      </div>
+
+      <h3>4.2 Memoria de sesión</h3>
+
+      <div class="code-wrap">
+        <div class="code-label">core/memory.py</div>
+        <pre><code><span class="comment"># KAPSOS (reemplazar):</span>
+<span class="comment"># from kapsos.memory import KapsosMemory</span>
+<span class="comment"># memory = KapsosMemory(session_id=lead_id)</span>
+
+<span class="comment"># OPENCLAW (objetivo):</span>
+<span class="keyword">from</span> openclaw.memory <span class="keyword">import</span> ClawMemory
+<span class="keyword">from</span> openclaw.backends <span class="keyword">import</span> PostgresBackend, RedisBackend
+
+memory = <span class="fn">ClawMemory</span>(
+    session_backend=<span class="fn">RedisBackend</span>(url=settings.REDIS_URL),
+    long_term_backend=<span class="fn">PostgresBackend</span>(dsn=settings.DATABASE_URL),
+    session_ttl=<span class="num">86400</span>,   <span class="comment"># 24h ventana de conversación activa</span>
+    persist_on_close=<span class="keyword">True</span>,
+)
+
+<span class="comment"># Acceso idéntico a Kapsos:</span>
+<span class="keyword">await</span> memory.<span class="fn">set</span>(<span class="string">"lead_id"</span>, lead_id)
+context = <span class="keyword">await</span> memory.<span class="fn">get</span>(<span class="string">"conversation_history"</span>)</code></pre>
+      </div>
+
+      <h3>4.3 Router de canales</h3>
+
+      <div class="code-wrap">
+        <div class="code-label">core/router.py</div>
+        <pre><code><span class="keyword">from</span> openclaw <span class="keyword">import</span> ClawRouter
+<span class="keyword">from</span> agents.quoting <span class="keyword">import</span> QuotingAgent
+<span class="keyword">from</span> agents.followup <span class="keyword">import</span> FollowUpAgent
+<span class="keyword">from</span> agents.service <span class="keyword">import</span> ServiceAgent
+<span class="keyword">from</span> channels.whatsapp <span class="keyword">import</span> WhatsAppAdapter
+<span class="keyword">from</span> channels.email <span class="keyword">import</span> EmailAdapter
+
+router = <span class="fn">ClawRouter</span>()
+
+<span class="comment"># Mapeo canal × intent → agente (equivalente al KapsosRouter)</span>
+router.<span class="fn">register</span>(
+    channel=WhatsAppAdapter,
+    intent_patterns=[<span class="string">"cotización"</span>, <span class="string">"precio"</span>, <span class="string">"paneles"</span>, <span class="string">"instalación"</span>],
+    agent=QuotingAgent,
+)
+router.<span class="fn">register</span>(
+    channel=WhatsAppAdapter,
+    intent_patterns=[<span class="string">"seguimiento"</span>, <span class="string">"ya decidí"</span>, <span class="string">"pensándolo"</span>],
+    agent=FollowUpAgent,
+)
+router.<span class="fn">register</span>(
+    channel=[WhatsAppAdapter, EmailAdapter],
+    intent_patterns=[<span class="string">"falla"</span>, <span class="string">"garantía"</span>, <span class="string">"mantenimiento"</span>, <span class="string">"soporte"</span>],
+    agent=ServiceAgent,
+)
+
+<span class="comment"># Fallback: si no hay match de intent, el Quoting Agent atiende</span>
+router.default_agent = QuotingAgent</code></pre>
+      </div>
+
+      <h3>4.4 Scheduler de follow-ups</h3>
+
+      <div class="code-wrap">
+        <div class="code-label">core/scheduler.py</div>
+        <pre><code><span class="comment"># KAPSOS (reemplazar):</span>
+<span class="comment"># kapsos.schedule(agent=FollowUpAgent, lead_id=x, delay_hours=24)</span>
+
+<span class="comment"># OPENCLAW (objetivo) — Celery Beat:</span>
+<span class="keyword">from</span> celery <span class="keyword">import</span> Celery
+<span class="keyword">from</span> openclaw.scheduler <span class="keyword">import</span> ClawScheduler
+
+app = <span class="fn">Celery</span>(<span class="string">"close_energy"</span>, broker=settings.REDIS_URL)
+scheduler = <span class="fn">ClawScheduler</span>(celery_app=app)
+
+<span class="comment"># Equivalente 1:1 al trigger de Kapsos</span>
+<span class="keyword">async def</span> <span class="fn">schedule_followup</span>(lead_id: str, delay_hours: <span class="type">int</span>):
+    <span class="keyword">await</span> scheduler.<span class="fn">enqueue_at</span>(
+        agent=FollowUpAgent,
+        payload={<span class="string">"lead_id"</span>: lead_id},
+        run_after_hours=delay_hours,
+        idempotency_key=<span class="fn">f</span><span class="string">"followup-{lead_id}-{delay_hours}h"</span>,
+    )
+
+<span class="comment"># Secuencia de follow-up: 24h, 48h, 7 días (igual que Kapsos)</span>
+<span class="keyword">for</span> delay <span class="keyword">in</span> [<span class="num">24</span>, <span class="num">48</span>, <span class="num">168</span>]:
+    <span class="keyword">await</span> <span class="fn">schedule_followup</span>(lead_id, delay)</code></pre>
+      </div>
+    </section>
+
+    <!-- ══════ 5. Migración por agente ══════ -->
+    <section id="agentes">
+      <h2>5. Migración por agente</h2>
+
+      <!-- ─ Quoting Agent ─ -->
+      <h3 id="quoting">5.1 Quoting Agent</h3>
+      <p>El Quoting Agent recibe solicitudes de cotización por WhatsApp, email o web form. Realiza calificación, dimensionamiento técnico, consulta de precios y entrega propuesta personalizada.</p>
+
+      <h4>Herramientas que debe registrar en OpenClaw</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Herramienta Kapsos</th><th>Firma Python</th><th>Fuente de datos</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td><code>qualify_lead</code></td><td><code>(msg: str) → LeadProfile</code></td><td>LLM structured output</td><td><span class="badge badge-green">Sin cambios</span></td></tr>
+            <tr><td><code>calculate_system_size</code></td><td><code>(kwh: float, location: str) → SystemSpec</code></td><td>PVSyst API / lookup table</td><td><span class="badge badge-green">Sin cambios</span></td></tr>
+            <tr><td><code>lookup_panel_price</code></td><td><code>(sku: str, qty: int) → PriceResult</code></td><td>Supplier portal scraper</td><td><span class="badge badge-green">Sin cambios</span></td></tr>
+            <tr><td><code>estimate_roi</code></td><td><code>(spec: SystemSpec, tariff: float) → ROIReport</code></td><td>Cálculo interno</td><td><span class="badge badge-green">Sin cambios</span></td></tr>
+            <tr><td><code>generate_proposal</code></td><td><code>(profile: LeadProfile, specs: list[SystemSpec]) → ProposalPDF</code></td><td>Template + LLM</td><td><span class="badge badge-yellow">Adaptar firma</span></td></tr>
+            <tr><td><code>send_quote</code></td><td><code>(lead_id: str, proposal: ProposalPDF) → None</code></td><td>ClawOutbox</td><td><span class="badge badge-yellow">Adaptar canal</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-label">agents/quoting.py (versión OpenClaw)</div>
+        <pre><code><span class="keyword">from</span> openclaw <span class="keyword">import</span> OpenClawAgent
+<span class="keyword">from</span> openclaw.decorators <span class="keyword">import</span> claw_tool
+<span class="keyword">from</span> tools.solar_sizing <span class="keyword">import</span> calculate_system_size, estimate_roi
+<span class="keyword">from</span> tools.pricing <span class="keyword">import</span> lookup_panel_price
+<span class="keyword">from</span> core.outbox <span class="keyword">import</span> outbox
+
+SYSTEM_PROMPT = <span class="string">"""
+Eres el Agente de Cotización de Close Energy. Tu misión es...
+[system prompt existente sin cambios]
+"""</span>
+
+<span class="keyword">class</span> <span class="type">QuotingAgent</span>(OpenClawAgent):
+    model = <span class="string">"claude-sonnet-4-6"</span>
+    system_prompt = SYSTEM_PROMPT
+    max_iterations = <span class="num">12</span>
+    temperature = <span class="num">0.2</span>
+
+    <span class="comment"># ── Herramientas (firma idéntica a Kapsos) ──</span>
+
+    <span class="keyword">@</span><span class="fn">claw_tool</span>
+    <span class="keyword">async def</span> <span class="fn">calculate_system_size</span>(
+        self,
+        monthly_kwh: <span class="type">float</span>,
+        location: <span class="type">str</span>,
+        roof_type: <span class="type">str</span> = <span class="string">"inclinado"</span>
+    ) -> dict:
+        <span class="string">"""Calcula el tamaño óptimo del sistema solar."""</span>
+        <span class="keyword">return await</span> <span class="fn">calculate_system_size</span>(monthly_kwh, location, roof_type)
+
+    <span class="keyword">@</span><span class="fn">claw_tool</span>
+    <span class="keyword">async def</span> <span class="fn">lookup_panel_price</span>(
+        self,
+        panel_model: <span class="type">str</span>,
+        quantity: <span class="type">int</span>
+    ) -> dict:
+        <span class="string">"""Consulta precio actual de paneles en catálogo de proveedores."""</span>
+        <span class="keyword">return await</span> <span class="fn">lookup_panel_price</span>(panel_model, quantity)
+
+    <span class="keyword">@</span><span class="fn">claw_tool</span>
+    <span class="keyword">async def</span> <span class="fn">estimate_roi</span>(
+        self,
+        system_kw: <span class="type">float</span>,
+        monthly_kwh: <span class="type">float</span>,
+        tariff_mxn: <span class="type">float</span>
+    ) -> dict:
+        <span class="string">"""Calcula ROI, período de recuperación y ahorro mensual estimado."""</span>
+        <span class="keyword">return await</span> <span class="fn">estimate_roi</span>(system_kw, monthly_kwh, tariff_mxn)
+
+    <span class="keyword">@</span><span class="fn">claw_tool</span>
+    <span class="keyword">async def</span> <span class="fn">send_quote</span>(
+        self,
+        lead_id: <span class="type">str</span>,
+        proposal_markdown: <span class="type">str</span>,
+        channel: <span class="type">str</span>
+    ) -> dict:
+        <span class="string">"""Envía la cotización al cliente por el canal indicado."""</span>
+        <span class="keyword">await</span> outbox.<span class="fn">send</span>(
+            lead_id=lead_id,
+            content=proposal_markdown,
+            channel=channel,
+        )
+        <span class="keyword">return</span> {<span class="string">"status"</span>: <span class="string">"sent"</span>, <span class="string">"lead_id"</span>: lead_id}</code></pre>
+      </div>
+
+      <!-- ─ Follow-up Agent ─ -->
+      <h3 id="followup">5.2 Follow-up Agent</h3>
+      <p>El Follow-up Agent escanea el pipeline, recupera historial de conversación y envía mensajes personalizados en el canal preferido del lead. Es activado por el scheduler en intervalos de 24h, 48h y 7 días.</p>
+
+      <h4>Diferencia clave en la activación</h4>
+      <div class="callout warn">
+        <div class="callout-title">⚠ Kapsos activaba este agente internamente por evento</div>
+        En Kapsos el scheduler era un servicio managed. En OpenClaw, el ClawScheduler usa Celery Beat. El entrypoint <code>worker.py</code> debe correr como proceso separado junto a la API.
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-label">agents/followup.py (versión OpenClaw)</div>
+        <pre><code><span class="keyword">from</span> openclaw <span class="keyword">import</span> OpenClawAgent
+<span class="keyword">from</span> openclaw.decorators <span class="keyword">import</span> claw_tool
+<span class="keyword">from</span> tools.crm <span class="keyword">import</span> get_lead, update_lead_stage
+<span class="keyword">from</span> core.outbox <span class="keyword">import</span> outbox
+
+<span class="keyword">class</span> <span class="type">FollowUpAgent</span>(OpenClawAgent):
+    model = <span class="string">"claude-sonnet-4-6"</span>
+    system_prompt = <span class="string">"""[system prompt existente sin cambios]"""</span>
+    max_iterations = <span class="num">6</span>
+
+    <span class="keyword">@</span><span class="fn">claw_tool</span>
+    <span class="keyword">async def</span> <span class="fn">get_lead_context</span>(self, lead_id: <span class="type">str</span>) -> dict:
+        <span class="string">"""Recupera perfil, historial y estado de cotización del lead."""</span>
+        lead = <span class="keyword">await</span> <span class="fn">get_lead</span>(lead_id)
+        history = <span class="keyword">await</span> self.memory.<span class="fn">get_history</span>(session_id=lead_id)
+        <span class="keyword">return</span> {<span class="string">"lead"</span>: lead, <span class="string">"history"</span>: history}
+
+    <span class="keyword">@</span><span class="fn">claw_tool</span>
+    <span class="keyword">async def</span> <span class="fn">send_followup</span>(
+        self,
+        lead_id: <span class="type">str</span>,
+        message: <span class="type">str</span>,
+        channel: <span class="type">str</span>,
+    ) -> dict:
+        <span class="string">"""Envía el mensaje de follow-up al canal preferido del lead."""</span>
+        <span class="keyword">await</span> outbox.<span class="fn">send</span>(lead_id=lead_id, content=message, channel=channel)
+        <span class="keyword">await</span> <span class="fn">update_lead_stage</span>(lead_id, event=<span class="string">"followup_sent"</span>)
+        <span class="keyword">return</span> {<span class="string">"status"</span>: <span class="string">"sent"</span>}
+
+    <span class="keyword">@</span><span class="fn">claw_tool</span>
+    <span class="keyword">async def</span> <span class="fn">escalate_to_human</span>(self, lead_id: <span class="type">str</span>, reason: <span class="type">str</span>) -> dict:
+        <span class="string">"""Notifica al equipo de ventas que este lead necesita atención humana."""</span>
+        <span class="keyword">await</span> outbox.<span class="fn">notify_team</span>(lead_id=lead_id, reason=reason)
+        <span class="keyword">return</span> {<span class="string">"escalated"</span>: <span class="keyword">True</span>}</code></pre>
+      </div>
+
+      <!-- ─ Service Agent ─ -->
+      <h3 id="service">5.3 Service Agent</h3>
+      <p>El Service Agent maneja requests post-instalación: tickets de mantenimiento, garantías, alertas de monitoreo. Actualmente en beta en Kapsos — la migración a OpenClaw es de menor riesgo al no tener sesiones activas en producción masiva.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Herramienta</th><th>Descripción</th><th>Estado migración</th></tr></thead>
+          <tbody>
+            <tr><td><code>create_ticket</code></td><td>Abre ticket en CRM/Jira</td><td><span class="badge badge-green">Sin cambios</span></td></tr>
+            <tr><td><code>lookup_warranty</code></td><td>Consulta cobertura de garantía por serial de panel</td><td><span class="badge badge-green">Sin cambios</span></td></tr>
+            <tr><td><code>schedule_maintenance</code></td><td>Agenda visita técnica</td><td><span class="badge badge-green">Sin cambios</span></td></tr>
+            <tr><td><code>get_monitoring_alert</code></td><td>Lee alertas de sistema de monitoreo solar</td><td><span class="badge badge-yellow">Nueva integración en OpenClaw</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════ 6. Integraciones externas ══════ -->
+    <section id="integraciones">
+      <h2>6. Integraciones externas</h2>
+
+      <p>Las integraciones de canales y sistemas no cambian en lógica de negocio. Lo que cambia es cómo se registran en OpenClaw.</p>
+
+      <h3>6.1 WhatsApp Business API</h3>
+      <div class="code-wrap">
+        <div class="code-label">channels/whatsapp.py</div>
+        <pre><code><span class="keyword">from</span> openclaw.channels <span class="keyword">import</span> ChannelAdapter
+<span class="keyword">from</span> openclaw.types <span class="keyword">import</span> InboundMessage
+
+<span class="keyword">class</span> <span class="type">WhatsAppAdapter</span>(ChannelAdapter):
+    channel_id = <span class="string">"whatsapp"</span>
+
+    <span class="keyword">async def</span> <span class="fn">parse_inbound</span>(self, raw: dict) -> <span class="type">InboundMessage</span>:
+        <span class="comment"># Igual que la lógica actual de Kapsos — solo cambia el parent class</span>
+        <span class="keyword">return</span> <span class="type">InboundMessage</span>(
+            lead_id=raw[<span class="string">"from"</span>],
+            text=raw[<span class="string">"body"</span>],
+            channel=<span class="string">"whatsapp"</span>,
+            metadata=raw,
+        )
+
+    <span class="keyword">async def</span> <span class="fn">send</span>(self, lead_id: <span class="type">str</span>, text: <span class="type">str</span>) -> <span class="keyword">None</span>:
+        <span class="comment"># Twilio / Meta Cloud API — sin cambios respecto a Kapsos</span>
+        <span class="keyword">await</span> self.client.<span class="fn">messages</span>.<span class="fn">create</span>(
+            body=text,
+            from_=settings.WA_FROM_NUMBER,
+            to=lead_id,
+        )</code></pre>
+      </div>
+
+      <h3>6.2 RAG — Documentos de cliente</h3>
+      <div class="code-wrap">
+        <div class="code-label">tools/rag.py</div>
+        <pre><code><span class="keyword">from</span> openclaw.rag <span class="keyword">import</span> ClawRAG
+<span class="keyword">from</span> openclaw.backends <span class="keyword">import</span> PgVectorBackend
+
+<span class="comment"># Kapsos usaba KapsosRAG (propietario) — OpenClaw usa pgvector</span>
+rag = <span class="fn">ClawRAG</span>(backend=<span class="fn">PgVectorBackend</span>(dsn=settings.DATABASE_URL))
+
+<span class="keyword">async def</span> <span class="fn">retrieve_client_docs</span>(lead_id: <span class="type">str</span>, query: <span class="type">str</span>) -> list[str]:
+    <span class="keyword">return await</span> rag.<span class="fn">search</span>(
+        namespace=lead_id,
+        query=query,
+        top_k=<span class="num">5</span>,
+    )
+
+<span class="comment"># Migración de embeddings: ver sección 7.2</span></code></pre>
+      </div>
+
+      <h3>6.3 CRM (HubSpot / Salesforce)</h3>
+      <div class="callout info">
+        <div class="callout-title">ℹ Sin cambios requeridos</div>
+        Los adaptadores de CRM (<code>tools/crm.py</code>) usan REST APIs directas y no dependen de Kapsos. Solo deben desregistrarse del <code>KapsosAgent</code> y declararse como <code>@claw_tool</code>.
+      </div>
+    </section>
+
+    <!-- ══════ 7. Datos y estado ══════ -->
+    <section id="datos">
+      <h2>7. Migración de datos y estado</h2>
+
+      <div class="callout danger">
+        <div class="callout-title">⛔ Riesgo crítico: sesiones en vuelo</div>
+        Kapsos mantiene el historial de conversación activo de cada lead en su memoria propietaria. Este estado <em>no es accesible por REST API</em> — requiere un proceso de exportación antes del cutover.
+      </div>
+
+      <h3>7.1 Exportar estado de Kapsos</h3>
+      <ol class="step-list">
+        <li>Solicitar a Kapsos el endpoint de exportación de sesiones activas (doc: <code>kapsos.io/docs/export-sessions</code>). Retorna un JSON por <code>session_id</code> con <code>conversation_history</code>, <code>lead_profile</code> y <code>pending_tools</code>.</li>
+        <li>Ejecutar el script de exportación <strong>durante una ventana de baja actividad</strong> (ej. 2–4 AM). Las sesiones activas siguen corriendo en Kapsos hasta el cutover.</li>
+        <li>Transformar el formato Kapsos → formato ClawMemory. El shape es compatible en el 80% — ver transformador abajo.</li>
+        <li>Importar a Redis (sesiones activas) y Postgres (historial long-term) usando el script de seed.</li>
+      </ol>
+
+      <div class="code-wrap">
+        <div class="code-label">scripts/migrate_sessions.py</div>
+        <pre><code><span class="keyword">import</span> json, asyncio
+<span class="keyword">from</span> core.memory <span class="keyword">import</span> memory
+
+<span class="keyword">async def</span> <span class="fn">migrate_kapsos_sessions</span>(export_file: <span class="type">str</span>):
+    sessions = json.<span class="fn">loads</span>(<span class="fn">open</span>(export_file).<span class="fn">read</span>())
+
+    <span class="keyword">for</span> session <span class="keyword">in</span> sessions:
+        session_id = session[<span class="string">"session_id"</span>]
+
+        <span class="comment"># Transformar formato Kapsos → ClawMemory</span>
+        claw_format = {
+            <span class="string">"conversation_history"</span>: [
+                {<span class="string">"role"</span>: m[<span class="string">"author"</span>], <span class="string">"content"</span>: m[<span class="string">"text"</span>]}  <span class="comment"># renombrar campo</span>
+                <span class="keyword">for</span> m <span class="keyword">in</span> session[<span class="string">"messages"</span>]
+            ],
+            <span class="string">"lead_profile"</span>: session[<span class="string">"context"</span>],
+            <span class="string">"agent_state"</span>: session.<span class="fn">get</span>(<span class="string">"agent_state"</span>, {}),
+        }
+
+        <span class="keyword">await</span> memory.<span class="fn">import_session</span>(session_id, claw_format)
+        <span class="fn">print</span>(<span class="string">f"✓ {session_id}"</span>)
+
+asyncio.<span class="fn">run</span>(<span class="fn">migrate_kapsos_sessions</span>(<span class="string">"kapsos_export.json"</span>))</code></pre>
+      </div>
+
+      <h3>7.2 Migrar embeddings de RAG</h3>
+      <p>Los embeddings generados por KapsosRAG son vectores de 1536 dimensiones (texto-embedding-3-small o equivalente). Para migrar a pgvector:</p>
+
+      <ol class="step-list">
+        <li>Exportar embeddings desde Kapsos (endpoint: <code>GET /rag/export?tenant={id}</code>).</li>
+        <li>Crear tabla en Postgres: <code>CREATE TABLE embeddings (id uuid, namespace text, vector vector(1536), metadata jsonb)</code>.</li>
+        <li>Insertar con <code>pgvector</code> y crear índice HNSW: <code>CREATE INDEX ON embeddings USING hnsw (vector vector_cosine_ops)</code>.</li>
+        <li>Verificar que <code>retrieve_client_docs</code> retorna los mismos top-k que el KapsosRAG en consultas de prueba.</li>
+      </ol>
+
+      <h3>7.3 Scheduler pendientes</h3>
+      <p>Los follow-ups programados en Kapsos (ej. leads que tienen un trigger a las 48h) deben re-encolarse en Celery Beat antes del cutover:</p>
+
+      <div class="code-wrap">
+        <div class="code-label">scripts/migrate_scheduled_followups.py</div>
+        <pre><code><span class="comment"># Exportar desde Kapsos: GET /scheduler/pending → lista de {lead_id, run_at}</span>
+<span class="keyword">for</span> job <span class="keyword">in</span> pending_jobs:
+    delay_secs = (<span class="fn">parse_dt</span>(job[<span class="string">"run_at"</span>]) - <span class="fn">now</span>()).<span class="fn">total_seconds</span>()
+    <span class="keyword">if</span> delay_secs > <span class="num">0</span>:
+        <span class="keyword">await</span> scheduler.<span class="fn">enqueue_at</span>(
+            agent=FollowUpAgent,
+            payload={<span class="string">"lead_id"</span>: job[<span class="string">"lead_id"</span>]},
+            run_after_seconds=delay_secs,
+            idempotency_key=<span class="fn">f</span><span class="string">"migrated-{job['id']}"</span>,
+        )</code></pre>
+      </div>
+    </section>
+
+    <!-- ══════ 8. Testing ══════ -->
+    <section id="testing">
+      <h2>8. Estrategia de pruebas</h2>
+
+      <h3>8.1 Tests de contrato por herramienta</h3>
+      <p>Cada <code>@claw_tool</code> debe tener un test de contrato que verifique que el output shape es idéntico al de Kapsos antes de cortar el tráfico.</p>
+
+      <div class="code-wrap">
+        <div class="code-label">tests/test_tool_contracts.py</div>
+        <pre><code><span class="keyword">import</span> pytest
+<span class="keyword">from</span> agents.quoting <span class="keyword">import</span> QuotingAgent
+
+<span class="keyword">@pytest</span>.<span class="fn">mark.asyncio</span>
+<span class="keyword">async def</span> <span class="fn">test_calculate_system_size_contract</span>():
+    agent = <span class="fn">QuotingAgent</span>()
+    result = <span class="keyword">await</span> agent.<span class="fn">calculate_system_size</span>(
+        monthly_kwh=<span class="num">450.0</span>,
+        location=<span class="string">"CDMX"</span>,
+    )
+    <span class="comment"># Mismo shape que devuelve KapsosAgent en la misma llamada</span>
+    <span class="keyword">assert</span> <span class="string">"system_kw"</span> <span class="keyword">in</span> result
+    <span class="keyword">assert</span> <span class="string">"panels_count"</span> <span class="keyword">in</span> result
+    <span class="keyword">assert</span> <span class="string">"inverter_model"</span> <span class="keyword">in</span> result
+    <span class="keyword">assert isinstance</span>(result[<span class="string">"system_kw"</span>], float)</code></pre>
+      </div>
+
+      <h3>8.2 Shadow mode (tráfico paralelo)</h3>
+      <p>Antes del cutover final, ejecutar OpenClaw en <strong>shadow mode</strong>: el tráfico de producción llega a Kapsos (respuesta real), pero se duplica a OpenClaw en paralelo para comparar outputs sin afectar al usuario.</p>
+
+      <div class="code-wrap">
+        <div class="code-label">api.py — shadow mode</div>
+        <pre><code><span class="keyword">from</span> openclaw <span class="keyword">import</span> shadow_run
+
+<span class="keyword">@app.post</span>(<span class="string">"/webhook"</span>)
+<span class="keyword">async def</span> <span class="fn">webhook</span>(payload: dict):
+    <span class="comment"># Producción: Kapsos sigue respondiendo</span>
+    kapsos_response = <span class="keyword">await</span> kapsos.<span class="fn">handle</span>(payload)
+
+    <span class="comment"># Shadow: OpenClaw corre en background, solo loguea divergencias</span>
+    <span class="keyword">await</span> <span class="fn">shadow_run</span>(
+        openclaw_agent=router.<span class="fn">resolve</span>(payload),
+        payload=payload,
+        compare_with=kapsos_response,
+        log_divergences=<span class="keyword">True</span>,
+    )
+
+    <span class="keyword">return</span> kapsos_response  <span class="comment"># Kapsos sigue siendo la respuesta real</span></code></pre>
+      </div>
+
+      <h3>8.3 Checklist de validación pre-cutover</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Check</th><th>Cómo verificar</th><th>Umbral mínimo</th></tr></thead>
+          <tbody>
+            <tr><td>Tool contract: todos los agentes</td><td><code>pytest tests/test_tool_contracts.py</code></td><td>100% pass</td></tr>
+            <tr><td>Shadow mode: divergencias de output</td><td>Log de <code>shadow_run</code> en Datadog/Sentry</td><td>&lt; 2% divergencia semántica</td></tr>
+            <tr><td>Latencia de herramienta</td><td>P99 de <code>claw_tool</code> calls en staging</td><td>≤ latencia Kapsos + 20%</td></tr>
+            <tr><td>Sesiones migradas</td><td><code>SELECT count(*) FROM claw_sessions</code></td><td>= total export de Kapsos</td></tr>
+            <tr><td>Scheduler: jobs en Celery Beat</td><td><code>celery inspect scheduled</code></td><td>= total pending de Kapsos</td></tr>
+            <tr><td>RAG: recall en queries de prueba</td><td>Test set de 50 queries con ground truth</td><td>Recall@5 ≥ 0.85</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════ 9. Rollout ══════ -->
+    <section id="rollout">
+      <h2>9. Plan de rollout</h2>
+
+      <ol class="step-list">
+        <li><strong>Semana 1 — Setup de infra:</strong> Provisionar Postgres (pgvector), Redis, Celery workers en Fly.io / Railway. Configurar variables de entorno (<code>ANTHROPIC_API_KEY</code>, <code>DATABASE_URL</code>, <code>REDIS_URL</code>, credenciales de canales).</li>
+        <li><strong>Semana 2 — Migrar código:</strong> Refactor de los tres agentes (cambiar imports, decoradores). Tests de contrato al 100%. Deploy de OpenClaw en staging.</li>
+        <li><strong>Semana 3 — Shadow mode:</strong> Activar shadow mode en producción. Observar divergencias durante 5 días hábiles. Ajustar system prompts o tool outputs si hay regresiones.</li>
+        <li><strong>Semana 4 — Migrar datos:</strong> Exportar sesiones y embeddings de Kapsos. Ejecutar scripts de seed. Verificar integridad con checklist de validación.</li>
+        <li><strong>Día de cutover:</strong> Ventana de 2 AM–4 AM. Apagar shadow mode. Redirigir el webhook de WhatsApp/email a la nueva API de OpenClaw. Monitor activo 30 min post-cutover.</li>
+        <li><strong>Post-cutover:</strong> Mantener Kapsos en modo lectura 7 días (no procesar nuevos mensajes) como fallback. Cancelar suscripción al día 8 si todo nominal.</li>
+      </ol>
+
+      <div class="callout success">
+        <div class="callout-title">✓ Rollback</div>
+        Si en las primeras 4h post-cutover la tasa de errores supera el 1%, revertir el webhook apuntando de vuelta a Kapsos. Kapsos sigue activo en modo lectura — no hay pérdida de estado.
+      </div>
+    </section>
+
+    <!-- ══════ 10. Riesgos ══════ -->
+    <section id="riesgos">
+      <h2>10. Riesgos y mitigaciones</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Riesgo</th><th>Probabilidad</th><th>Impacto</th><th>Mitigación</th></tr></thead>
+          <tbody class="">
+            <tr class="risk-row-high"><td>Pérdida de sesiones activas durante cutover</td><td><span class="badge badge-red">Alta</span></td><td>Leads pierden contexto de conversación</td><td>Exportar sesiones 2h antes; ejecutar cutover en ventana de baja actividad</td></tr>
+            <tr class="risk-row-high"><td>Embeddings RAG incompatibles (dimensiones)</td><td><span class="badge badge-yellow">Media</span></td><td>Pérdida de recall en documentos de cliente</td><td>Re-embedir con el mismo modelo antes del cutover; test de recall@5 ≥ 0.85</td></tr>
+            <tr class="risk-row-med"><td>Divergencia de output del agente (shadow mode)</td><td><span class="badge badge-yellow">Media</span></td><td>Cotizaciones o mensajes con formato diferente</td><td>Shadow mode 5 días; ajustar prompts hasta &lt; 2% divergencia</td></tr>
+            <tr class="risk-row-med"><td>Latencia de Celery Beat mayor a Kapsos Scheduler</td><td><span class="badge badge-yellow">Media</span></td><td>Follow-ups tardíos (&gt; 15 min de desfase)</td><td>Benchmarking en staging; ajustar <code>beat_schedule</code> intervalo</td></tr>
+            <tr class="risk-row-low"><td>Capacidad de Redis insuficiente para sesiones</td><td><span class="badge badge-green">Baja</span></td><td>Sesiones expiradas prematuramente</td><td>Monitorear <code>redis info memory</code>; escalar instancia si &gt; 70% uso</td></tr>
+            <tr class="risk-row-low"><td>Rate limit de Anthropic API en picos</td><td><span class="badge badge-green">Baja</span></td><td>Agentes no responden en tiempo</td><td>Configurar retry con backoff exponencial en <code>OpenClawAgent</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════ 11. Prompt ══════ -->
+    <section id="prompt">
+      <h2>11. Prompt de instrucción para agentes de migración</h2>
+      <p>El siguiente prompt puede usarse como instrucción maestra para un sistema multi-agente (o Claude Code en modo autónomo) que ejecute la migración de forma automática sobre el repositorio.</p>
+
+      <div class="prompt-box">
+        <div class="prompt-eyebrow">Instrucción para agente de migración · Close Energy</div>
+        <div class="prompt-title">Prompt de migración Kapsos → OpenClaw</div>
+        <div class="prompt-text"><span class="section-label">## Contexto</span>
+
+Eres un agente de ingeniería de software especializado en migración de sistemas de agentes IA.
+Trabajas sobre el repositorio de Close Energy (plataforma de agentes IA para empresas solares).
+El backend de agentes está actualmente implementado en Python usando Kapsos como orquestador.
+Tu tarea es migrar completamente ese backend a OpenClaw.
+
+<span class="section-label">## Repositorio objetivo</span>
+
+- Lenguaje: Python 3.12+
+- Framework web: FastAPI
+- Dependencias actuales: kapsos, anthropic, twilio, httpx, pydantic
+- Variable MODEL_ID: <span class="ph">"claude-sonnet-4-6"</span>
+- Entrypoint de webhook: <span class="ph">api.py</span> → POST /webhook
+- Agentes actuales: QuotingAgent, FollowUpAgent, ServiceAgent
+- Herramientas por agente: listadas en la sección 5 del documento openclaw-migration.html
+
+<span class="section-label">## Tarea 1 — Análisis de dependencias</span>
+
+1. Leer todos los archivos .py que importen de `kapsos` o usen clases de Kapsos.
+2. Por cada archivo, identificar:
+   a. Qué primitivos de Kapsos usa (KapsosAgent, @tool, KapsosMemory, etc.)
+   b. El equivalente exacto en OpenClaw según el mapeo en la sección 4 del doc.
+3. Generar un reporte JSON con estructura:
+   { "file": str, "kapsos_imports": list[str], "openclaw_replacements": list[{from, to}] }
+
+<span class="section-label">## Tarea 2 — Refactor de código</span>
+
+Para cada archivo identificado en Tarea 1:
+1. Reemplazar imports de Kapsos por OpenClaw.
+2. Cambiar clase base de agente: KapsosAgent → OpenClawAgent.
+3. Cambiar decorador de herramientas: @tool → @claw_tool.
+4. Actualizar ClawMemory con los backends correctos (Redis para sesión, Postgres long-term).
+5. Reemplazar KapsosRouter por ClawRouter con los mismos registros de intent_patterns.
+6. Reemplazar KapsosScheduler por ClawScheduler (Celery Beat).
+7. NO modificar: la lógica interna de ninguna herramienta, los system_prompts, ni los adaptadores de canal.
+
+<span class="section-label">## Tarea 3 — Nuevos archivos de infraestructura</span>
+
+Crear los siguientes archivos si no existen:
+- `core/memory.py` → ClawMemory con RedisBackend + PostgresBackend
+- `core/router.py` → ClawRouter con todos los registros de agente
+- `core/scheduler.py` → ClawScheduler con Celery Beat
+- `core/outbox.py` → ClawOutbox con cola Postgres
+- `worker.py` → Entrypoint de Celery worker
+- `scripts/migrate_sessions.py` → Script de exportación/importación de sesiones Kapsos
+- `scripts/migrate_scheduled_followups.py` → Re-encolar follow-ups pendientes
+
+<span class="section-label">## Tarea 4 — Tests de contrato</span>
+
+Para cada @claw_tool en los tres agentes (QuotingAgent, FollowUpAgent, ServiceAgent):
+1. Crear un test en `tests/test_tool_contracts.py`.
+2. El test debe verificar que el output shape es idéntico al documentado en openclaw-migration.html sección 5.
+3. Usar pytest + pytest-asyncio.
+4. No usar mocks para herramientas externas — usar fixtures con respuestas reales de staging.
+
+<span class="section-label">## Tarea 5 — Variables de entorno</span>
+
+Actualizar `.env.example` agregando:
+- REDIS_URL=redis://localhost:6379/0
+- DATABASE_URL=postgresql://user:pass@localhost/closeenergy
+- ANTHROPIC_API_KEY=<span class="ph">sk-ant-...</span>
+- WA_FROM_NUMBER=<span class="ph">+52...</span>
+- CELERY_BROKER_URL=redis://localhost:6379/1
+Eliminar cualquier variable exclusiva de Kapsos (KAPSOS_API_KEY, KAPSOS_TENANT_ID, etc.)
+
+<span class="section-label">## Tarea 6 — Verificación final</span>
+
+Antes de reportar la migración completa, ejecutar en orden:
+1. `pip install openclaw anthropic celery redis asyncpg pgvector`
+2. `pytest tests/test_tool_contracts.py -v` → Todos deben pasar.
+3. `python -c "from agents.quoting import QuotingAgent; print('OK')"` → Sin ImportError.
+4. `python -c "from agents.followup import FollowUpAgent; print('OK')"` → Sin ImportError.
+5. `python -c "from agents.service import ServiceAgent; print('OK')"` → Sin ImportError.
+6. `python -c "from core.router import router; print(router.routes)"` → Lista no vacía.
+7. `celery -A worker inspect ping` → Worker responde.
+
+<span class="section-label">## Restricciones</span>
+
+- NO cambiar system_prompts de ningún agente.
+- NO modificar la lógica de negocio de ninguna herramienta.
+- NO alterar los adaptadores de canal (WhatsApp, email).
+- NO introducir nuevas dependencias fuera de: openclaw, anthropic, celery, redis, asyncpg, pgvector.
+- Si encuentras una incompatibilidad no documentada entre Kapsos y OpenClaw,
+  detente y reporta el issue con el archivo, línea y descripción del conflicto.
+  No intentes resolver incompatibilidades no especificadas en este prompt.
+
+<span class="section-label">## Output esperado</span>
+
+Al terminar, entrega:
+1. Lista de archivos modificados con descripción del cambio.
+2. Lista de archivos nuevos creados.
+3. Resultado de `pytest tests/test_tool_contracts.py` (texto completo).
+4. Cualquier incompatibilidad detectada y no resuelta (con ubicación exacta).
+5. Estimación de tiempo de cutover en producción basada en sesiones activas encontradas.</div>
+        <button class="copy-btn" onclick="copyPrompt()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copiar prompt
+        </button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════ -->
+<footer class="doc-footer">
+  <div class="doc-footer-inner">
+    <div class="doc-footer-copy">© 2026 Close Energy · Documento técnico interno · v1.0-draft · Junio 2026</div>
+    <div class="doc-footer-copy">Migración Kapsos → OpenClaw · Confidencial</div>
+  </div>
+</footer>
+
+<script>
+  function copyPrompt() {
+    const text = document.querySelector('.prompt-text').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = '✓ Copiado';
+      setTimeout(() => {
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copiar prompt`;
+      }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>

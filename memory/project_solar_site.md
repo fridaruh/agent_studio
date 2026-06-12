@@ -1,9 +1,11 @@
 ---
-name: solar-agents-site
-description: Next.js marketing site for solar AI agents platform — PRD-based, Linear design system, ES/EN bilingual
+name: close-energy-site
+description: Next.js marketing site for Close Energy (close.energy) — solar AI agents platform, Linear design system, ES/EN bilingual
 metadata:
   type: project
 ---
+
+**Project name: Close Energy** — domain: `close.energy` — logo: `/public/logo.png` (sun icon PNG).
 
 Site built at `/Users/fridaruh/Documents/Proyectos/Solar_Agents/` using Next.js 14 + TypeScript + Tailwind CSS.
 
