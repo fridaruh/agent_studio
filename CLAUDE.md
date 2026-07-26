@@ -45,3 +45,10 @@ Linked to Vercel project `fridaruhs-projects/close_energy`. Production URL: **ht
 ```bash
 vercel --prod --scope fridaruhs-projects   # deploy to production
 ```
+
+### Contact form
+
+`/contact` posts to `/api/leads`, which publishes the submission into the Buzz
+`#leads` channel over the relay websocket (hence `runtime = 'nodejs'`, not edge).
+See `.env.example` for the four env vars it needs — without them the route returns
+502 and the lead is only recoverable from the function logs.

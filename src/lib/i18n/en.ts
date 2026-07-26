@@ -1,5 +1,4 @@
 import type { Translations } from './es'
-import { BOOKING_URL } from '@/lib/links'
 
 export const en: Translations = {
   nav: {
@@ -328,6 +327,9 @@ export const en: Translations = {
     referralTitle: 'How did you find Close Energy?',
     referralOptions: ['Social media ad', 'Organic content', 'Recommendation', 'AI (ChatGPT, Claude...)', 'Google', 'Other'],
     submit: 'Activate my account',
+    submitting: 'Sending…',
+    errorBody: "We couldn't send your details. Please try again in a moment, or",
+    errorLink: 'book a call directly',
     successTitle: "You're on the list.",
     successBody: 'We\'ll reach out via email or WhatsApp within 24 hours with your activation proposal.',
   },
@@ -383,7 +385,7 @@ export const en: Translations = {
     },
     contact: {
       title: 'Contact',
-      links: [{ label: 'Get in touch', href: BOOKING_URL }],
+      links: [{ label: 'Get in touch', href: '/contact' }],
     },
     legal: '© 2026 Close Energy. All rights reserved.',
   },

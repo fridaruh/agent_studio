@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { useI18n } from '@/lib/i18n/context'
+import { BOOKING_URL } from '@/lib/links'
 
 export default function ContactForm() {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
   const c = t.contact
 
   const [firstName, setFirstName] = useState('')
@@ -17,14 +18,38 @@ export default function ContactForm() {
   const [bottleneck, setBottleneck] = useState('')
   const [referral, setReferral] = useState<string[]>([])
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [failed, setFailed] = useState(false)
 
   function toggleArr(arr: string[], val: string): string[] {
     return arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val]
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setSubmitted(true)
+    if (sending) return
+
+    setSending(true)
+    setFailed(false)
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName, lastName, email, phone, company,
+          installTypes, volume, bottleneck, referral, locale,
+        }),
+      })
+      if (!res.ok) throw new Error(`POST /api/leads returned ${res.status}`)
+      setSubmitted(true)
+    } catch (err) {
+      // Never show the success screen on a failed send. The whole point of this
+      // route is that the visitor finds out instead of the lead vanishing.
+      console.error(err)
+      setFailed(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   if (submitted) {
@@ -193,16 +218,29 @@ export default function ContactForm() {
         </div>
       </div>
 
+      {failed && (
+        <p role="alert" className="mb-4 px-4 py-3 rounded-md border border-danger/30 bg-danger/5 text-danger text-body-sm leading-relaxed">
+          {c.errorBody}{' '}
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="underline">
+            {c.errorLink}
+          </a>
+          .
+        </p>
+      )}
+
       <button
         type="submit"
-        className="w-full py-3.5 text-button text-white bg-primary rounded-md hover:bg-primary-hover transition-colors btn-primary-glow flex items-center justify-center gap-2"
+        disabled={sending}
+        className="w-full py-3.5 text-button text-white bg-primary rounded-md hover:bg-primary-hover transition-colors btn-primary-glow flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        {c.submit}
-        <div className="w-4 h-4 rounded border border-white/40 flex items-center justify-center">
-          <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-            <polyline points="2 6 5 9 10 3"/>
-          </svg>
-        </div>
+        {sending ? c.submitting : c.submit}
+        {!sending && (
+          <div className="w-4 h-4 rounded border border-white/40 flex items-center justify-center">
+            <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+              <polyline points="2 6 5 9 10 3"/>
+            </svg>
+          </div>
+        )}
       </button>
     </form>
   )

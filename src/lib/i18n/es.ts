@@ -1,5 +1,3 @@
-import { BOOKING_URL } from '@/lib/links'
-
 export const es = {
   nav: {
     platform: 'Plataforma',
@@ -327,6 +325,9 @@ export const es = {
     referralTitle: '¿Cómo llegaste a Close Energy?',
     referralOptions: ['Anuncio en redes', 'Contenido orgánico', 'Recomendación', 'IA (ChatGPT, Claude...)', 'Google', 'Otro'],
     submit: 'Activar mi cuenta',
+    submitting: 'Enviando…',
+    errorBody: 'No pudimos enviar tus datos. Vuelve a intentarlo en un momento, o',
+    errorLink: 'agenda una llamada directamente',
     successTitle: 'Ya estás en la lista.',
     successBody: 'Nos pondremos en contacto contigo por correo o WhatsApp en menos de 24 horas con tu propuesta de activación.',
   },
@@ -382,7 +383,7 @@ export const es = {
     },
     contact: {
       title: 'Contacto',
-      links: [{ label: 'Contáctanos', href: BOOKING_URL }],
+      links: [{ label: 'Contáctanos', href: '/contact' }],
     },
     legal: '© 2026 Close Energy. Todos los derechos reservados.',
   },

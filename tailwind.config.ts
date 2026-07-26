@@ -29,6 +29,7 @@ const config: Config = {
           tertiary: '#b8bcc4',
         },
         success: '#16a34a',
+        danger: '#dc2626',
         'brand-secure': '#4b5563',
       },
       fontFamily: {
