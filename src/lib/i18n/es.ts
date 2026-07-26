@@ -258,6 +258,37 @@ export const es = {
       { name: 'Portales', tools: ['Cualquier portal con acceso'] },
     ],
   },
+  roi: {
+    eyebrow: 'Calculadora',
+    headline: '¿Cuánto te cuesta hoy cotizar a mano?',
+    intro:
+      'La cuenta se hace con tus números, no con los nuestros. Cambia cualquiera y el resultado se recalcula al instante.',
+    inputsTitle: 'Tus números',
+    fields: {
+      leads: { label: 'Leads al mes', hint: 'Solicitudes que entran por todos tus canales.' },
+      hoursPerQuote: { label: 'Horas por cotización', hint: 'Desde que llega la solicitud hasta que sale la propuesta.' },
+      hourlyCost: { label: 'Costo por hora del equipo (MXN)', hint: 'Sueldo cargado por hora de quien cotiza.' },
+      avgTicket: { label: 'Ticket promedio por proyecto (MXN)', hint: 'Lo que factura un proyecto cerrado.' },
+      closeRate: { label: 'Tasa de cierre (%)', hint: 'De cada 100 leads, cuántos terminan firmando.' },
+      unfollowed: { label: 'Leads sin segundo seguimiento (%)', hint: 'Los que se contactan una vez y ahí quedan.' },
+    },
+    resultsTitle: 'Lo que sale de ahí',
+    results: {
+      hours: 'Horas al mes cotizando',
+      hoursUnit: 'h',
+      cost: 'Lo que cuestan esas horas al mes',
+      atRisk: 'Ingreso al mes en leads que nadie retoma',
+      atRiskNote: 'Leads sin seguimiento × tu tasa de cierre × tu ticket promedio.',
+    },
+    scenario: {
+      label: 'Si automatizas esta parte del trabajo de cotización',
+      hoursFreed: 'Horas liberadas al mes',
+      savedPerYear: 'Ahorro al año',
+      disclaimer:
+        'Ese porcentaje lo decides tú: es tu supuesto, no una promesa nuestra. No publicamos cifras de ahorro que no podamos sustentar.',
+    },
+    bottomCta: '¿Quieres que revisemos estos números contigo?',
+  },
   faq: {
     eyebrow: 'Preguntas frecuentes',
     headline: 'Todo lo que necesitas saber',

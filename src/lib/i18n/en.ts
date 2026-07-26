@@ -260,6 +260,37 @@ export const en: Translations = {
       { name: 'Portals', tools: ['Any portal with login access'] },
     ],
   },
+  roi: {
+    eyebrow: 'Calculator',
+    headline: 'What does quoting by hand cost you today?',
+    intro:
+      'The math runs on your numbers, not ours. Change any of them and the result updates as you type.',
+    inputsTitle: 'Your numbers',
+    fields: {
+      leads: { label: 'Leads per month', hint: 'Requests coming in across all your channels.' },
+      hoursPerQuote: { label: 'Hours per quote', hint: 'From the request landing to the proposal going out.' },
+      hourlyCost: { label: 'Team cost per hour (MXN)', hint: 'Loaded hourly cost of whoever builds quotes.' },
+      avgTicket: { label: 'Average project value (MXN)', hint: 'What one closed project bills.' },
+      closeRate: { label: 'Close rate (%)', hint: 'Out of every 100 leads, how many sign.' },
+      unfollowed: { label: 'Leads with no second follow-up (%)', hint: 'Contacted once, then left there.' },
+    },
+    resultsTitle: 'What that adds up to',
+    results: {
+      hours: 'Hours a month spent quoting',
+      hoursUnit: 'h',
+      cost: 'What those hours cost per month',
+      atRisk: 'Monthly revenue sitting in leads nobody picks back up',
+      atRiskNote: 'Unfollowed leads × your close rate × your average project value.',
+    },
+    scenario: {
+      label: 'If you automate this share of the quoting work',
+      hoursFreed: 'Hours freed per month',
+      savedPerYear: 'Saved per year',
+      disclaimer:
+        'That percentage is yours to set — your assumption, not a promise from us. We do not publish savings figures we cannot back up.',
+    },
+    bottomCta: 'Want us to walk through these numbers with you?',
+  },
   faq: {
     eyebrow: 'FAQ',
     headline: 'Everything you need to know',

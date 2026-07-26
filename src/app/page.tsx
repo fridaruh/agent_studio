@@ -10,6 +10,7 @@ import FollowUpAgent from '@/components/sections/FollowUpAgent'
 import Security from '@/components/sections/Security'
 import Integrations from '@/components/sections/Integrations'
 import UseCases from '@/components/sections/UseCases'
+import RoiCalculator from '@/components/sections/RoiCalculator'
 import FAQ from '@/components/sections/FAQ'
 import CTASection from '@/components/sections/CTASection'
 
@@ -27,6 +28,7 @@ export default function Home() {
       <Security />
       <Integrations />
       <UseCases />
+      <RoiCalculator />
       <FAQ />
       <CTASection />
       <Footer />
