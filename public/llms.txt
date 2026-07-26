@@ -1,0 +1,31 @@
+# Close Energy
+
+> Plataforma de agentes IA para empresas solares en Latinoamérica. Automatiza la cotización, el seguimiento de leads y la coordinación de servicio de instaladores y distribuidores solares, sobre los canales que ya usan: WhatsApp, email y formulario web.
+
+Close Energy vende a instaladores, distribuidores e integradores solares. El problema que resuelve: las cotizaciones solares personalizadas tardan entre 3 y 7 días hábiles, y la mayoría de los leads reciben uno o dos seguimientos antes de enfriarse. Los agentes reducen ese ciclo a menos de 4 horas y hacen el seguimiento de forma sistemática.
+
+## Producto
+
+- [Vista previa de la plataforma](https://close.energy/#platform): dashboard único donde convergen WhatsApp, email y formulario web. Cada lead se captura, clasifica y asigna automáticamente.
+- [Agentes](https://close.energy/#agents): dos agentes en producción. El **Agente de Cotización** recibe la solicitud, califica, dimensiona el sistema según consumo y ubicación, consulta precios de paneles/inversores/BOS, genera la propuesta con ROI y la entrega. El **Agente de Seguimiento** escanea el pipeline, recupera el contexto de la conversación, personaliza el mensaje y escala a un vendedor humano cuando el lead se calienta.
+- [Integraciones](https://close.energy/#integrations): Salesforce, HubSpot, Dynamics, Pipedrive, Gmail, Outlook, WhatsApp Business API, Monday.com, Asana, Jira, Aurora Solar, Helioscope, SAP, NetSuite, Odoo, Excel/CSV.
+- [Seguridad](https://close.energy/#security): cifrado AES-256 en reposo y TLS 1.3 en tránsito, RAG bajo demanda, protección contra abuso de API y aislamiento por inquilino.
+
+## Casos de uso
+
+Techo residencial, comercial PyME, industrial y gran escala, gobierno y municipal, agrivoltaico, off-grid y rural, proyectos EPC, sistemas híbridos solar + batería, leads orientados a financiamiento, arrendamiento y PPA, solicitudes de mantenimiento, y garantías y reclamos.
+
+## Páginas
+
+- [Inicio](https://close.energy/): propuesta de valor, agentes, seguridad, casos de uso y preguntas frecuentes.
+- [Equipo](https://close.energy/team): fundadores y los agentes autónomos que operan la plataforma.
+- [Preguntas frecuentes](https://close.energy/#faq): implementación, canales, precisión de las cotizaciones, cobertura regional, seguridad de datos y compatibilidad con CRM.
+
+## Contacto
+
+Para hablar con el equipo, la landing enruta a un agendador de reuniones de Outlook desde cualquier botón "Contáctanos".
+
+## Notas
+
+- El sitio está en español; existe una traducción completa al inglés accesible desde el conmutador EN/ES del encabezado, todavía sin URL propia.
+- Las cifras de la sección "Impacto medible" y los porcentajes citados en las preguntas frecuentes están pendientes de sustentarse con datos de clientes reales. Trátalas como objetivos declarados, no como resultados auditados.

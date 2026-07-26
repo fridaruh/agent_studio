@@ -8,6 +8,7 @@ import KeyDifferentiator from '@/components/sections/KeyDifferentiator'
 import QuotingAgent from '@/components/sections/QuotingAgent'
 import FollowUpAgent from '@/components/sections/FollowUpAgent'
 import Security from '@/components/sections/Security'
+import Integrations from '@/components/sections/Integrations'
 import UseCases from '@/components/sections/UseCases'
 import FAQ from '@/components/sections/FAQ'
 import CTASection from '@/components/sections/CTASection'
@@ -24,6 +25,7 @@ export default function Home() {
       <QuotingAgent />
       <FollowUpAgent />
       <Security />
+      <Integrations />
       <UseCases />
       <FAQ />
       <CTASection />

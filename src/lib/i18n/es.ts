@@ -1,21 +1,17 @@
+import { BOOKING_URL } from '@/lib/links'
+
 export const es = {
   nav: {
     platform: 'Plataforma',
     agents: 'Agentes',
     security: 'Seguridad',
     faq: 'FAQ',
-    careers: 'Carreras',
     contactUs: 'Contáctanos',
-    activateAccount: 'Activar mi cuenta',
-  },
-  trustBadge: {
-    text: 'Respaldado por [Inversor] · publicado en [Prensa]',
   },
   hero: {
     headline: 'Cotiza más rápido de lo que tu competencia puede contestar el teléfono.',
     subheadline: 'El agente IA diseñado para instaladores solares. Responde en segundos, cotiza en minutos.',
     cta1: 'Contáctanos',
-    cta2: 'Activar mi cuenta',
     dashboardLabel: 'Pipeline de Leads',
     dashboardFilters: ['Todos', 'Nuevos', 'Cotizando', 'Cerrados'],
     dashboardStats: ['47 Activos', '23 Cotizando', '18 Cerrados'],
@@ -24,7 +20,6 @@ export const es = {
       { company: 'Casa García', type: 'Residencial', msg: 'Me interesa la instalación en el techo...', time: 'hace 15 min', status: 'Cotizando', statusColor: 'success' },
       { company: 'Agro del Norte', type: 'Agrovoltaico', msg: 'Requiero evaluación para 10 hectáreas...', time: 'hace 1 h', status: 'Seguimiento', statusColor: 'muted' },
     ],
-    clientsLabel: 'Empresas solares confían en nuestra plataforma',
   },
   press: {
     asSeenIn: 'Publicado en',
@@ -366,14 +361,29 @@ export const es = {
     headline: '¿Listo para dejar de perder leads por seguimiento lento?',
     subheadline: 'Empieza hoy.',
     cta1: 'Contáctanos',
-    cta2: 'Activar mi cuenta',
   },
   footer: {
     tagline: 'Agentes IA para ventas y operaciones solares.',
-    product: { title: 'Producto', links: ['Plataforma', 'Agentes', 'Seguridad', 'Integraciones'] },
-    company: { title: 'Empresa', links: ['Equipo', 'ROI', 'FAQ', 'Carreras'] },
-    resources: { title: 'Recursos', links: ['Blog', 'Casos de éxito'] },
-    contact: { title: 'Contacto', links: ['Contáctanos'] },
+    product: {
+      title: 'Producto',
+      links: [
+        { label: 'Plataforma', href: '/#platform' },
+        { label: 'Agentes', href: '/#agents' },
+        { label: 'Seguridad', href: '/#security' },
+        { label: 'Integraciones', href: '/#integrations' },
+      ],
+    },
+    company: {
+      title: 'Empresa',
+      links: [
+        { label: 'Equipo', href: '/team' },
+        { label: 'FAQ', href: '/#faq' },
+      ],
+    },
+    contact: {
+      title: 'Contacto',
+      links: [{ label: 'Contáctanos', href: BOOKING_URL }],
+    },
     legal: '© 2026 Close Energy. Todos los derechos reservados.',
   },
 }

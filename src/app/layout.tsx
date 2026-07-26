@@ -6,11 +6,21 @@ export const metadata: Metadata = {
   title: 'Close Energy: Agentes IA para empresas solares',
   description: 'La plataforma de agentes IA diseñada para instaladores y distribuidores solares. Automatiza cotizaciones, seguimiento de clientes y coordinación de servicio.',
   metadataBase: new URL('https://close.energy'),
+  alternates: {
+    canonical: 'https://close.energy',
+  },
   openGraph: {
     title: 'Close Energy: Agentes IA para empresas solares',
     description: 'Automatiza cotizaciones, seguimiento de clientes y coordinación de servicio: de extremo a extremo.',
     type: 'website',
     url: 'https://close.energy',
+    siteName: 'Close Energy',
+    locale: 'es_MX',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Close Energy: Agentes IA para empresas solares',
+    description: 'Automatiza cotizaciones, seguimiento de clientes y coordinación de servicio: de extremo a extremo.',
   },
 }
 

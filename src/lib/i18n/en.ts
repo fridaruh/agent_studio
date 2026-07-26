@@ -1,4 +1,5 @@
 import type { Translations } from './es'
+import { BOOKING_URL } from '@/lib/links'
 
 export const en: Translations = {
   nav: {
@@ -6,18 +7,12 @@ export const en: Translations = {
     agents: 'Agents',
     security: 'Security',
     faq: 'FAQ',
-    careers: 'Careers',
     contactUs: 'Contact us',
-    activateAccount: 'Activate my account',
-  },
-  trustBadge: {
-    text: 'Backed by [Investor] · as seen in [Press]',
   },
   hero: {
     headline: 'Quote faster than your competition can answer the phone.',
     subheadline: 'The AI agent built for solar installers. Responds in seconds, quotes in minutes.',
     cta1: 'Contact us',
-    cta2: 'Activate my account',
     dashboardLabel: 'Leads Pipeline',
     dashboardFilters: ['All', 'New', 'Quoting', 'Closed'],
     dashboardStats: ['47 Active', '23 Quoting', '18 Closed'],
@@ -26,7 +21,6 @@ export const en: Translations = {
       { company: 'García Residence', type: 'Residential', msg: 'Interested in a rooftop installation...', time: '15 min ago', status: 'Quoting', statusColor: 'success' },
       { company: 'Northern Agro', type: 'Agrivoltaic', msg: 'Need assessment for 10 hectares...', time: '1 h ago', status: 'Follow-up', statusColor: 'muted' },
     ],
-    clientsLabel: 'Solar companies trust our platform',
   },
   press: {
     asSeenIn: 'As seen in',
@@ -368,14 +362,29 @@ export const en: Translations = {
     headline: 'Ready to stop losing leads to slow follow-up?',
     subheadline: 'Start today.',
     cta1: 'Contact us',
-    cta2: 'Activate my account',
   },
   footer: {
     tagline: 'AI agents for solar sales and operations.',
-    product: { title: 'Product', links: ['Platform', 'Agents', 'Security', 'Integrations'] },
-    company: { title: 'Company', links: ['Team', 'ROI', 'FAQ', 'Careers'] },
-    resources: { title: 'Resources', links: ['Blog', 'Success Stories'] },
-    contact: { title: 'Contact', links: ['Get in touch'] },
+    product: {
+      title: 'Product',
+      links: [
+        { label: 'Platform', href: '/#platform' },
+        { label: 'Agents', href: '/#agents' },
+        { label: 'Security', href: '/#security' },
+        { label: 'Integrations', href: '/#integrations' },
+      ],
+    },
+    company: {
+      title: 'Company',
+      links: [
+        { label: 'Team', href: '/team' },
+        { label: 'FAQ', href: '/#faq' },
+      ],
+    },
+    contact: {
+      title: 'Contact',
+      links: [{ label: 'Get in touch', href: BOOKING_URL }],
+    },
     legal: '© 2026 Close Energy. All rights reserved.',
   },
 }

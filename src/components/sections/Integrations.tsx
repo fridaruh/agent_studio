@@ -1,6 +1,7 @@
 'use client'
 
 import { useI18n } from '@/lib/i18n/context'
+import { BOOKING_URL } from '@/lib/links'
 
 export default function Integrations() {
   const { t } = useI18n()
@@ -59,10 +60,10 @@ export default function Integrations() {
         <div className="text-center">
           <p className="text-ink-subtle text-body-sm mb-4">{integrations.bottomCta}</p>
           <a
-            href="#contact"
+            href={BOOKING_URL}
             className="inline-flex items-center gap-2 px-4 py-2 bg-surface-1 border border-hairline rounded-md text-ink-subtle text-button hover:text-ink hover:border-hairline-strong transition-all"
           >
-            Contáctanos
+            {t.nav.contactUs}
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
