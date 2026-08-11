@@ -296,6 +296,14 @@ export const en: Translations = {
         a: 'Companies typically see 5–8x ROI within the first 90 days, driven by faster quotes and systematic follow-up recovering leads that would otherwise go cold.',
       },
       {
+        q: 'How does pricing work?',
+        a: 'The service is split into **two stages: setup and monthly operation**.\n\nIt starts with an **initial setup payment**, which covers information gathering, agent configuration, and a **4-week value trial** running on your real sales process.\n\nWhen the trial ends, you decide:\n\n- **If you don’t continue**, you pay nothing more. The initial payment covers the setup work and the trial.\n- **If you continue**, you settle the **remaining setup balance** and the service moves to the **Agent as a Service (AaaS)** model.\n\nFrom that point on you pay a **monthly fee for your contracted plan**, defined by a band of monthly **Successful Interactions**. As long as usage stays within that plan’s range, the monthly fee doesn’t change. If volume grows beyond the contracted range, the service moves to the corresponding band.\n\n**In short:** you pay an initial amount to configure and trial the agent, a setup balance only if you decide to continue, and then a monthly fee based on the volume of interactions the agent handles.',
+      },
+      {
+        q: 'What counts as a successful interaction?',
+        a: 'A **Successful Interaction** is one where the agent adds value to the sales process and moves a prospect’s management forward. That includes any of the following cases:\n\n- **The prospect is qualified and escalated** to the sales team for follow-up.\n- **Enough information is gathered** to build a quote, run a preliminary sizing, or send it for human review.\n- **The prospect is discarded**, but the commercial reason is recorded (for example, out of coverage area, insufficient budget, or non-viable project).',
+      },
+      {
         q: 'Is my client data secure?',
         a: 'Yes. Enterprise-grade security purpose-built for companies handling sensitive client information. Encrypted at rest and in transit.',
       },

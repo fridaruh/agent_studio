@@ -3,6 +3,38 @@
 import { useState } from 'react'
 import { useI18n } from '@/lib/i18n/context'
 
+function InlineBold({ text }: { text: string }) {
+  const parts = text.split('**')
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? <strong key={i} className="font-medium text-ink">{part}</strong> : part
+      )}
+    </>
+  )
+}
+
+function AnswerBody({ answer }: { answer: string }) {
+  const blocks = answer.split('\n\n')
+  return (
+    <div className="space-y-3">
+      {blocks.map((block, i) => {
+        const lines = block.split('\n')
+        if (lines.every((line) => line.startsWith('- '))) {
+          return (
+            <ul key={i} className="list-disc pl-5 space-y-2">
+              {lines.map((line, j) => (
+                <li key={j}><InlineBold text={line.slice(2)} /></li>
+              ))}
+            </ul>
+          )
+        }
+        return <p key={i}><InlineBold text={block} /></p>
+      })}
+    </div>
+  )
+}
+
 function AccordionItem({
   question, answer, isOpen, onToggle,
 }: {
@@ -28,7 +60,9 @@ function AccordionItem({
 
       <div className={`accordion-content ${isOpen ? 'open' : ''}`}>
         <div className="px-6 pb-5">
-          <p className="text-ink-subtle text-body-sm leading-relaxed">{answer}</p>
+          <div className="text-ink-subtle text-body-sm leading-relaxed">
+            <AnswerBody answer={answer} />
+          </div>
         </div>
       </div>
     </div>
