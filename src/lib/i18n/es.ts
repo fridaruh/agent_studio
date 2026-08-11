@@ -294,6 +294,14 @@ export const es = {
         a: 'Las empresas típicamente ven un ROI de 5–8x en los primeros 90 días, impulsado por cotizaciones más rápidas y seguimiento sistemático que recupera leads que de otra forma se enfriarían.',
       },
       {
+        q: '¿Cómo se cobra?',
+        a: 'El servicio se divide en **dos etapas: configuración y operación mensual**.\n\nPrimero se realiza un **pago inicial de configuración**, con el que iniciamos el levantamiento de información, la parametrización del agente y una **prueba de valor de 4 semanas** operando sobre tu proceso comercial real.\n\nAl finalizar la prueba, tú decides:\n\n- **Si no continúas**, no pagas nada adicional. El pago inicial cubre los trabajos de configuración y la prueba realizada.\n- **Si continúas**, se liquida el **finiquito del setup** y el servicio pasa a la modalidad **Agent as a Service (AaaS)**.\n\nA partir de ese momento se cobra una **mensualidad correspondiente al plan contratado**, definida por una banda de **Interacciones Exitosas** mensuales. Mientras el volumen de uso permanezca dentro del rango de ese plan, la mensualidad no cambia. Si el volumen crece y supera el rango contratado, el servicio migra a la banda que corresponda.\n\n**En resumen:** pagas un monto inicial para configurar y probar el agente, un finiquito únicamente si decides continuar, y después una mensualidad acorde al volumen de interacciones que procesa el agente.',
+      },
+      {
+        q: '¿Qué se considera una interacción exitosa?',
+        a: 'Una **Interacción Exitosa** es aquella en la que el agente aporta valor al proceso comercial y permite avanzar la gestión de un prospecto. Esto incluye cualquiera de los siguientes casos:\n\n- **El prospecto es calificado y escalado** al equipo comercial para su seguimiento.\n- **Se obtiene información suficiente** para elaborar una cotización, realizar un dimensionamiento preliminar o enviarla a revisión humana.\n- **El prospecto se descarta**, pero queda registrada la causa comercial (por ejemplo, fuera de zona, presupuesto insuficiente o proyecto no viable).',
+      },
+      {
         q: '¿Los datos de mis clientes están seguros?',
         a: 'Sí. Seguridad de nivel empresarial diseñada para empresas que manejan información sensible de clientes. Cifrada en reposo y en tránsito.',
       },
