@@ -285,7 +285,7 @@ export const en: Translations = {
       },
       {
         q: 'How accurate are the quotes the agent generates?',
-        a: '99% accuracy on technical sizing and pricing, with human-in-the-loop checkpoints your team controls before delivery.',
+        a: 'The agent is configured with the same technical and economic parameters you currently use to prepare your own quotes, so its accuracy matches that of your current proposals.',
       },
       {
         q: 'Can it handle leads in different states or regions?',

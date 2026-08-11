@@ -283,7 +283,7 @@ export const es = {
       },
       {
         q: '¿Qué tan precisas son las cotizaciones que genera el agente?',
-        a: '99% de precisión en dimensionamiento técnico y precios, con puntos de control humano que tu equipo controla antes de la entrega.',
+        a: 'El agente se configura con los parámetros técnicos y económicos que hoy en día utilizas para elaborar tus propias cotizaciones, por lo que la precisión es igual a la de tus propuestas actuales.',
       },
       {
         q: '¿Puede manejar leads en diferentes estados o regiones?',
