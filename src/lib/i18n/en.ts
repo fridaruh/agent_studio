@@ -267,6 +267,17 @@ export const en: Translations = {
       { name: 'Portals', tools: ['Any portal with login access'] },
     ],
   },
+  pipelineAssistant: {
+    eyebrow: 'Interact with your pipeline',
+    headline: 'Your pipeline should help you decide what needs attention.',
+    context: 'The Commercial Performance Agent interprets recorded activity and turns it into actionable context for sales and leadership.',
+    capabilities: [
+      { title: 'Sales briefing', desc: 'Receive a voice note with opportunities, follow-ups, and movements that need attention.' },
+      { title: 'Ask about your operation', desc: 'Ask about prospects, quotes, or follow-ups without reviewing records one by one.' },
+      { title: 'Recover context', desc: 'Consult activity history and next steps for each opportunity.' },
+      { title: 'Prioritize actions', desc: 'Identify where the sales team should intervene based on the available information.' },
+    ],
+  },
   faq: {
     eyebrow: 'FAQ',
     headline: 'Everything you need to know',

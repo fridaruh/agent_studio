@@ -12,8 +12,8 @@ export const es = {
     text: 'Respaldado por [Inversor] · publicado en [Prensa]',
   },
   hero: {
-    headline: 'Cotiza más rápido de lo que tu competencia puede contestar el teléfono.',
-    subheadline: 'El agente IA diseñado para instaladores solares. Responde en segundos, cotiza en minutos.',
+    headline: 'Automatización comercial para empresas solares y de soluciones energéticas.',
+    subheadline: 'Close Energy atiende, califica, cotiza y da seguimiento a prospectos mientras tu equipo conserva el control de las decisiones comerciales y técnicas.',
     cta1: 'Contáctanos',
     cta2: 'Activar mi cuenta',
     dashboardLabel: 'Pipeline de Leads',
@@ -24,31 +24,31 @@ export const es = {
       { company: 'Casa García', type: 'Residencial', msg: 'Me interesa la instalación en el techo...', time: 'hace 15 min', status: 'Cotizando', statusColor: 'success' },
       { company: 'Agro del Norte', type: 'Agrovoltaico', msg: 'Requiero evaluación para 10 hectáreas...', time: 'hace 1 h', status: 'Seguimiento', statusColor: 'muted' },
     ],
-    clientsLabel: 'Empresas solares confían en nuestra plataforma',
+    clientsLabel: 'Una operación comercial conectada',
   },
   press: {
     asSeenIn: 'Publicado en',
   },
   problem: {
-    headline: 'Las ventas y el servicio solar todavía funcionan con hilos de WhatsApp, hojas dispersas y seguimiento manual.',
+    headline: 'Una parte importante de la venta depende de que una persona esté disponible.',
     narrative:
-      'Una empresa solar de tamaño mediano recibe 80 leads este mes. Cada uno necesita una evaluación del sitio, una cotización personalizada paneles, inversor, opciones de financiamiento, proyección de ROI y 3–5 contactos de seguimiento antes de que el cliente decida. El equipo de ventas está saturado. La mitad de los leads reciben respuesta después de 48 horas. Un tercio nunca recibe un segundo seguimiento. Los deals que cierran lo hacen a pesar del proceso, no gracias a él.',
+      'Cuando el equipo está en campo, en una reunión o atendiendo a otros clientes, un nuevo prospecto puede quedar esperando. Close Energy continúa la conversación: responde dudas, recopila información, califica la oportunidad, prepara cotizaciones preliminares y avisa al equipo cuando se requiere intervención.',
     cards: [
       {
-        title: 'Las cotizaciones lentas pierden instalaciones',
-        desc: 'Las cotizaciones personalizadas toman días. Para cuando respondes, el cliente ya firmó con el competidor que contestó en horas.',
+        title: 'La atención depende de la disponibilidad',
+        desc: 'Responder preguntas, recopilar datos y preparar una propuesta compiten con las visitas, reuniones y cierres del equipo.',
       },
       {
-        title: 'Los leads se enfrían sin seguimiento',
-        desc: 'Después del primer contacto, la mayoría de los leads reciben 1 o 2 toques. El seguimiento automático y consistente es imposible sin una persona dedicada.',
+        title: 'El seguimiento requiere continuidad',
+        desc: 'Las conversaciones necesitan contexto, información pendiente y próximos pasos claros para avanzar.',
       },
       {
-        title: 'Sin vista única del cliente',
-        desc: 'Conversaciones dispersas en WhatsApp, email y llamadas. Nadie conoce el historial completo de un lead o relación con el cliente.',
+        title: 'La información vive en varios canales',
+        desc: 'Sin un historial común, revisar una oportunidad y coordinar la siguiente acción toma tiempo del equipo comercial.',
       },
       {
-        title: 'Cuello de botella post-venta',
-        desc: 'Solicitudes de mantenimiento, reclamos de garantía y alertas de monitoreo llegan sin estructura. La misma persona que vende atiende quejas de servicio.',
+        title: 'El equipo debe enfocarse en avanzar oportunidades',
+        desc: 'Las tareas repetitivas pueden automatizarse para reservar el criterio humano para decisiones comerciales o técnicas.',
       },
     ],
   },
@@ -64,14 +64,14 @@ export const es = {
   },
   platformPreview: {
     eyebrow: 'Vista previa de la plataforma',
-    headline: 'Bienvenido al futuro de las operaciones solares',
+    headline: 'Una plataforma para operar el proceso comercial',
     panel1: {
       label: 'Centraliza cada lead y cliente',
-      desc: 'Todos tus canales de entrada WhatsApp, formulario web, email fluyen hacia un dashboard en tiempo real. Cada lead es capturado, clasificado y asignado automáticamente.',
+      desc: 'Centraliza conversaciones, oportunidades, cotizaciones y actividad comercial en un mismo proceso configurable.',
     },
     panel2: {
       label: 'Interactúa con tu pipeline',
-      desc: 'Pregunta sobre cualquier lead, cotización o estado de instalación a través de un agente IA entrenado en tu operación. Sin búsqueda manual entre herramientas.',
+      desc: 'Consulta prospectos, cotizaciones y seguimientos con el contexto registrado en tu operación.',
     },
     chatMessages: [
       { role: 'user', text: '¿Cuántos leads están esperando cotización?' },
@@ -104,21 +104,21 @@ export const es = {
     eyebrow: 'Diferenciador clave',
     headline: 'IA que trabaja como trabaja tu equipo',
     subheadline:
-      'Nuestros agentes no solo envían notificaciones, ejecutan flujos de trabajo completos, en cada canal, sin intervención humana.',
+      'Los agentes automatizan trabajo operativo dentro de reglas configuradas y escalan al equipo las decisiones que requieren validación.',
     context:
-      'Las ventas solares son relacionales, de múltiples contactos y técnicamente complejas. Nuestros agentes lo entienden. Leen mensajes entrantes, extraen los datos correctos, generan cotizaciones personalizadas, hacen seguimiento en el momento adecuado y escalan a tu equipo solo cuando se necesita una decisión humana.',
+      'Las ventas de soluciones energéticas combinan conversaciones, datos técnicos y decisiones comerciales. Los agentes registran actividad, solicitan información, aplican criterios definidos por tu empresa y mantienen al equipo al tanto cuando debe intervenir.',
     features: [
       {
-        title: 'Responde al instante, 24/7',
-        desc: '¿WhatsApp o email entrante a las 9pm? El agente responde con preguntas de calificación y próximos pasos en segundos.',
+        title: 'Atiende nuevos prospectos',
+        desc: 'Responde preguntas, captura necesidades y propone los siguientes pasos según el flujo configurado.',
       },
       {
-        title: 'Ejecuta flujos de extremo a extremo',
-        desc: 'Desde recibir un lead hasta entregar una cotización completa con proyecciones de ROI, cero pasos manuales en el medio.',
+        title: 'Automatiza tareas comerciales',
+        desc: 'Conecta atención, calificación, cotización preliminar, seguimiento y actualización del pipeline.',
       },
       {
         title: 'Escala cuando necesita tu juicio',
-        desc: 'El agente conoce sus límites. Notifica a tu equipo en tiempo real cuando un cliente necesita una conversación humana.',
+        desc: 'El equipo conserva el control de las decisiones comerciales o técnicas que requieren validación.',
       },
       {
         title: 'Registro completo de actividad',
@@ -130,17 +130,17 @@ export const es = {
     eyebrow: 'Agente 01',
     name: 'Agente de Cotización',
     subtitle:
-      'Maneja solicitudes de cotización de instalación solar, residencial, comercial, industrial. Gestiona la recopilación de datos, dimensionamiento técnico, consulta de precios con proveedores y cálculo de ROI automáticamente.',
+      'Transforma información comercial y técnica en dimensionamientos y cotizaciones preliminares usando las reglas, precios, productos, tarifas y parámetros definidos por tu empresa.',
     channels: 'Canales: WhatsApp, Email, Formulario web',
-    timeReduction: '3–7 días hábiles → menos de 4 horas',
+    timeReduction: 'De la información inicial a una propuesta preliminar',
     beforeTitle: 'Hoy manual',
     afterTitle: 'Con Agente IA',
     comparison: [
-      ['Lead llega por WhatsApp y espera en cola', 'El agente responde en 60 segundos con preguntas de calificación'],
-      ['El ingeniero revisa manualmente y agenda una llamada', 'El agente extrae todos los datos técnicos automáticamente de la conversación'],
-      ['Cotización armada en Excel, enviada 3–7 días después', 'Cotización generada con precios reales y proyecciones de ROI'],
-      ['El cliente recibe un PDF genérico', 'El cliente recibe comparativa personalizada de 2–3 opciones de sistema'],
-      ['El equipo hace seguimiento si se acuerda', 'El agente hace seguimiento automático a las 24h, 48h y 7 días'],
+      ['El prospecto comparte una necesidad inicial', 'El agente recopila datos con preguntas estructuradas'],
+      ['El equipo reúne información técnica y comercial', 'El agente aplica los criterios y parámetros configurados'],
+      ['La propuesta requiere preparación manual', 'El agente prepara una cotización preliminar para revisión según el alcance'],
+      ['El equipo valida el siguiente paso', 'La oportunidad se escala cuando requiere criterio humano'],
+      ['El historial se actualiza manualmente', 'La actividad y los próximos pasos se registran en el pipeline'],
     ],
     steps: [
       { title: 'Captura del lead', desc: 'Recibe solicitud vía WhatsApp o email automáticamente' },
@@ -155,8 +155,8 @@ export const es = {
     eyebrow: 'Agente 02',
     name: 'Agente de Seguimiento',
     subtitle:
-      'Seguimiento sistemático y personalizado con cada prospecto en el pipeline. Navega el CRM e historial de conversaciones para enviar el mensaje correcto en el momento correcto. Cero leads se pierden.',
-    promise: 'Cada lead recibe al menos 5 toques de seguimiento. Automáticamente. Sin un solo recordatorio manual.',
+      'Mantiene activa la conversación con prospectos, solicita información pendiente, registra respuestas y escala oportunidades cuando se requiere intervención comercial.',
+    promise: 'El seguimiento se ejecuta con las reglas y los criterios definidos por tu equipo.',
     steps: [
       { title: 'Escaneo del pipeline', desc: 'Identifica leads sin actividad en la ventana definida' },
       { title: 'Recuperación de contexto', desc: 'Lee historial de conversación y estado de cotización' },
@@ -167,23 +167,23 @@ export const es = {
     ],
   },
   moreAgents: {
-    eyebrow: 'Más agentes',
-    headline: 'La plataforma crece contigo',
+    eyebrow: 'Agente 03',
+    headline: 'Agente de Desempeño Comercial',
     agents: [
       {
-        name: 'Agente de Servicio',
-        status: 'Beta',
-        desc: 'Maneja solicitudes post-instalación: programación de mantenimiento, alertas de monitoreo, reclamos de garantía y tickets de soporte técnico, triados y enrutados automáticamente.',
+        name: 'Lectura de la operación',
+        status: 'Pipeline',
+        desc: 'Analiza actividad, oportunidades, cotizaciones y seguimiento para identificar qué está ocurriendo en el proceso comercial.',
       },
       {
-        name: 'Agente de Éxito al Cliente',
-        status: 'Beta',
-        desc: 'Gestiona la relación continua con el cliente: revisiones anuales de desempeño, oportunidades de upsell (almacenamiento de baterías, expansión), solicitudes de referidos.',
+        name: 'Prioridades accionables',
+        status: 'Análisis',
+        desc: 'Señala movimientos relevantes, seguimientos pendientes y situaciones que necesitan atención del equipo.',
       },
       {
-        name: 'Agentes Personalizados',
-        status: 'Enterprise',
-        desc: '¿Flujo de trabajo único en tu operación? Construimos agentes personalizados adaptados a tu negocio e integrados con tus sistemas existentes.',
+        name: 'Contexto para decidir',
+        status: 'Briefing',
+        desc: 'Convierte la información acumulada del pipeline en una lectura útil para ventas y dirección.',
       },
     ],
     cta1: 'Contáctanos',
@@ -263,6 +263,17 @@ export const es = {
       { name: 'Sistemas ERP', tools: ['SAP', 'NetSuite', 'Odoo'] },
       { name: 'Importación', tools: ['Excel / CSV'] },
       { name: 'Portales', tools: ['Cualquier portal con acceso'] },
+    ],
+  },
+  pipelineAssistant: {
+    eyebrow: 'Interactúa con tu pipeline',
+    headline: 'Tu pipeline debe ayudarte a decidir qué atender.',
+    context: 'El Agente de Desempeño Comercial interpreta la actividad registrada y la convierte en contexto accionable para ventas y dirección.',
+    capabilities: [
+      { title: 'Briefing comercial', desc: 'Recibe una nota de voz con oportunidades, seguimientos y movimientos que requieren atención.' },
+      { title: 'Consulta tu operación', desc: 'Pregunta por prospectos, cotizaciones o seguimientos sin revisar registro por registro.' },
+      { title: 'Recupera contexto', desc: 'Consulta el historial de actividad y los próximos pasos de cada oportunidad.' },
+      { title: 'Prioriza acciones', desc: 'Identifica dónde debe intervenir el equipo comercial según la información disponible.' },
     ],
   },
   faq: {
