@@ -14,8 +14,8 @@ export const en: Translations = {
     text: 'Backed by [Investor] · as seen in [Press]',
   },
   hero: {
-    headline: 'Quote faster than your competition can answer the phone.',
-    subheadline: 'The AI agent built for solar installers. Responds in seconds, quotes in minutes.',
+    headline: 'Sales automation for solar and energy solutions companies.',
+    subheadline: 'Close Energy engages, qualifies, quotes, and follows up with prospects while your team retains control of commercial and technical decisions.',
     cta1: 'Contact us',
     cta2: 'Activate my account',
     dashboardLabel: 'Leads Pipeline',
@@ -26,31 +26,31 @@ export const en: Translations = {
       { company: 'García Residence', type: 'Residential', msg: 'Interested in a rooftop installation...', time: '15 min ago', status: 'Quoting', statusColor: 'success' },
       { company: 'Northern Agro', type: 'Agrivoltaic', msg: 'Need assessment for 10 hectares...', time: '1 h ago', status: 'Follow-up', statusColor: 'muted' },
     ],
-    clientsLabel: 'Solar companies trust our platform',
+    clientsLabel: 'One connected sales operation',
   },
   press: {
     asSeenIn: 'As seen in',
   },
   problem: {
-    headline: 'Solar sales and service still run on WhatsApp threads, scattered spreadsheets, and manual follow-up.',
+    headline: 'A significant part of sales depends on a person being available.',
     narrative:
-      'A mid-size solar company receives 80 leads this month. Each needs a site evaluation, a custom quote panels, inverter, financing options, ROI projection and 3–5 follow-up touches before the client decides. The sales team is overwhelmed. Half the leads get a response after 48 hours. A third never get a second follow-up. The deals that close do so despite the process, not because of it.',
+      'When the team is in the field, in a meeting, or helping other clients, a new prospect may be left waiting. Close Energy keeps the conversation going: answers questions, gathers information, qualifies the opportunity, prepares preliminary quotes, and alerts the team when intervention is required.',
     cards: [
       {
-        title: 'Slow quotes lose installs',
-        desc: 'Custom quotes take days. By the time you respond, the client already signed with a competitor who answered in hours.',
+        title: 'Engagement depends on availability',
+        desc: 'Answering questions, gathering information, and preparing a proposal compete with the team\'s site visits, meetings, and deal closing.',
       },
       {
-        title: 'Leads go cold with no follow-up',
-        desc: 'After the first contact, most leads get 1 or 2 touches. Automated, consistent follow-up is impossible without a dedicated person.',
+        title: 'Follow-up requires continuity',
+        desc: 'Conversations need context, outstanding information, and clear next steps to move forward.',
       },
       {
-        title: 'No single view of the client',
-        desc: 'Conversations scattered across WhatsApp, email, and calls. No one knows the full history of a lead or customer relationship.',
+        title: 'Information lives across multiple channels',
+        desc: 'Without a shared history, reviewing an opportunity and coordinating the next action takes time from the sales team.',
       },
       {
-        title: 'Post-sale bottleneck',
-        desc: 'Maintenance requests, warranty claims, and monitoring alerts arrive without structure. The same person handling sales handles service complaints.',
+        title: 'The team needs to focus on moving opportunities forward',
+        desc: 'Repetitive tasks can be automated to reserve human judgment for commercial or technical decisions.',
       },
     ],
   },
@@ -66,14 +66,14 @@ export const en: Translations = {
   },
   platformPreview: {
     eyebrow: 'Platform preview',
-    headline: 'Welcome to the future of solar operations',
+    headline: 'One platform to run your sales process',
     panel1: {
       label: 'Centralize every lead and client',
-      desc: 'All your inbound channels, WhatsApp, web form, email, flow into a single real-time dashboard. Every lead is captured, classified, and assigned automatically.',
+      desc: 'Centralize conversations, opportunities, quotes, and sales activity in a single configurable process.',
     },
     panel2: {
       label: 'Interact with your pipeline',
-      desc: 'Ask about any lead, quote, or installation status through an AI trained on your operation. No manual searching across tools.',
+      desc: 'Review prospects, quotes, and follow-up with the context recorded in your operation.',
     },
     chatMessages: [
       { role: 'user', text: 'How many leads are waiting for a quote?' },
@@ -106,21 +106,21 @@ export const en: Translations = {
     eyebrow: 'Key differentiator',
     headline: 'AI that works the way your team works',
     subheadline:
-      'Our agents don\'t just send notifications, they execute complete workflows, across every channel, without human intervention.',
+      'Agents automate operational work within configured rules and escalate decisions requiring validation to the team.',
     context:
-      'Solar sales is relationship-driven, multi-touch, and technically complex. Our agents understand that. They read inbound messages, extract the right data, generate personalized quotes, follow up at the right moment, and escalate to your team only when a human decision is needed.',
+      'Energy solutions sales combine conversations, technical data, and commercial decisions. Agents record activity, request information, apply criteria defined by your company, and keep the team informed when it needs to step in.',
     features: [
       {
-        title: 'Responds instantly, 24/7',
-        desc: 'Inbound WhatsApp or email at 9pm? The agent responds with qualification questions and next steps within seconds.',
+        title: 'Engages new prospects',
+        desc: 'Answers questions, captures needs, and suggests next steps based on the configured workflow.',
       },
       {
-        title: 'Executes workflows end to end',
-        desc: 'From receiving a lead to delivering a complete quote with ROI projections, zero manual steps in between.',
+        title: 'Automates sales tasks',
+        desc: 'Connects engagement, qualification, preliminary quoting, follow-up, and pipeline updates.',
       },
       {
         title: 'Escalates when it needs your judgment',
-        desc: 'The agent knows its limits. It notifies your team in real time when a client needs a human conversation.',
+        desc: 'The team retains control of commercial or technical decisions that require validation.',
       },
       {
         title: 'Full activity logging',
@@ -132,17 +132,17 @@ export const en: Translations = {
     eyebrow: 'Agent 01',
     name: 'Quoting Agent',
     subtitle:
-      'Handles inbound requests for solar installation quotes, residential, commercial, industrial. Manages data collection, technical sizing, supplier pricing lookup, and ROI calculation automatically.',
+      'Turns commercial and technical information into preliminary sizing and quotes using the rules, pricing, products, rates, and parameters defined by your company.',
     channels: 'Channels: WhatsApp, Email, Web Form',
-    timeReduction: '3–7 business days → under 4 hours',
+    timeReduction: 'From initial information to a preliminary proposal',
     beforeTitle: 'Manual Today',
     afterTitle: 'With AI Agent',
     comparison: [
-      ['Lead arrives via WhatsApp and sits in queue', 'Agent responds within 60 seconds with qualification questions'],
-      ['Engineer reviews manually and schedules a call', 'Agent extracts all technical data automatically from conversation'],
-      ['Quote built in Excel, sent 3–7 days later', 'Quote generated with real pricing and ROI projections'],
-      ['Client gets one generic PDF', 'Client receives personalized comparison of 2–3 system options'],
-      ['Team follows up if they remember', 'Agent follows up automatically at 24h, 48h, and 7-day intervals'],
+      ['The prospect shares an initial need', 'The agent gathers data through structured questions'],
+      ['The team gathers technical and commercial information', 'The agent applies configured criteria and parameters'],
+      ['The proposal requires manual preparation', 'The agent prepares a preliminary quote for review based on the scope'],
+      ['The team validates the next step', 'The opportunity is escalated when human judgment is required'],
+      ['History is updated manually', 'Activity and next steps are recorded in the pipeline'],
     ],
     steps: [
       { title: 'Lead capture', desc: 'Receives request via WhatsApp or email automatically' },
@@ -157,8 +157,8 @@ export const en: Translations = {
     eyebrow: 'Agent 02',
     name: 'Follow-up Agent',
     subtitle:
-      'Systematic, personalized follow-up with every prospect in the pipeline. Navigates CRM and conversation history to send the right message at the right moment. Zero leads fall through the cracks.',
-    promise: 'Every lead gets at least 5 follow-up touches. Automatically. Without a single manual reminder.',
+      'Keeps conversations with prospects active, requests outstanding information, records responses, and escalates opportunities when commercial intervention is required.',
+    promise: 'Follow-up runs according to the rules and criteria defined by your team.',
     steps: [
       { title: 'Pipeline scan', desc: 'Identifies leads with no activity in defined window' },
       { title: 'Context retrieval', desc: 'Reads conversation history and quote status' },
@@ -169,23 +169,23 @@ export const en: Translations = {
     ],
   },
   moreAgents: {
-    eyebrow: 'More agents',
-    headline: 'The platform grows with you',
+    eyebrow: 'Agent 03',
+    headline: 'Sales Performance Agent',
     agents: [
       {
-        name: 'Service Agent',
-        status: 'Beta',
-        desc: 'Handles post-installation requests: maintenance scheduling, monitoring alerts, warranty claims, and technical support tickets, automatically triaged and routed.',
+        name: 'Operational visibility',
+        status: 'Pipeline',
+        desc: 'Analyzes activity, opportunities, quotes, and follow-up to identify what is happening in the sales process.',
       },
       {
-        name: 'Customer Success Agent',
-        status: 'Beta',
-        desc: 'Manages the ongoing client relationship: annual performance reviews, upsell opportunities (battery storage, expansion), referral requests.',
+        name: 'Actionable priorities',
+        status: 'Analysis',
+        desc: 'Highlights relevant movements, pending follow-up, and situations that need the team\'s attention.',
       },
       {
-        name: 'Custom Agents',
-        status: 'Enterprise',
-        desc: 'Workflow unique to your operation? We build custom agents tailored to your business and integrated with your existing systems.',
+        name: 'Context for decisions',
+        status: 'Briefing',
+        desc: 'Turns the information accumulated in the pipeline into useful insight for sales and leadership.',
       },
     ],
     cta1: 'Contact us',
