@@ -1,10 +1,7 @@
 'use client'
 
 import { useI18n } from '@/lib/i18n/context'
-
-const clientLogos = [
-  'SolarNorte', 'Enersol MX', 'Helio Group', 'SunTech LAT', 'Voltix', 'GreenWatt',
-]
+import { BOOKING_URL } from '@/lib/links'
 
 export default function Hero() {
   const { t } = useI18n()
@@ -33,7 +30,7 @@ export default function Hero() {
         {/* CTA */}
         <div className="mt-8">
           <a
-            href="https://outlook.office.com/bookwithme/user/90e5e6e996334c7c8b34b1a749e7c039@aicsolutions.mx/meetingtype/UKTphYVegUuWbG5239CHdw2?bookingcode=68329955-fca3-4c70-bcce-d44697386d26&anonymous&ismsaljsauthenabled&ep=mlink"
+            href={BOOKING_URL}
             className="px-6 py-3 text-button text-white bg-primary rounded-md hover:bg-primary-hover transition-colors duration-150 btn-primary-glow"
           >
             {hero.cta1}
@@ -50,23 +47,6 @@ export default function Hero() {
             alt="Close Energy dashboard"
             className="w-full h-auto block"
           />
-        </div>
-
-        {/* Client marquee */}
-        <div className="w-full mt-16">
-          <p className="text-ink-tertiary text-caption mb-6 uppercase tracking-widest">{hero.clientsLabel}</p>
-          <div className="relative overflow-hidden">
-            <div className="flex gap-12 marquee-track" style={{ width: 'max-content' }}>
-              {[...clientLogos, ...clientLogos].map((logo, i) => (
-                <div key={i} className="flex items-center shrink-0">
-                  <div className="flex items-center gap-2 opacity-40 hover:opacity-70 transition-opacity cursor-pointer">
-                    <div className="w-5 h-5 rounded-sm bg-hairline-strong" />
-                    <span className="text-ink-subtle text-body-sm font-medium whitespace-nowrap">{logo}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

@@ -24,16 +24,25 @@ function useCountUp(target: number, duration = 2000, start = false) {
   return current
 }
 
+/**
+ * 'static'  — show the final number. Server render, no-JS, and the case where the
+ *             section is already on screen at first paint all land here.
+ * 'ready'   — section is below the fold, numbers held at 0 waiting to scroll in.
+ * 'running' — counting up.
+ */
+type Phase = 'static' | 'ready' | 'running'
+
 function StatCard({
-  value, suffix, prefix, label, started,
+  value, suffix, prefix, label, phase,
 }: {
   value: number
   suffix: string
   prefix?: string
   label: string
-  started: boolean
+  phase: Phase
 }) {
-  const count = useCountUp(value, 1800, started)
+  const count = useCountUp(value, 1800, phase === 'running')
+  const shown = phase === 'static' ? value : count
 
   return (
     <div className="p-8 bg-surface-1 border border-hairline rounded-lg">
@@ -42,7 +51,7 @@ function StatCard({
         style={{ fontSize: 'clamp(40px, 4vw, 64px)', lineHeight: 1, letterSpacing: '-0.04em' }}
       >
         <span className="text-primary">{prefix}</span>
-        <span>{count}</span>
+        <span>{shown}</span>
         <span className="text-primary">{suffix}</span>
       </div>
       <p className="text-ink-subtle text-body-sm leading-relaxed">{label}</p>
@@ -54,14 +63,21 @@ export default function ImpactMetrics() {
   const { t } = useI18n()
   const { metrics } = t
   const ref = useRef<HTMLElement>(null)
-  const [started, setStarted] = useState(false)
+  const [phase, setPhase] = useState<Phase>('static')
 
   useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    // Already visible at first paint — leave the final numbers as they are instead of
+    // resetting them to 0 and counting up in front of the reader.
+    if (el.getBoundingClientRect().top < window.innerHeight) return
+
+    setPhase('ready')
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setStarted(true); observer.disconnect() } },
+      ([entry]) => { if (entry.isIntersecting) { setPhase('running'); observer.disconnect() } },
       { threshold: 0.2 }
     )
-    if (ref.current) observer.observe(ref.current)
+    observer.observe(el)
     return () => observer.disconnect()
   }, [])
 
@@ -84,7 +100,7 @@ export default function ImpactMetrics() {
               suffix={stat.suffix}
               prefix={'prefix' in stat ? stat.prefix : undefined}
               label={stat.label}
-              started={started}
+              phase={phase}
             />
           ))}
         </div>
