@@ -6,6 +6,7 @@ export const en: Translations = {
     agents: 'Agents',
     security: 'Security',
     faq: 'FAQ',
+    team: 'Team',
     careers: 'Careers',
     contactUs: 'Contact us',
     activateAccount: 'Activate my account',

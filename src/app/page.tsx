@@ -11,7 +11,6 @@ import Integrations from '@/components/sections/Integrations'
 import PipelineAssistant from '@/components/sections/PipelineAssistant'
 import Security from '@/components/sections/Security'
 import UseCases from '@/components/sections/UseCases'
-import Team from '@/components/sections/Team'
 import FAQ from '@/components/sections/FAQ'
 import CTASection from '@/components/sections/CTASection'
 
@@ -30,7 +29,6 @@ export default function Home() {
       <PipelineAssistant />
       <Security />
       <UseCases />
-      <Team />
       <FAQ />
       <CTASection />
       <Footer />

@@ -4,6 +4,7 @@ export const es = {
     agents: 'Agentes',
     security: 'Seguridad',
     faq: 'FAQ',
+    team: 'Equipo',
     careers: 'Carreras',
     contactUs: 'Contáctanos',
     activateAccount: 'Activar mi cuenta',

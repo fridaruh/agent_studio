@@ -3,8 +3,8 @@
 import { useI18n } from '@/lib/i18n/context'
 
 const pageLinkHrefs: Record<string, string> = {
-  'Team': '/team',
-  'Equipo': '/team',
+  'Team': '/equipo',
+  'Equipo': '/equipo',
 }
 
 export default function Footer() {
