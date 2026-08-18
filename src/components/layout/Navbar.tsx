@@ -19,6 +19,7 @@ export default function Navbar() {
     { label: t.nav.agents, href: '#agents' },
     { label: t.nav.security, href: '#security' },
     { label: t.nav.faq, href: '#faq' },
+    { label: t.nav.team, href: '/equipo' },
   ]
 
   return (

@@ -4,11 +4,11 @@ import Footer from '@/components/layout/Footer'
 import Team from '@/components/sections/Team'
 
 export const metadata: Metadata = {
-  title: 'Team: Close Energy',
-  description: 'Meet the people and AI agents behind Close Energy.',
+  title: 'Equipo: Close Energy',
+  description: 'Conoce a las personas y agentes IA detrás de Close Energy.',
 }
 
-export default function TeamPage() {
+export default function EquipoPage() {
   return (
     <main>
       <Navbar />
