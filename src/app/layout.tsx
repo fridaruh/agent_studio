@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { I18nProvider } from '@/lib/i18n/context'
 import '@/styles/globals.css'
 
@@ -31,6 +32,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <I18nProvider>
           {children}
         </I18nProvider>
+        <Script
+          src="https://datafa.st/js/script.js"
+          data-website-id="dfid_7D94N8ZLoCRuFRAKbz1JB"
+          data-domain="close.energy"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
