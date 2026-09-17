@@ -15,7 +15,7 @@ export default function LeadsHero() {
         {/* Qualifier */}
         <Reveal delay={80}>
           <p className="mt-6 inline-flex max-w-2xl items-center rounded-pill border border-hairline bg-surface-1 px-4 py-2 text-eyebrow text-primary">
-            SOLO PARA empresas solares residenciales con demanda entrante (pauta recurrente y/o ferias/activaciones)
+            SOLO PARA empresas con demanda entrante (pauta recurrente y/o ferias/activaciones)
           </p>
         </Reveal>
 
@@ -25,7 +25,7 @@ export default function LeadsHero() {
             className="text-ink font-semibold max-w-4xl mt-8"
             style={{ fontSize: 'clamp(36px, 5.5vw, 72px)', lineHeight: 1.07, letterSpacing: '-0.035em' }}
           >
-            Cómo atendemos <span className="whitespace-nowrap">3x más clientes</span> para empresas solares residenciales, sin aumentar tu carga comercial
+            Cómo atendemos <span className="whitespace-nowrap">3x más clientes</span>, sin aumentar tu carga comercial
           </h1>
         </Reveal>
 
@@ -35,7 +35,7 @@ export default function LeadsHero() {
             className="text-ink-muted mt-6 max-w-2xl mx-auto"
             style={{ fontSize: 'clamp(16px, 1.4vw, 20px)', lineHeight: 1.55, letterSpacing: '-0.01em' }}
           >
-            Instalamos y operamos Atención y Motor de Cotización, Sistema de Agendamiento, Levanta Muertos y Centro de IA
+            Atención y Motor de Cotización, Sistema de Agendamiento, Levanta Muertos y Centro de IA
           </p>
         </Reveal>
 

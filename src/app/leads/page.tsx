@@ -11,7 +11,7 @@ import LeadsFooter from '@/components/leads/LeadsFooter'
 export const metadata: Metadata = {
   title: 'Close Energy · Sistema Agéntico de Pre-Cotización Solar',
   description:
-    'Cómo atendemos 3x más clientes para empresas solares residenciales, sin aumentar tu carga comercial.',
+    'Cómo atendemos 3x más clientes, sin aumentar tu carga comercial.',
   alternates: {
     canonical: 'https://close.energy/leads',
   },
