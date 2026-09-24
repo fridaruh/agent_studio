@@ -18,18 +18,18 @@ const ROWS = [
 
 export default function LeadsBeforeAfter() {
   return (
-    <section id="variable" className="py-section bg-canvas">
-      <div className="max-w-content mx-auto px-6">
+    <section id="variable" className="py-8 md:py-10 bg-canvas">
+      <div className="max-w-content mx-auto px-6 xl:pr-44 min-[1700px]:pr-6">
         <Reveal delay={80}>
           <h2
-            className="text-ink font-semibold mt-6 max-w-3xl"
-            style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: 1.15, letterSpacing: '-0.025em' }}
+            className="text-ink font-semibold max-w-6xl"
+            style={{ fontSize: 'clamp(26px, 3vw, 40px)', lineHeight: 1.13, letterSpacing: '-0.025em' }}
           >
             Antes → Después (con Close Energy)
           </h2>
         </Reveal>
 
-        <div className="mt-12 flex flex-col gap-6">
+        <div className="mt-8 flex flex-col gap-5">
           {ROWS.map((row, i) => (
             <Reveal key={row.before} delay={i * 80}>
               <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
@@ -50,7 +50,7 @@ export default function LeadsBeforeAfter() {
         </div>
 
         <Reveal delay={120}>
-          <div className="mt-12 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <CtaButton />
           </div>
         </Reveal>

@@ -3,16 +3,16 @@ import { CALENDLY_URL } from '@/lib/links'
 
 export default function LeadsAgenda() {
   return (
-    <section id="agenda" className="py-section bg-canvas scroll-mt-4">
-      <div className="max-w-content mx-auto px-6">
+    <section id="agenda" className="py-8 md:py-10 bg-canvas scroll-mt-4">
+      <div className="max-w-content mx-auto px-6 xl:pr-44 min-[1700px]:pr-6">
         <Reveal delay={100}>
           <div className="relative overflow-hidden rounded-xl border border-hairline bg-surface-1 p-8 md:p-12">
             <div className="absolute inset-0 hero-grid opacity-60" aria-hidden />
-            <div className="relative grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+            <div className="relative grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center">
               <div>
                 <h2
-                  className="text-ink font-semibold max-w-2xl"
-                  style={{ fontSize: 'clamp(28px, 4vw, 56px)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
+                  className="text-ink font-semibold"
+                  style={{ fontSize: 'clamp(26px, 2.8vw, 40px)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
                 >
                   Aplica ahora si deseas atender 3 veces más clientes sin aumentar tu carga comercial.
                 </h2>

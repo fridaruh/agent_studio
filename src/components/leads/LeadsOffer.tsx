@@ -38,26 +38,26 @@ const PILLARS = [
 
 export default function LeadsOffer() {
   return (
-    <section id="oferta" className="py-section bg-canvas">
-      <div className="max-w-content mx-auto px-6">
+    <section id="oferta" className="py-8 md:py-10 bg-canvas">
+      <div className="max-w-content mx-auto px-6 xl:pr-44 min-[1700px]:pr-6">
         <Reveal delay={80}>
-          <p className="text-primary text-eyebrow uppercase tracking-widest mt-6">Cómo funciona</p>
+          <p className="text-primary text-eyebrow uppercase tracking-widest">Cómo funciona</p>
         </Reveal>
         <Reveal delay={140}>
           <h2
-            className="text-ink font-semibold mt-4 max-w-3xl"
-            style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: 1.15, letterSpacing: '-0.025em' }}
+            className="text-ink font-semibold mt-4 max-w-6xl"
+            style={{ fontSize: 'clamp(26px, 3vw, 40px)', lineHeight: 1.13, letterSpacing: '-0.025em' }}
           >
             No es una agencia de marketing ni un software más. Es un Estudio de Transformación Agéntica para Empresas de Paneles Solares.
           </h2>
         </Reveal>
         <Reveal delay={200}>
-          <p className="text-ink-muted text-body-lg mt-6 max-w-2xl">
+          <p className="text-ink-muted text-body-lg mt-5 max-w-4xl">
             Te instalamos y operamos el Sistema Agéntico de Pre-Cotización Solar de principio a fin. Licencia/configuración una vez; lo variable son bolsas de capacidad.
           </p>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2 mt-12">
+        <div className="grid gap-6 md:grid-cols-2 mt-8">
           {PILLARS.map((pillar, i) => (
             <Reveal key={pillar.num} delay={(i % 2) * 80}>
               <div className="h-full flex flex-col rounded-lg border border-hairline bg-surface-1 p-6 transition-colors duration-150 hover:bg-surface-2 hover:border-hairline-strong">
@@ -90,7 +90,7 @@ export default function LeadsOffer() {
         </div>
 
         <Reveal delay={120}>
-          <div className="mt-12 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <CtaButton />
           </div>
         </Reveal>

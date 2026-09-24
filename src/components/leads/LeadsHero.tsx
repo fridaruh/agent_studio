@@ -5,18 +5,18 @@ import { VSL_VIDEO_URL } from '@/lib/links'
 export default function LeadsHero() {
   return (
     <section id="hero" className="relative overflow-hidden bg-canvas hero-grid">
-      <div className="relative max-w-content mx-auto w-full px-6 pt-8 md:pt-12 pb-section flex flex-col items-center text-center">
+      <div className="relative max-w-content mx-auto w-full px-6 xl:pr-44 min-[1700px]:pr-6 pt-8 md:pt-12 pb-8 md:pb-10 flex flex-col items-center text-center">
         {/* Qualifier */}
         <Reveal delay={80}>
           <p className="inline-flex max-w-2xl items-center rounded-pill border border-danger bg-danger px-4 py-2 text-eyebrow font-semibold text-white">
-            SOLO PARA empresas con demanda entrante (pauta recurrente y/o ferias/activaciones)
+            SOLO PARA empresas en crecimiento comercial (generalmente invierte en pauta recurrente, expos, activaciones)
           </p>
         </Reveal>
 
         {/* Headline */}
         <Reveal delay={140}>
           <h1
-            className="text-ink font-semibold max-w-4xl mt-5"
+            className="text-ink font-semibold max-w-6xl mt-5"
             style={{ fontSize: 'clamp(36px, 5.5vw, 72px)', lineHeight: 1.07, letterSpacing: '-0.035em' }}
           >
             Cómo atendemos <span className="whitespace-nowrap">3x más clientes</span>, sin aumentar tu carga comercial
@@ -26,7 +26,7 @@ export default function LeadsHero() {
         {/* Subheadline */}
         <Reveal delay={200}>
           <p
-            className="text-ink-muted mt-4 max-w-2xl mx-auto"
+            className="text-ink-muted mt-4 max-w-3xl mx-auto"
             style={{ fontSize: 'clamp(16px, 1.4vw, 20px)', lineHeight: 1.55, letterSpacing: '-0.01em' }}
           >
             Atención y Motor de Cotización, Sistema de Agendamiento, Levanta Muertos y Centro de IA

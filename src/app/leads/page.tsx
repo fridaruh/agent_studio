@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import VslProgress from '@/components/leads/VslProgress'
 import LeadsHero from '@/components/leads/LeadsHero'
 import LeadsPain from '@/components/leads/LeadsPain'
 import LeadsOffer from '@/components/leads/LeadsOffer'
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function LeadsPage() {
   return (
     <main>
+      <VslProgress />
       <LeadsHero />
       <LeadsPain />
       <LeadsOffer />
