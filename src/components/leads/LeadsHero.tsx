@@ -57,14 +57,6 @@ export default function LeadsHero() {
               </span>
             </div>
             )}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-hairline bg-canvas px-5 py-3">
-              <span className="text-caption text-ink-tertiary">Ya has comenzado a ver este video</span>
-              <span className="flex items-center gap-4 text-body-sm">
-                <span className="text-ink font-medium">▷ Continuar viendo</span>
-                <span className="text-ink-tertiary" aria-hidden>·</span>
-                <span className="text-ink-subtle">↺ Comenzar desde el principio</span>
-              </span>
-            </div>
           </div>
         </Reveal>
 
