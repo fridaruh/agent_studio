@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function LeadsPage() {
   return (
-    <main>
+    <main className="leads-page">
       <VslProgress />
       <LeadsHero />
       <LeadsPain />

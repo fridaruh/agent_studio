@@ -14,8 +14,16 @@ export default function Reveal({
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
+  const [reduceMotion, setReduceMotion] = useState(false)
 
   useEffect(() => {
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (motionQuery.matches) {
+      setReduceMotion(true)
+      setVisible(true)
+      return
+    }
+
     const el = ref.current
     if (!el) return
     if (el.getBoundingClientRect().top < window.innerHeight) {
@@ -41,8 +49,10 @@ export default function Reveal({
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'none' : 'translateY(16px)',
-        transition: `opacity 0.5s ease-out ${delay}ms, transform 0.5s ease-out ${delay}ms`,
+        transform: visible || reduceMotion ? 'none' : 'translateY(16px)',
+        transition: reduceMotion
+          ? 'none'
+          : `opacity 0.5s ease-out ${delay}ms, transform 0.5s ease-out ${delay}ms`,
       }}
     >
       {children}

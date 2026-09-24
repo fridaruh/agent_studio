@@ -2,7 +2,7 @@ export default function CtaButton({ className = '', href = '#agenda' }: { classN
   return (
     <a
       href={href}
-      className={`inline-flex items-center justify-center px-6 py-3 text-button text-white bg-primary rounded-md hover:bg-primary-hover transition-colors duration-150 btn-primary-glow ${className}`}
+      className={`leads-cta inline-flex min-h-11 items-center justify-center rounded-full px-7 py-3 text-button font-semibold transition-colors duration-200 ${className}`}
     >
       Agendar llamada →
     </a>

@@ -32,7 +32,7 @@ export default function VslProgress() {
   return (
     <nav
       aria-label="Estructura VSL"
-      className="hidden xl:flex fixed right-8 top-1/2 -translate-y-1/2 z-40 flex-col gap-4"
+      className="leads-progress hidden xl:flex fixed right-7 top-1/2 -translate-y-1/2 z-40 flex-col"
     >
       {SLIDES.map((slide) => {
         const isActive = active === slide.id
@@ -40,21 +40,17 @@ export default function VslProgress() {
           <a
             key={slide.id}
             href={`#${slide.id}`}
-            className="group flex items-center justify-end gap-3"
+            className={`group flex min-h-11 items-center justify-end gap-3 border-r px-3 transition-colors duration-200 ${
+              isActive ? 'is-active' : ''
+            }`}
+            aria-current={isActive ? 'location' : undefined}
           >
             <span
-              className={`font-mono text-mono transition-colors duration-200 ${
-                isActive ? 'text-ink' : 'text-ink-tertiary group-hover:text-ink-subtle'
-              }`}
+              className="font-mono text-[11px] uppercase tracking-[0.08em] transition-colors duration-200"
             >
               {slide.num} {slide.label}
             </span>
-            <span
-              className={`h-px transition-all duration-200 ${
-                isActive ? 'w-8 bg-primary' : 'w-4 bg-hairline-strong group-hover:bg-hairline-tertiary'
-              }`}
-              aria-hidden
-            />
+            <span className="leads-progress-mark h-1.5 w-1.5 rounded-full transition-all duration-200" aria-hidden />
           </a>
         )
       })}

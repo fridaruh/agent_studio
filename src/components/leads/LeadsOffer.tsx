@@ -34,49 +34,49 @@ const PILLARS = [
 
 export default function LeadsOffer() {
   return (
-    <section id="oferta" className="py-8 md:py-10 bg-canvas">
-      <div className="max-w-content mx-auto px-6 xl:pr-44 min-[1700px]:pr-6">
+    <section id="oferta" className="leads-section leads-surface scroll-mt-4">
+      <div className="leads-shell">
         <Reveal delay={80}>
-          <p className="text-primary text-eyebrow uppercase tracking-widest">Cómo funciona</p>
-        </Reveal>
-        <Reveal delay={140}>
-          <h2
-            className="text-ink font-semibold mt-4 max-w-6xl"
-            style={{ fontSize: 'clamp(26px, 3vw, 40px)', lineHeight: 1.13, letterSpacing: '-0.025em' }}
-          >
-            No somos una agencia de marketing ni una desarrolladora de software. Somos un Estudio de Transformación Agéntica para Empresas de Paneles Solares.
-          </h2>
-        </Reveal>
-        <Reveal delay={200}>
-          <p className="text-ink-muted text-body-lg mt-5 max-w-4xl">
-            Lo que hacemos se llama Sistema Agéntico de Pre-Cotización. Te instalamos un sistema completo de atención a clientes y operamos todo el sistema de principio a fin.
-          </p>
+          <p className="leads-kicker">Cómo funciona</p>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2 mt-8">
+        <div className="leads-intro-grid mt-6">
+          <Reveal delay={140}>
+            <h2 className="leads-heading max-w-5xl">
+              No somos una agencia de marketing ni una desarrolladora de software. Somos un Estudio de Transformación Agéntica para Empresas de Paneles Solares.
+            </h2>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="leads-body-copy">
+              Lo que hacemos se llama Sistema Agéntico de Pre-Cotización. Te instalamos un sistema completo de atención a clientes y operamos todo el sistema de principio a fin.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="mt-14 border-b leads-border">
           {PILLARS.map((pillar, i) => (
-            <Reveal key={pillar.num} delay={(i % 2) * 80}>
-              <div className="h-full flex flex-col rounded-lg border border-hairline bg-surface-1 p-6 transition-colors duration-150 hover:bg-surface-2 hover:border-hairline-strong">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-md border border-hairline bg-surface-2 font-mono text-mono text-ink-subtle">
-                    {pillar.num}
-                  </span>
-                  <span className="text-primary text-eyebrow uppercase tracking-widest">Pilar {pillar.num}</span>
+            <Reveal key={pillar.num} delay={(i % 2) * 70}>
+              <article className="leads-offer-row">
+                <div className="leads-offer-number font-mono">{pillar.num}</div>
+                <div>
+                  <p className="leads-row-label">Pilar {pillar.num}</p>
+                  <h3 className="leads-card-heading mt-3">{pillar.title}</h3>
+                  <p className="leads-small-copy mt-4">{pillar.detail}</p>
                 </div>
-                <h3 className="text-ink text-card-title font-medium mt-5">{pillar.title}</h3>
-                <p className="text-ink-subtle text-body-sm mt-2">{pillar.detail}</p>
-                <p className="text-body-sm mt-4 flex gap-2">
-                  <span className="text-success" aria-hidden>✓</span>
-                  <span className="text-ink">{pillar.result}</span>
-                </p>
-                <p className="mt-auto pt-5 text-caption text-ink-tertiary">{pillar.without}</p>
-              </div>
+                <div className="leads-offer-outcome">
+                  <p className="flex gap-3 text-[15px] leading-6">
+                    <span className="leads-check" aria-hidden>✓</span>
+                    <span>{pillar.result}</span>
+                  </p>
+                  <p className="leads-caption mt-6 text-caption leading-5">{pillar.without}</p>
+                </div>
+              </article>
             </Reveal>
           ))}
         </div>
 
         <Reveal delay={120}>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <CtaButton />
           </div>
         </Reveal>
