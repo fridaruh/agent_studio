@@ -3,16 +3,16 @@ import CtaButton from './CtaButton'
 
 const ROWS = [
   {
-    before: 'El prospecto espera horas (a veces hasta el día siguiente) a que alguien lo atienda',
-    after: 'Respuesta en segundos + cotización en minutos (vs días)',
+    before: 'El prospecto espera horas —a veces hasta el día siguiente— a que alguien lo atienda.',
+    after: 'Primera respuesta en menos de 5 segundos y un sistema que conversa, califica y cotiza.',
   },
   {
-    before: 'Perseguir clientes por WhatsApp o teléfono para agendar',
-    after: 'Visita técnica confirmada y agendada directo en calendario',
+    before: 'Tu equipo insiste por WhatsApp o teléfono para generar una visita técnica.',
+    after: 'El sistema confirma interés, coordina disponibilidad, agenda y confirma la visita técnica.',
   },
   {
-    before: 'Seguimiento depende de tu memoria o la del equipo (cotizaciones olvidadas)',
-    after: 'Seguimiento/recuperación automática + dashboard y resumen diario con recomendaciones',
+    before: 'El seguimiento depende de la memoria o la iniciativa de tu equipo y las cotizaciones se olvidan.',
+    after: 'Seguimiento y recuperación de oportunidades, con métricas, resumen diario y recomendaciones concretas de mejora.',
   },
 ]
 

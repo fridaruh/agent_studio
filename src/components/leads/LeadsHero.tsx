@@ -19,7 +19,7 @@ export default function LeadsHero() {
             className="text-ink font-semibold max-w-6xl mt-5"
             style={{ fontSize: 'clamp(36px, 5.5vw, 72px)', lineHeight: 1.07, letterSpacing: '-0.035em' }}
           >
-            Cómo atendemos <span className="whitespace-nowrap">3x más clientes</span>, sin aumentar tu carga comercial
+            Cómo atendemos <span className="whitespace-nowrap">3x más prospectos</span> para empresas solares residenciales, sin aumentar tu carga comercial
           </h1>
         </Reveal>
 
@@ -29,7 +29,7 @@ export default function LeadsHero() {
             className="text-ink-muted mt-4 max-w-3xl mx-auto"
             style={{ fontSize: 'clamp(16px, 1.4vw, 20px)', lineHeight: 1.55, letterSpacing: '-0.01em' }}
           >
-            Atención y Motor de Cotización, Sistema de Agendamiento, Levanta Muertos y Centro de IA
+            Y cómo tú puedes transferir el mismo sistema en tu empresa solar
           </p>
         </Reveal>
 
@@ -72,7 +72,7 @@ export default function LeadsHero() {
         <Reveal delay={320}>
           <div className="mt-8 flex flex-col items-center gap-3">
             <CtaButton />
-            <p className="text-caption text-ink-tertiary">Sin compromiso · No es una llamada de alta presión</p>
+            <p className="text-caption text-ink-tertiary">Sin compromiso · No es una llamada de ventas para presionarte</p>
           </div>
         </Reveal>
       </div>

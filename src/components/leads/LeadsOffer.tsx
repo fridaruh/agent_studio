@@ -4,35 +4,31 @@ import CtaButton from './CtaButton'
 const PILLARS = [
   {
     num: '01',
-    title: 'Atención y Motor de Cotización',
-    detail: 'Responde <5 s, conversa y pide recibo, cotiza con tu visto bueno y confirma la venta',
-    result: 'Atención inmediata, cotizaciones en minutos vs días y confirmación de interés',
-    caseNote: 'Synelmex — de ~6 h a 15 min en tiempo de respuesta',
-    casePending: false,
+    title: 'Primera Respuesta y Motor de Cotización',
+    detail: 'Responde a todos tus leads en menos de 5 segundos; conversa, responde dudas y pide su recibo de luz; calcula la cotización, la envía y confirma la venta.',
+    result: 'Agendar más visitas técnicas con interés de compra confirmado.',
+    without: 'Sin contestar y calificar a mano prospectos en WhatsApp ni armar cotizaciones en Excel.',
   },
   {
     num: '02',
-    title: 'Sistema de Agendamiento',
-    detail: 'Confirma interés post-cotización, coordina visita, avisa al equipo, agenda en calendario',
-    result: 'Sólo los mejores prospectos dispuestos a comprar',
-    caseNote: 'caso pendiente',
-    casePending: true,
+    title: 'Sistema de Control de Agenda',
+    detail: 'Confirma interés de compra después de la cotización; coordina la visita técnica revisando disponibilidad del equipo; notifica al equipo y confirma la visita con cliente y equipo.',
+    result: 'Automatizar el proceso de agendamiento con prospectos dispuestos a comprar.',
+    without: 'Sin que tu equipo tenga que insistir por WhatsApp o teléfono para generar una visita técnica.',
   },
   {
     num: '03',
-    title: 'Levanta Muertos',
-    detail: 'Da seguimiento a cotizaciones y recupera clientes perdidos',
-    result: 'Mejores resultados sin tirar dinero a la basura',
-    caseNote: 'caso pendiente',
-    casePending: true,
+    title: 'Sistema de Recuperación de Oportunidades',
+    detail: 'Da seguimiento a cotizaciones que no se concretaron y recupera clientes que estuvieron interesados pero no recibieron seguimiento.',
+    result: 'Recuperar oportunidades que parecían perdidas.',
+    without: 'Sin depender de la memoria o la iniciativa de tu equipo para dar seguimiento a cotizaciones olvidadas.',
   },
   {
     num: '04',
-    title: 'Centro de IA',
-    detail: 'Dashboard de métricas (cotizaciones, leads, pipeline), resumen de voz diario, recomendaciones con acciones',
-    result: 'Visibilidad de todo tu frente comercial en un solo lugar y mejores decisiones diarias',
-    caseNote: 'caso pendiente',
-    casePending: true,
+    title: 'Gestión de proyectos y Centro de Indicadores de Mejora',
+    detail: 'Monitorea tareas y métricas de desempeño en cotizaciones, pipeline y proyectos activos; crea resúmenes específicos de lo que pasó y lo que toca hoy en una nota de voz; lista recomendaciones con acciones concretas de mejora.',
+    result: 'Visibilidad De proyectos activos y Todo Tu Frente Comercial',
+    without: 'Sin iniciar de cero cada mañana para saber qué pasó ni operar a ciegas.',
   },
 ]
 
@@ -48,12 +44,12 @@ export default function LeadsOffer() {
             className="text-ink font-semibold mt-4 max-w-6xl"
             style={{ fontSize: 'clamp(26px, 3vw, 40px)', lineHeight: 1.13, letterSpacing: '-0.025em' }}
           >
-            No es una agencia de marketing ni un software más. Es un Estudio de Transformación Agéntica para Empresas de Paneles Solares.
+            No somos una agencia de marketing ni una desarrolladora de software. Somos un Estudio de Transformación Agéntica para Empresas de Paneles Solares.
           </h2>
         </Reveal>
         <Reveal delay={200}>
           <p className="text-ink-muted text-body-lg mt-5 max-w-4xl">
-            Te instalamos y operamos el Sistema Agéntico de Pre-Cotización Solar de principio a fin. Licencia/configuración una vez; lo variable son bolsas de capacidad.
+            Lo que hacemos se llama Sistema Agéntico de Pre-Cotización. Te instalamos un sistema completo de atención a clientes y operamos todo el sistema de principio a fin.
           </p>
         </Reveal>
 
@@ -73,17 +69,7 @@ export default function LeadsOffer() {
                   <span className="text-success" aria-hidden>✓</span>
                   <span className="text-ink">{pillar.result}</span>
                 </p>
-                <div className="mt-auto pt-5">
-                  <span
-                    className={`inline-flex rounded-md border px-3 py-1.5 text-caption ${
-                      pillar.casePending
-                        ? 'border-hairline bg-surface-2 text-ink-tertiary'
-                        : 'border-hairline-strong bg-surface-2 text-ink font-medium'
-                    }`}
-                  >
-                    {pillar.caseNote}
-                  </span>
-                </div>
+                <p className="mt-auto pt-5 text-caption text-ink-tertiary">{pillar.without}</p>
               </div>
             </Reveal>
           ))}
