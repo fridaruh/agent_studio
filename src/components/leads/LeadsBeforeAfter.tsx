@@ -1,5 +1,4 @@
 import Reveal from './Reveal'
-import SlideTag from './SlideTag'
 import CtaButton from './CtaButton'
 
 const ROWS = [
@@ -21,9 +20,6 @@ export default function LeadsBeforeAfter() {
   return (
     <section id="variable" className="py-section bg-canvas">
       <div className="max-w-content mx-auto px-6">
-        <Reveal>
-          <SlideTag slide="04" label="VARIABLE" />
-        </Reveal>
         <Reveal delay={80}>
           <h2
             className="text-ink font-semibold mt-6 max-w-3xl"
@@ -37,15 +33,15 @@ export default function LeadsBeforeAfter() {
           {ROWS.map((row, i) => (
             <Reveal key={row.before} delay={i * 80}>
               <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
-                <div className="rounded-lg border border-hairline bg-surface-1 p-6">
-                  <p className="text-caption uppercase tracking-widest text-ink-tertiary">Antes</p>
+                <div className="rounded-lg border border-danger/30 bg-danger/5 p-6">
+                  <p className="text-caption uppercase tracking-widest text-danger font-medium">Antes</p>
                   <p className="text-ink-muted text-body mt-3">{row.before}</p>
                 </div>
                 <div className="flex items-center justify-center text-ink-tertiary text-headline" aria-hidden>
                   <span className="rotate-90 md:rotate-0">→</span>
                 </div>
-                <div className="rounded-lg border border-hairline-strong bg-canvas p-6">
-                  <p className="text-eyebrow uppercase tracking-widest text-primary">Después · Close Energy</p>
+                <div className="rounded-lg border border-success/30 bg-success/5 p-6">
+                  <p className="text-eyebrow uppercase tracking-widest text-success font-medium">Después · Close Energy</p>
                   <p className="text-ink text-body font-medium mt-3">{row.after}</p>
                 </div>
               </div>

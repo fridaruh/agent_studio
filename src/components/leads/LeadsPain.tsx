@@ -1,5 +1,4 @@
 import Reveal from './Reveal'
-import SlideTag from './SlideTag'
 import CtaButton from './CtaButton'
 
 const PAINS = [
@@ -41,9 +40,6 @@ export default function LeadsPain() {
   return (
     <section id="dolor" className="py-section bg-canvas">
       <div className="max-w-content mx-auto px-6">
-        <Reveal>
-          <SlideTag slide="02" label="DOLOR" />
-        </Reveal>
         <Reveal delay={80}>
           <p className="text-primary text-eyebrow uppercase tracking-widest mt-6">El dolor que nadie te cuenta</p>
         </Reveal>

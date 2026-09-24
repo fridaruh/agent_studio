@@ -1,19 +1,14 @@
 import Reveal from './Reveal'
-import SlideTag from './SlideTag'
-import CtaButton from './CtaButton'
+import { CALENDLY_URL } from '@/lib/links'
 
 export default function LeadsAgenda() {
   return (
-    <section id="agenda" className="py-section bg-canvas">
+    <section id="agenda" className="py-section bg-canvas scroll-mt-4">
       <div className="max-w-content mx-auto px-6">
-        <Reveal>
-          <SlideTag slide="05" label="AGENDA" />
-        </Reveal>
-
         <Reveal delay={100}>
-          <div className="relative mt-8 overflow-hidden rounded-xl border border-hairline bg-surface-1 p-8 md:p-12">
+          <div className="relative overflow-hidden rounded-xl border border-hairline bg-surface-1 p-8 md:p-12">
             <div className="absolute inset-0 hero-grid opacity-60" aria-hidden />
-            <div className="relative grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+            <div className="relative grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
               <div>
                 <h2
                   className="text-ink font-semibold max-w-2xl"
@@ -29,11 +24,19 @@ export default function LeadsAgenda() {
                 </p>
               </div>
 
-              <div className="rounded-lg border border-hairline bg-canvas p-6 md:p-8">
-                <p className="font-mono text-mono text-ink-tertiary">CLOSE ENERGY</p>
-                <h3 className="text-ink text-card-title font-medium mt-3">Close Energy — Llamada Discovery</h3>
-                <p className="text-ink-subtle text-body-sm mt-2">⏱ 30 min</p>
-                <CtaButton className="w-full mt-6" />
+              <div className="w-full overflow-hidden rounded-lg border border-hairline bg-canvas">
+                {CALENDLY_URL ? (
+                  <iframe
+                    src={`${CALENDLY_URL}?hide_gdpr_banner=1`}
+                    title="Agendar llamada"
+                    loading="lazy"
+                    className="block h-[700px] w-full"
+                  />
+                ) : (
+                  <div className="flex h-[700px] w-full items-center justify-center text-ink-subtle text-body-sm">
+                    Calendario próximamente
+                  </div>
+                )}
               </div>
             </div>
           </div>

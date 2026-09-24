@@ -1,5 +1,4 @@
 import Reveal from './Reveal'
-import SlideTag from './SlideTag'
 import CtaButton from './CtaButton'
 
 const PILLARS = [
@@ -41,9 +40,6 @@ export default function LeadsOffer() {
   return (
     <section id="oferta" className="py-section bg-canvas">
       <div className="max-w-content mx-auto px-6">
-        <Reveal>
-          <SlideTag slide="03" label="OFERTA" />
-        </Reveal>
         <Reveal delay={80}>
           <p className="text-primary text-eyebrow uppercase tracking-widest mt-6">Cómo funciona</p>
         </Reveal>
