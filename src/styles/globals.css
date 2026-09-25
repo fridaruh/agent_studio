@@ -774,3 +774,39 @@ body {
     display: none;
   }
 }
+
+/* /thankyoupage — pre-call flow; all additions are scoped to the leads canvas. */
+.leads-page.thankyou-page .thankyou-hero { border-bottom: 1px solid var(--leads-line); }
+.leads-page.thankyou-page .thankyou-alert { color: var(--leads-primary); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.leads-page.thankyou-page .thankyou-warning { border-left: 2px solid var(--leads-primary); color: var(--leads-muted); font-size: clamp(16px, 1.4vw, 19px); line-height: 1.55; padding: 4px 0 4px 18px; text-align: left; }
+.leads-page.thankyou-page .thankyou-section-intro { max-width: 680px; }
+.leads-page.thankyou-page .thankyou-video-placeholder { background: #f3f4f6; min-height: 280px; }
+.leads-page.thankyou-page .thankyou-confirmation-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, .8fr); align-items: center; gap: clamp(40px, 8vw, 120px); }
+.leads-page.thankyou-page .thankyou-release-note { border-top: 1px solid var(--leads-line); color: var(--leads-ink); font-size: 14px; line-height: 1.55; max-width: 580px; padding-top: 18px; }
+.leads-page.thankyou-page .thankyou-whatsapp { border: 1px solid var(--leads-line); border-radius: 16px; background: #fff; overflow: hidden; }
+.leads-page.thankyou-page .thankyou-whatsapp-top { align-items: center; background: #f3f4f6; border-bottom: 1px solid var(--leads-line); display: flex; gap: 12px; padding: 16px 18px; }
+.leads-page.thankyou-page .thankyou-whatsapp-avatar { align-items: center; background: var(--leads-primary); border-radius: 9999px; color: #fff; display: inline-flex; font-family: 'JetBrains Mono', monospace; font-size: 11px; height: 36px; justify-content: center; width: 36px; }
+.leads-page.thankyou-page .thankyou-whatsapp-body { background: #f9fafb; min-height: 180px; padding: 24px 18px; }
+.leads-page.thankyou-page .thankyou-whatsapp-bubble { background: #fff; border: 1px solid var(--leads-line); border-radius: 4px 12px 12px; color: var(--leads-muted); font-size: 14px; line-height: 1.55; max-width: 300px; padding: 13px 14px; }
+.leads-page.thankyou-page .thankyou-pending { color: var(--leads-faint); font-size: 12px; line-height: 1.5; }
+.leads-page.thankyou-page .thankyou-faq { border-top: 1px solid var(--leads-line); max-width: 960px; }
+.leads-page.thankyou-page .thankyou-faq-item { border-bottom: 1px solid var(--leads-line); }
+.leads-page.thankyou-page .thankyou-faq-item summary { align-items: center; color: var(--leads-ink); cursor: pointer; display: grid; font-size: clamp(16px, 1.5vw, 18px); font-weight: 500; gap: 16px; grid-template-columns: 32px minmax(0, 1fr) 24px; line-height: 1.4; list-style: none; min-height: 44px; padding: 20px 0; }
+.leads-page.thankyou-page .thankyou-faq-item summary::-webkit-details-marker { display: none; }
+.leads-page.thankyou-page .thankyou-faq-item summary:focus-visible { outline: 3px solid rgba(17, 24, 39, .35); outline-offset: -3px; }
+.leads-page.thankyou-page .thankyou-faq-number { color: var(--leads-faint); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .08em; }
+.leads-page.thankyou-page .thankyou-faq-plus { color: var(--leads-faint); font-size: 24px; font-weight: 300; text-align: right; transition: transform 180ms ease; }
+.leads-page.thankyou-page .thankyou-faq-item[open] .thankyou-faq-plus { color: var(--leads-primary); transform: rotate(45deg); }
+.leads-page.thankyou-page .thankyou-faq-answer { color: var(--leads-muted); font-size: 15px; line-height: 1.6; max-width: 820px; padding: 0 40px 22px 48px; }
+.leads-page.thankyou-page .thankyou-pillar-list { display: grid; gap: 12px; list-style: disc; padding-left: 20px; }
+.leads-page.thankyou-page .thankyou-pillar-list li::marker { color: var(--leads-primary); }
+.leads-page.thankyou-page .thankyou-progress { border: 1px solid var(--leads-line); border-radius: 12px; background: rgba(255, 255, 255, .94); color: var(--leads-faint); padding-block: 7px; box-shadow: 0 8px 24px rgba(0,0,0,.08); backdrop-filter: blur(10px); }
+.leads-page.thankyou-page .thankyou-progress a { border-color: var(--leads-line); }
+.leads-page.thankyou-page .thankyou-progress a:hover { color: var(--leads-ink); }
+.leads-page.thankyou-page .thankyou-progress a:focus-visible { outline: 3px solid rgba(17, 24, 39, .35); outline-offset: 2px; }
+.leads-page.thankyou-page .thankyou-progress-mark { background: var(--leads-line); }
+.leads-page.thankyou-page .thankyou-progress a.is-active { border-color: var(--leads-primary); color: var(--leads-ink); }
+.leads-page.thankyou-page .thankyou-progress a.is-active .thankyou-progress-mark { background: var(--leads-primary); box-shadow: 0 0 0 4px rgba(55, 65, 81, .12); }
+@media (min-width: 1280px) and (max-width: 1699px) { .leads-page.thankyou-page .leads-shell { padding-right: 176px; } }
+@media (max-width: 1023px) { .leads-page.thankyou-page .thankyou-confirmation-grid { grid-template-columns: 1fr; gap: 36px; } }
+@media (max-width: 639px) { .leads-page.thankyou-page .thankyou-video-placeholder { min-height: 220px; } .leads-page.thankyou-page .thankyou-whatsapp { border-radius: 12px; } .leads-page.thankyou-page .thankyou-faq-item summary { gap: 12px; grid-template-columns: 28px minmax(0, 1fr) 20px; padding-block: 18px; } .leads-page.thankyou-page .thankyou-faq-answer { padding: 0 0 20px 40px; } }
