@@ -13,7 +13,7 @@ export default function Reveal({
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
   const [reduceMotion, setReduceMotion] = useState(false)
 
   useEffect(() => {
@@ -27,9 +27,9 @@ export default function Reveal({
     const el = ref.current
     if (!el) return
     if (el.getBoundingClientRect().top < window.innerHeight) {
-      setVisible(true)
       return
     }
+    setVisible(false)
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

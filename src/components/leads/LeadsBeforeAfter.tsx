@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
 import Reveal from './Reveal'
 import CtaButton from './CtaButton'
 
@@ -16,7 +19,32 @@ const ROWS = [
   },
 ]
 
+function CheckMark() {
+  return (
+    <svg className="leads-completion-mark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  )
+}
+
 export default function LeadsBeforeAfter() {
+  const panelRef = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(false)
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (motionQuery.matches) return
+
+    const panel = panelRef.current
+    if (!panel) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.2 },
+    )
+    observer.observe(panel)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section id="variable" className="leads-section leads-paper scroll-mt-4">
       <div className="leads-shell">
@@ -24,7 +52,11 @@ export default function LeadsBeforeAfter() {
           <h2 className="leads-heading max-w-6xl">Antes → Después (con Close Energy)</h2>
         </Reveal>
 
-        <div className="mt-14 border-b leads-border">
+        <div ref={panelRef} className={`leads-comparison-panel mt-12 ${inView ? 'is-in-view' : ''}`}>
+          <div className="leads-comparison-header" aria-hidden>
+            <span>Antes</span>
+            <span>Después · Close Energy</span>
+          </div>
           {ROWS.map((row, i) => (
             <Reveal key={row.before} delay={i * 70}>
               <article className="leads-comparison-row">
@@ -32,10 +64,19 @@ export default function LeadsBeforeAfter() {
                   <p className="leads-row-label">Antes</p>
                   <p className="leads-small-copy mt-4">{row.before}</p>
                 </div>
-                <div className="leads-comparison-arrow" aria-hidden>→</div>
+                <div className="leads-comparison-arrow" aria-hidden>
+                  <span className="leads-comparison-arrow-line" />
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14" />
+                    <path d="m13 6 6 6-6 6" />
+                  </svg>
+                </div>
                 <div className="leads-after-cell">
                   <p className="leads-row-label leads-row-label-accent">Después · Close Energy</p>
-                  <p className="mt-4 text-[16px] font-medium leading-7">{row.after}</p>
+                  <div className="mt-4 flex gap-3">
+                    <CheckMark />
+                    <p className="text-body-sm font-medium leading-7 text-ink">{row.after}</p>
+                  </div>
                 </div>
               </article>
             </Reveal>

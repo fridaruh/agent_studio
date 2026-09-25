@@ -4,10 +4,10 @@ import { VSL_VIDEO_URL } from '@/lib/links'
 
 export default function LeadsHero() {
   return (
-    <section id="hero" className="leads-hero relative overflow-hidden scroll-mt-4">
+    <section id="hero" className="leads-hero hero-grid relative overflow-hidden scroll-mt-4">
       <div className="leads-shell leads-hero-shell relative flex w-full flex-col items-center text-center">
         <Reveal delay={80}>
-          <p className="leads-qualifier inline-flex max-w-3xl items-center text-eyebrow font-semibold uppercase tracking-[0.08em]">
+          <p className="leads-qualifier inline-flex max-w-3xl items-center text-eyebrow font-medium uppercase tracking-[0.08em]">
             SOLO PARA empresas en crecimiento comercial (generalmente invierte en pauta recurrente, expos, activaciones)
           </p>
         </Reveal>
@@ -33,11 +33,11 @@ export default function LeadsHero() {
                 loading="lazy"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
-                className="block aspect-video w-full rounded-[18px]"
+                className="block aspect-video w-full rounded-xl"
               />
             ) : (
-              <div className="leads-video-placeholder relative flex aspect-video items-center justify-center rounded-[18px]">
-                <span className="leads-play flex h-16 w-16 items-center justify-center rounded-full">
+              <div className="leads-video-placeholder relative flex aspect-video items-center justify-center rounded-xl">
+                <span className="leads-play flex h-12 w-12 items-center justify-center rounded-full">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                     <path d="M6 4.5v11l9-5.5-9-5.5z" />
                   </svg>

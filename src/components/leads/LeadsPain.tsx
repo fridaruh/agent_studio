@@ -87,6 +87,25 @@ export default function LeadsPain() {
           ))}
         </div>
 
+        <Reveal delay={100}>
+          <div className="leads-lead-flow mt-8" aria-label="Flujo actual de atención">
+            <div className="leads-flow-stage">
+              <span className="leads-flow-index">01</span>
+              <p>todos los días te llegan prospectos nuevos.</p>
+            </div>
+            <span className="leads-flow-line" aria-hidden />
+            <div className="leads-flow-stage leads-flow-stage-wait">
+              <span className="leads-flow-index">02</span>
+              <p>ese prospecto espera horas</p>
+            </div>
+            <span className="leads-flow-line" aria-hidden />
+            <div className="leads-flow-stage">
+              <span className="leads-flow-index">03</span>
+              <p>se desespera, cotiza con otro o deja de contestar.</p>
+            </div>
+          </div>
+        </Reveal>
+
         <Reveal delay={120}>
           <div className="leads-inline-cta mt-14">
             <h3 className="leads-subheading max-w-4xl">

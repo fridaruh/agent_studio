@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
 import Reveal from './Reveal'
 import CtaButton from './CtaButton'
 
@@ -33,8 +36,47 @@ const PILLARS = [
 ]
 
 export default function LeadsOffer() {
+  const [activeStep, setActiveStep] = useState(0)
+  const sectionRef = useRef<HTMLElement>(null)
+  const intervalRef = useRef<ReturnType<typeof setInterval>>()
+  const manualPause = useRef(false)
+
+  const selectStep = (index: number) => {
+    manualPause.current = true
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    intervalRef.current = undefined
+    setActiveStep(index)
+  }
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (motionQuery.matches) return
+
+    const section = sectionRef.current
+    if (!section) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !manualPause.current) {
+          if (intervalRef.current) clearInterval(intervalRef.current)
+          intervalRef.current = setInterval(() => {
+            setActiveStep((current) => (current + 1) % PILLARS.length)
+          }, 3000)
+        } else if (!entry.isIntersecting && intervalRef.current) {
+          clearInterval(intervalRef.current)
+          intervalRef.current = undefined
+        }
+      },
+      { threshold: 0.25 },
+    )
+    observer.observe(section)
+    return () => {
+      observer.disconnect()
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
+  }, [])
+
   return (
-    <section id="oferta" className="leads-section leads-surface scroll-mt-4">
+    <section id="oferta" ref={sectionRef} className="leads-section leads-surface scroll-mt-4">
       <div className="leads-shell">
         <Reveal delay={80}>
           <p className="leads-kicker">Cómo funciona</p>
@@ -48,19 +90,45 @@ export default function LeadsOffer() {
           </Reveal>
           <Reveal delay={200}>
             <p className="leads-body-copy">
-              Lo que hacemos se llama Sistema Agéntico de Pre-Cotización. Te instalamos un sistema completo de atención a clientes y operamos todo el sistema de principio a fin.
+              Lo que hacemos se llama Sistema Agéntico de Cotización. Te instalamos un sistema completo de atención a clientes y operamos todo el sistema de principio a fin.
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-14 border-b leads-border">
+        <Reveal delay={220}>
+          <h3 className="leads-pillars-heading mt-14">Pilares del sistema:</h3>
+        </Reveal>
+
+        <div className="leads-offer-layout mt-6">
+          <div className="leads-process-diagram" aria-label="Proceso del sistema">
+            {PILLARS.map((pillar, index) => {
+              const active = activeStep === index
+              const complete = activeStep > index
+              return (
+                <button
+                  key={pillar.num}
+                  type="button"
+                  className={`leads-process-step ${active ? 'is-active' : ''} ${complete ? 'is-complete' : ''}`}
+                  onClick={() => selectStep(index)}
+                  onFocus={() => selectStep(index)}
+                  onPointerDown={() => selectStep(index)}
+                  aria-pressed={active}
+                >
+                  <span className="leads-process-indicator" aria-hidden>{complete ? '✓' : pillar.num}</span>
+                  <span>{pillar.title}</span>
+                </button>
+              )
+            })}
+          </div>
+
+          <div className="border-b leads-border">
           {PILLARS.map((pillar, i) => (
             <Reveal key={pillar.num} delay={(i % 2) * 70}>
-              <article className="leads-offer-row">
+              <article className={`leads-offer-row ${activeStep === i ? 'is-active' : ''}`}>
                 <div className="leads-offer-number font-mono">{pillar.num}</div>
                 <div>
                   <p className="leads-row-label">Pilar {pillar.num}</p>
-                  <h3 className="leads-card-heading mt-3">{pillar.title}</h3>
+                  <h4 className="leads-card-heading mt-3">{pillar.title}</h4>
                   <p className="leads-small-copy mt-4">{pillar.detail}</p>
                 </div>
                 <div className="leads-offer-outcome">
@@ -73,6 +141,7 @@ export default function LeadsOffer() {
               </article>
             </Reveal>
           ))}
+          </div>
         </div>
 
         <Reveal delay={120}>
