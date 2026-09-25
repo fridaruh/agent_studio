@@ -82,22 +82,22 @@ export default function LeadsOffer() {
           <p className="leads-kicker">Cómo funciona</p>
         </Reveal>
 
-        <div className="leads-intro-grid mt-6">
+        <div className="mt-6">
           <Reveal delay={140}>
-            <h2 className="leads-heading max-w-5xl">
-              No somos una agencia de marketing ni una desarrolladora de software.
-              <span className="mt-2 block">Somos un Estudio de Transformación Agéntica para Empresas de Paneles Solares.</span>
+            <h2 className="leads-heading">
+              <span className="block">No somos una agencia de marketing ni una desarrolladora de software.</span>{' '}
+              <span className="mt-5 block">Somos un Estudio de Transformación Agéntica para Empresas de Paneles Solares.</span>
             </h2>
           </Reveal>
-          <Reveal delay={200}>
+          <Reveal delay={200} className="mt-6">
             <p className="leads-body-copy">
-              Y lo que hacemos es instalarte un Sistema Agéntico de Cotización.
+              Lo que hacemos es instalarte un Sistema Agéntico de Cotización.
             </p>
           </Reveal>
         </div>
 
         <Reveal delay={220}>
-          <h3 className="leads-pillars-heading mt-14">Pilares del sistema:</h3>
+          <h3 className="leads-pillars-heading mt-10">Pilares del sistema:</h3>
         </Reveal>
 
         <div className="leads-offer-layout mt-6">
@@ -120,14 +120,14 @@ export default function LeadsOffer() {
                 <div>
                   <p className="leads-row-label">Pilar {pillar.num}</p>
                   <h4 className="leads-card-heading mt-3">{pillar.title}</h4>
-                  <p className="leads-small-copy mt-4">{pillar.detail}</p>
+                  <p className="leads-small-copy mt-3">{pillar.detail}</p>
                 </div>
                 <div className="leads-offer-outcome">
                   <p className="flex gap-3 text-[15px] leading-6">
                     <span className="leads-check" aria-hidden>✓</span>
                     <span>{pillar.result}</span>
                   </p>
-                  <p className="leads-caption mt-6 text-caption leading-5">{pillar.without}</p>
+                  <p className="leads-caption mt-4 text-caption leading-5">{pillar.without}</p>
                 </div>
               </article>
             </Reveal>
@@ -136,7 +136,7 @@ export default function LeadsOffer() {
         </div>
 
         <Reveal delay={120}>
-          <div className="mt-10 flex justify-center">
+          <div className="mt-7 flex justify-center">
             <CtaButton />
           </div>
         </Reveal>

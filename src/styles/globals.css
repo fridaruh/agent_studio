@@ -162,12 +162,12 @@ body {
 }
 
 .leads-page .leads-hero-shell {
-  padding-top: clamp(96px, 10vw, 144px);
-  padding-bottom: clamp(64px, 6vw, 80px);
+  padding-top: clamp(52px, 6vw, 88px);
+  padding-bottom: clamp(36px, 4vw, 52px);
 }
 
 .leads-page .leads-section {
-  padding-block: clamp(64px, 6vw, 96px);
+  padding-block: clamp(44px, 4.5vw, 72px);
 }
 
 .leads-page .leads-paper {
@@ -362,7 +362,7 @@ body {
   justify-content: space-between;
   gap: 48px;
   border-top: 1px solid var(--leads-line);
-  padding-top: clamp(32px, 4vw, 52px);
+  padding-top: clamp(24px, 3vw, 36px);
 }
 
 .leads-page .leads-offer-row {
@@ -370,7 +370,7 @@ body {
   grid-template-columns: 72px minmax(260px, 0.95fr) minmax(300px, 1.05fr);
   gap: clamp(28px, 4vw, 64px);
   border-top: 1px solid var(--leads-line);
-  padding-block: clamp(38px, 5vw, 62px);
+  padding-block: clamp(22px, 3vw, 36px);
   transition: background-color 180ms ease, border-color 180ms ease;
 }
 
@@ -433,8 +433,8 @@ body {
 
 .leads-page .leads-before-cell,
 .leads-page .leads-after-cell {
-  min-height: 190px;
-  padding: clamp(28px, 4vw, 52px);
+  min-height: 0;
+  padding: clamp(20px, 2.8vw, 32px);
 }
 
 .leads-page .leads-before-cell {
@@ -467,7 +467,7 @@ body {
 .leads-page .leads-agenda {
   background: #f3f4f6;
   color: var(--leads-ink);
-  padding-block: clamp(64px, 6vw, 96px);
+  padding-block: clamp(52px, 5vw, 80px);
 }
 
 .leads-page .leads-agenda-grid {
@@ -483,7 +483,7 @@ body {
 
 .leads-page .leads-call-stages {
   border-top: 1px solid var(--leads-line);
-  padding-top: 28px;
+  padding-top: 20px;
 }
 
 .leads-page .leads-call-stage-list {
@@ -658,12 +658,12 @@ body {
 
 @media (max-width: 639px) {
   .leads-page .leads-hero-shell {
-    padding-top: 58px;
-    padding-bottom: 64px;
+    padding-top: 36px;
+    padding-bottom: 40px;
   }
 
   .leads-page .leads-section {
-    padding-block: 60px;
+    padding-block: 44px;
   }
 
   .leads-page .leads-display {
@@ -713,7 +713,7 @@ body {
 
   .leads-page .leads-offer-row {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
   .leads-page .leads-lead-flow { grid-template-columns: 1fr; gap: 14px; }
@@ -735,7 +735,7 @@ body {
   .leads-page .leads-before-cell,
   .leads-page .leads-after-cell {
     min-height: 0;
-    padding: 28px 24px;
+    padding: 20px 24px;
   }
 
   .leads-page .leads-comparison-arrow {
@@ -751,7 +751,7 @@ body {
   }
 
   .leads-page .leads-agenda {
-    padding-block: 60px;
+    padding-block: 48px;
   }
 
   .leads-page .leads-calendar {

@@ -52,7 +52,7 @@ export default function LeadsBeforeAfter() {
           <h2 className="leads-heading max-w-6xl">Antes → Después (con Close Energy)</h2>
         </Reveal>
 
-        <div ref={panelRef} className={`leads-comparison-panel mt-12 ${inView ? 'is-in-view' : ''}`}>
+        <div ref={panelRef} className={`leads-comparison-panel mt-8 ${inView ? 'is-in-view' : ''}`}>
           <div className="leads-comparison-header" aria-hidden>
             <span>Antes</span>
             <span className="leads-comparison-header-spacer" />
@@ -63,7 +63,7 @@ export default function LeadsBeforeAfter() {
               <article className="leads-comparison-row">
                 <div className="leads-before-cell">
                   <p className="leads-row-label">Antes</p>
-                  <p className="leads-small-copy mt-4">{row.before}</p>
+                  <p className="leads-small-copy mt-3">{row.before}</p>
                 </div>
                 <div className="leads-comparison-arrow" aria-hidden>
                   <span className="leads-comparison-arrow-line" />
@@ -74,7 +74,7 @@ export default function LeadsBeforeAfter() {
                 </div>
                 <div className="leads-after-cell">
                   <p className="leads-row-label leads-row-label-accent">Después · Close Energy</p>
-                  <div className="mt-4 flex gap-3">
+                  <div className="mt-3 flex gap-3">
                     <CheckMark />
                     <p className="text-body-sm font-medium leading-7 text-ink">{row.after}</p>
                   </div>

@@ -55,13 +55,13 @@ export default function LeadsPain() {
           <p className="leads-kicker">El problema no son tus leads ni tus anuncios</p>
         </Reveal>
 
-        <div className="leads-intro-grid mt-6">
+        <div className="mt-6">
           <Reveal delay={140}>
-            <h2 className="leads-heading max-w-4xl">
+            <h2 className="leads-heading">
               El problema real es que no tienes manos suficientes para atender a todos.
             </h2>
           </Reveal>
-          <Reveal delay={200}>
+          <Reveal delay={200} className="mt-6">
             <div className="leads-body-copy space-y-4">
               <p>Ambos sabemos que tu producto es muy atractivo: todos los días te llegan prospectos nuevos.</p>
               <p>
@@ -107,7 +107,7 @@ export default function LeadsPain() {
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="leads-inline-cta mt-14">
+          <div className="leads-inline-cta mt-10">
             <h3 className="leads-subheading max-w-4xl">
               Al final del día terminas pagando por prospectos que no se convierten en clientes.
             </h3>

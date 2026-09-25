@@ -10,11 +10,8 @@ export default function LeadsAgenda() {
         <Reveal delay={100}>
           <div className="leads-agenda-grid">
             <div className="leads-agenda-copy">
-              <p className="max-w-xl text-body-lg leading-8 text-ink-muted">
-                Así que si ahora mismo eres una empresa solar residencial, pagas publicidad y sientes un cuello de botella al atender al cliente...
-              </p>
-              <h2 className="leads-heading mt-6 max-w-3xl">
-                Y deseas atender 3 veces más clientes sin aumentar tu carga comercial
+              <h2 className="leads-heading max-w-3xl">
+                ¿Deseas atender 3 veces más clientes sin aumentar tu carga comercial?
               </h2>
               <div className="mt-8">
                 <CtaButton href="#calendario" />

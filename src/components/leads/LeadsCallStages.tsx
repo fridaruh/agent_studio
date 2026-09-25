@@ -62,7 +62,7 @@ export default function LeadsCallStages() {
   }, [])
 
   return (
-    <div ref={stagesRef} className="leads-call-stages mt-12 max-w-xl">
+    <div ref={stagesRef} className="leads-call-stages mt-7 max-w-xl">
       <ol className="leads-call-stage-list">
         {CALL_STAGES.map((stage, index) => {
           const active = activeStage === index
