@@ -55,6 +55,7 @@ export default function LeadsBeforeAfter() {
         <div ref={panelRef} className={`leads-comparison-panel mt-12 ${inView ? 'is-in-view' : ''}`}>
           <div className="leads-comparison-header" aria-hidden>
             <span>Antes</span>
+            <span className="leads-comparison-header-spacer" />
             <span>Después · Close Energy</span>
           </div>
           {ROWS.map((row, i) => (

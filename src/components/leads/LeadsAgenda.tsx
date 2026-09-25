@@ -1,5 +1,6 @@
 import Reveal from './Reveal'
 import CtaButton from './CtaButton'
+import LeadsCallStages from './LeadsCallStages'
 import { CALENDLY_URL } from '@/lib/links'
 
 export default function LeadsAgenda() {
@@ -22,17 +23,7 @@ export default function LeadsAgenda() {
                 Esta no es una llamada de ventas para presionarte. El objetivo es demostrarte cómo puedes crecer sin drama.
               </p>
 
-              <div className="leads-agenda-notes mt-12 max-w-xl space-y-5 text-body leading-7 text-ink-muted">
-                <p>En esta llamada analizaremos tu proceso de atención comercial completo.</p>
-                <p>
-                  Veremos los pasos que sigues y te daremos tu proceso comercial actual documentado y cómo se vería con nuestra
-                  solución.
-                </p>
-                <p>Si vemos potencial de trabajar juntos, te mostramos exactamente cómo funciona.</p>
-                <p className="font-medium text-ink">
-                  No tienes nada que perder: al final de la llamada te llevas tu proceso comercial actual documentado.
-                </p>
-              </div>
+              <LeadsCallStages />
             </div>
 
             <div id="calendario" className="leads-calendar scroll-mt-4">
