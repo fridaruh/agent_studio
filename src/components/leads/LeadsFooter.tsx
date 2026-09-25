@@ -1,4 +1,8 @@
-export default function LeadsFooter() {
+type LeadsFooterProps = {
+  showMethodologyNote?: boolean
+}
+
+export default function LeadsFooter({ showMethodologyNote = false }: LeadsFooterProps) {
   return (
     <footer className="leads-footer">
       <div className="leads-shell flex flex-col items-center gap-4 text-center">
@@ -8,6 +12,13 @@ export default function LeadsFooter() {
           Sistema Agéntico de Cotización · Fik Studio, Estudio de Transformación Agéntica para Empresas de Paneles Solares
         </p>
         <p className="text-[12px] text-ink-tertiary">© {new Date().getFullYear()} Close Energy</p>
+        {showMethodologyNote && (
+          <p className="text-[12px] text-ink-subtle">
+            <a href="/nota-metodologica-tiempo-capacidad.html#panel-capacity" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-ink">
+              *Conoce nuestra nota metodológica que respalda nuestra promesa
+            </a>
+          </p>
+        )}
       </div>
     </footer>
   )

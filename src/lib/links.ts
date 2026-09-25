@@ -8,5 +8,8 @@ export const BOOKING_URL =
 /** Pegar aquí la URL de embed del VSL (YouTube/Vimeo/Loom/Wistia). Vacío = placeholder. */
 export const VSL_VIDEO_URL = 'https://www.loom.com/embed/fff650be3a28421d8680223e26589d79'
 
+/** Video de la variante de capacidad comercial. */
+export const LEADSB_VSL_VIDEO_URL = 'https://www.loom.com/embed/df26176b32444586a3533ec762bcdeb0'
+
 /** URL de Calendly del evento (p. ej. https://calendly.com/usuario/evento). Vacío = placeholder. */
 export const CALENDLY_URL = 'https://calendly.com/admin-fikstudio/close-energy-llamada-discovery'

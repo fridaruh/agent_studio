@@ -1,8 +1,16 @@
 import Reveal from './Reveal'
 import CtaButton from './CtaButton'
-import { VSL_VIDEO_URL } from '@/lib/links'
+import { LEADSB_VSL_VIDEO_URL, VSL_VIDEO_URL } from '@/lib/links'
+import type { LeadsLandingVariant } from './LeadsLanding'
 
-export default function LeadsHero() {
+type LeadsHeroProps = {
+  variant?: LeadsLandingVariant
+}
+
+export default function LeadsHero({ variant = 'standard' }: LeadsHeroProps) {
+  const isCapacityVariant = variant === 'capacity'
+  const videoUrl = isCapacityVariant ? LEADSB_VSL_VIDEO_URL : VSL_VIDEO_URL
+
   return (
     <section id="hero" className="leads-hero hero-grid relative overflow-hidden scroll-mt-4">
       <div className="leads-shell leads-hero-shell relative flex w-full flex-col items-center text-center">
@@ -14,7 +22,15 @@ export default function LeadsHero() {
 
         <Reveal delay={140}>
           <h1 className="leads-display mt-7 max-w-[1180px]">
-            Cómo atendemos <span className="leads-accent-underline whitespace-nowrap">3x más prospectos</span> para empresas solares residenciales, sin aumentar tu carga comercial
+            {isCapacityVariant ? (
+              <>
+                Cómo Atendemos <span className="leads-accent-underline whitespace-nowrap">38.5% Más Prospectos</span> Para Empresas Solares Residenciales, Sin aumentar Tu Carga de Trabajo
+              </>
+            ) : (
+              <>
+                Cómo atendemos <span className="leads-accent-underline whitespace-nowrap">3x más prospectos</span> para empresas solares residenciales, sin aumentar tu carga comercial
+              </>
+            )}
           </h1>
         </Reveal>
 
@@ -26,9 +42,9 @@ export default function LeadsHero() {
 
         <Reveal delay={260} className="mt-10 w-full max-w-5xl">
           <div className="leads-media-frame">
-            {VSL_VIDEO_URL ? (
+            {videoUrl ? (
               <iframe
-                src={VSL_VIDEO_URL}
+                src={videoUrl}
                 title="Video Close Energy"
                 loading="lazy"
                 allow="autoplay; fullscreen; picture-in-picture"

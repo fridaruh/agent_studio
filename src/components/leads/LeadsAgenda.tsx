@@ -2,8 +2,17 @@ import Reveal from './Reveal'
 import CtaButton from './CtaButton'
 import LeadsCallStages from './LeadsCallStages'
 import { CALENDLY_URL } from '@/lib/links'
+import type { LeadsLandingVariant } from './LeadsLanding'
 
-export default function LeadsAgenda() {
+type LeadsAgendaProps = {
+  variant?: LeadsLandingVariant
+}
+
+export default function LeadsAgenda({ variant = 'standard' }: LeadsAgendaProps) {
+  const agendaHeading = variant === 'capacity'
+    ? '¿Deseas atender 38.5% más prospectos sin aumentar tu carga comercial?'
+    : '¿Deseas atender 3 veces más clientes sin aumentar tu carga comercial?'
+
   return (
     <section id="agenda" className="leads-agenda scroll-mt-4">
       <div className="leads-shell">
@@ -11,7 +20,7 @@ export default function LeadsAgenda() {
           <div className="leads-agenda-grid">
             <div className="leads-agenda-copy">
               <h2 className="leads-heading max-w-3xl">
-                ¿Deseas atender 3 veces más clientes sin aumentar tu carga comercial?
+                {agendaHeading}
               </h2>
               <div className="mt-8">
                 <CtaButton href="#calendario" />

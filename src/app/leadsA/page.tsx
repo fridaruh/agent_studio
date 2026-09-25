@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     'Cómo atendemos 3x más clientes, sin aumentar tu carga comercial.',
   alternates: {
-    canonical: 'https://close.energy/leads',
+    canonical: 'https://close.energy/leadsA',
   },
 }
 
-export default function LeadsPage() {
+export default function LeadsAPage() {
   return <LeadsLanding />
 }
