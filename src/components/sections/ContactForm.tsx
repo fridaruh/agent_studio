@@ -221,7 +221,7 @@ export default function ContactForm() {
       {failed && (
         <p role="alert" className="mb-4 px-4 py-3 rounded-md border border-danger/30 bg-danger/5 text-danger text-body-sm leading-relaxed">
           {c.errorBody}{' '}
-          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="underline">
+          <a href={BOOKING_URL} data-fast-goal="abrir_agenda" target="_blank" rel="noopener noreferrer" className="underline">
             {c.errorLink}
           </a>
           .

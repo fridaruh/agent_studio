@@ -30,6 +30,7 @@ export default function CTASection() {
             <div className="flex items-center justify-center">
               <a
                 href={BOOKING_URL}
+                data-fast-goal="abrir_agenda"
                 className="px-6 py-3 text-button text-white bg-primary rounded-md hover:bg-primary-hover transition-colors btn-primary-glow"
               >
                 {cta.cta1}

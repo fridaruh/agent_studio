@@ -39,7 +39,7 @@ export default function LeadsAgenda({ variant = 'standard' }: LeadsAgendaProps) 
               </div>
               {CALENDLY_URL ? (
                 <iframe
-                  src={`${CALENDLY_URL}?hide_gdpr_banner=1`}
+                  src={`${CALENDLY_URL}?hide_gdpr_banner=1&embed_type=Inline&embed_domain=www.close.energy`}
                   title="Agendar llamada"
                   loading="lazy"
                   className="block h-[700px] w-full"
@@ -52,7 +52,7 @@ export default function LeadsAgenda({ variant = 'standard' }: LeadsAgendaProps) 
               {CALENDLY_URL && (
                 <p className="border-t border-hairline px-6 py-4 text-caption text-ink-subtle">
                   ¿No carga el calendario?{' '}
-                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-ink">
+                  <a href={CALENDLY_URL} data-fast-goal="abrir_calendly" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-ink">
                     Ábrelo en una nueva pestaña
                   </a>
                 </p>
