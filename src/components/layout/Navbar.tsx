@@ -71,6 +71,7 @@ export default function Navbar() {
 
           <a
             href={BOOKING_URL}
+            data-fast-goal="abrir_agenda"
             className="hidden md:inline-flex px-3 py-1.5 text-button text-white bg-primary rounded-md hover:bg-primary-hover transition-colors duration-150 btn-primary-glow"
           >
             {t.nav.contactUs}
@@ -128,6 +129,7 @@ export default function Navbar() {
           </div>
           <a
             href={BOOKING_URL}
+            data-fast-goal="abrir_agenda"
             onClick={() => setMenuOpen(false)}
             className="mt-1 text-center py-2.5 text-button text-white bg-primary rounded-md"
           >
