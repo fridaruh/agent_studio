@@ -86,7 +86,14 @@ export default function ThankYouLanding() {
           <Reveal delay={140} className="mt-8">
             <div className="leads-media-frame">
               {PRECALL_VIDEO_URL ? (
-                <iframe className="aspect-video w-full rounded-xl" src={PRECALL_VIDEO_URL} title="Video de preparación para tu llamada con Close Energy" allowFullScreen />
+                <iframe
+                  src={PRECALL_VIDEO_URL}
+                  title="Video de preparación para tu llamada con Close Energy"
+                  loading="lazy"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  className="block aspect-video w-full rounded-xl"
+                />
               ) : (
                 <div className="thankyou-video-placeholder flex aspect-video flex-col items-center justify-center rounded-xl px-6 text-center">
                   <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-subtle">Paso 1 de 3</span>

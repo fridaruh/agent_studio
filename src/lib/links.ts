@@ -14,5 +14,5 @@ export const LEADSB_VSL_VIDEO_URL = 'https://www.loom.com/embed/df26176b32444586
 /** URL de Calendly del evento (p. ej. https://calendly.com/usuario/evento). Vacío = placeholder. */
 export const CALENDLY_URL = 'https://calendly.com/admin-fikstudio/close-energy-llamada-discovery'
 
-/** URL de embed del video de preparación pre-llamada. Vacío hasta recibir el material final. */
-export const PRECALL_VIDEO_URL = ''
+/** URL de embed del video de preparación pre-llamada (Loom). */
+export const PRECALL_VIDEO_URL = 'https://www.loom.com/embed/9afadce4882e49a5899d6d373f4eebfc'
