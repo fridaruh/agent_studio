@@ -11,8 +11,9 @@ export const VSL_VIDEO_URL = 'https://www.loom.com/embed/fff650be3a28421d8680223
 /** Video de la variante de capacidad comercial. */
 export const LEADSB_VSL_VIDEO_URL = 'https://www.loom.com/embed/df26176b32444586a3533ec762bcdeb0'
 
-/** URL de Calendly del evento (p. ej. https://calendly.com/usuario/evento). Vacío = placeholder. */
-export const CALENDLY_URL = 'https://calendly.com/admin-fikstudio/close-energy-llamada-discovery'
+/** Widget de reservas de LeadConnector usado en /leadsA y /leadsB. */
+export const BOOKING_WIDGET_ID = 'mUTSSHtUTK31gNA7Zv7L'
+export const BOOKING_WIDGET_URL = `https://api.leadconnectorhq.com/widget/booking/${BOOKING_WIDGET_ID}`
 
 /** URL de embed del video de preparación pre-llamada (Loom). */
 export const PRECALL_VIDEO_URL = 'https://www.loom.com/embed/9afadce4882e49a5899d6d373f4eebfc'
