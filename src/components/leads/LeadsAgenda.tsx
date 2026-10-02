@@ -1,7 +1,8 @@
+import Script from 'next/script'
 import Reveal from './Reveal'
 import CtaButton from './CtaButton'
 import LeadsCallStages from './LeadsCallStages'
-import { CALENDLY_URL } from '@/lib/links'
+import { BOOKING_WIDGET_ID, BOOKING_WIDGET_URL } from '@/lib/links'
 import type { LeadsLandingVariant } from './LeadsLanding'
 
 type LeadsAgendaProps = {
@@ -37,26 +38,21 @@ export default function LeadsAgenda({ variant = 'standard' }: LeadsAgendaProps) 
                 <h3 className="leads-card-heading">Close Energy — Llamada Discovery</h3>
                 <p className="mt-1 text-body-sm text-ink-subtle">⏱ 30 min</p>
               </div>
-              {CALENDLY_URL ? (
-                <iframe
-                  src={`${CALENDLY_URL}?hide_gdpr_banner=1`}
-                  title="Agendar llamada"
-                  loading="lazy"
-                  className="block h-[700px] w-full"
-                />
-              ) : (
-                <div className="flex h-[700px] w-full items-center justify-center text-body-sm text-ink-subtle">
-                  Calendario próximamente
-                </div>
-              )}
-              {CALENDLY_URL && (
-                <p className="border-t border-hairline px-6 py-4 text-caption text-ink-subtle">
-                  ¿No carga el calendario?{' '}
-                  <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-ink">
-                    Ábrelo en una nueva pestaña
-                  </a>
-                </p>
-              )}
+              <iframe
+                src={BOOKING_WIDGET_URL}
+                id={`${BOOKING_WIDGET_ID}_1790721761138`}
+                title="Agendar llamada"
+                allow="payment"
+                scrolling="no"
+                className="block min-h-[700px] w-full overflow-hidden border-none"
+              />
+              <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
+              <p className="border-t border-hairline px-6 py-4 text-caption text-ink-subtle">
+                ¿No carga el calendario?{' '}
+                <a href={BOOKING_WIDGET_URL} data-fast-goal="abrir_calendario" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-ink">
+                  Ábrelo en una nueva pestaña
+                </a>
+              </p>
             </div>
           </div>
         </Reveal>

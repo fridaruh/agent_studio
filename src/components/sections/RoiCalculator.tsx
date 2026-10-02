@@ -173,6 +173,7 @@ export default function RoiCalculator() {
           <p className="text-ink-subtle text-body-sm mb-4">{roi.bottomCta}</p>
           <a
             href={BOOKING_URL}
+            data-fast-goal="abrir_agenda"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary rounded-md text-white text-button hover:bg-primary-hover transition-all"
           >
             {t.nav.contactUs}

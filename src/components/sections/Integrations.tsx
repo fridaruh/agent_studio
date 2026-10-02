@@ -153,6 +153,7 @@ export default function Integrations() {
           <p className="text-ink-subtle text-body-sm mb-4">{integrations.bottomCta}</p>
           <a
             href={BOOKING_URL}
+            data-fast-goal="abrir_agenda"
             className="inline-flex items-center gap-2 px-4 py-2 bg-surface-1 border border-hairline rounded-md text-ink-subtle text-button hover:text-ink hover:border-hairline-strong transition-all"
           >
             {t.nav.contactUs}
