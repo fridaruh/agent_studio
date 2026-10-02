@@ -66,10 +66,10 @@ export default function ThankYouLanding() {
           </Reveal>
           <Reveal delay={140}>
             <p className="thankyou-alert mt-7">¡Espera!</p>
-            <h1 id="thankyou-title" className="leads-display mt-3 max-w-5xl">Cómo prepararte para tu llamada con <span className="leads-accent-underline">Close Energy</span></h1>
+            <h1 id="thankyou-title" className="leads-display mt-3 max-w-5xl">Completa estos pasos, tu espacio en la agenda puede ser asignado a otra persona.</h1>
           </Reveal>
           <Reveal delay={200}>
-            <p className="thankyou-warning mx-auto mt-7 max-w-3xl">Si no completas estos pasos, tu llamada puede ser cancelada y tu espacio asignado a otra persona.</p>
+            <p className="thankyou-warning mx-auto mt-7 max-w-3xl">Lee abajo cómo prepararte para tu llamada con <span className="leads-accent-underline">Close.Energy</span></p>
           </Reveal>
         </div>
       </section>
