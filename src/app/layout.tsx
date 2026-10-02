@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import { I18nProvider } from '@/lib/i18n/context'
+import MetaPixel from '@/components/analytics/MetaPixel'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <I18nProvider>
           {children}
+          <MetaPixel />
         </I18nProvider>
         <Script
           src="https://datafa.st/js/script.js"
