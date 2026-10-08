@@ -22,7 +22,7 @@ const faqs: Array<{ question: string; answer: ReactNode }> = [
   },
   {
     question: '¿Cómo funciona el modelo de pago?',
-    answer: 'Pago único de licencia y configuración, más gastos mensuales por uso. Pero primero analicemos tu proceso comercial y, si vemos potencial de trabajar juntos, te explicamos cómo funciona la implementación.',
+    answer: 'Pago único de implementación y configuración, más planes de prepago mensual de cotizaciones. Pero primero analicemos tu proceso comercial y, si vemos potencial de trabajar juntos, te explicamos cómo funciona la implementación.',
   },
   {
     question: '¿Para quién es esta llamada?',
